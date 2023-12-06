@@ -62,20 +62,20 @@
 
 <section class="container container-xs flex flex-col items-center justify-center bg-white dark:bg-black">
   <h2 class="font-alt font-bold text-center text-36 lg:text-48 leading-2 mb-5 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Sorting</h2>
-  <div class="filtering w-full max-w-xl mx-auto" data-filter>
+  <div class="filtering w-full max-w-xl mx-auto" data-filter="sorting">
     <div class="flex flex-col md:flex-row items-center justify-between gap-0 md:gap-4 relative bg-grey md:bg-opacity-0 text-second md:text-black dark:text-white rounded-4 md:rounded-none md:border-b md:border-solid md:border-white overflow-hidden mb-5 md:mb-10 md:pb-4 duration-5 anim anim-up" data-anim="hidden">
-      <div class="filtering__category filter-active flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="all">All</div>
-      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="primary">Primary</div>
-      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="second">Second</div>
-      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="green">Green</div>
-      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="mix">Mix</div>
-      <span class="hidden md:block absolute left-0 bottom-0 bg-primary rounded-t-2 h-1 ease-linear duration-3" data-filter-line></span>
+      <div class="filtering__category filter-active flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="sorting" data-filter-value="all">All</div>
+      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="sorting" data-filter-value="primary">Primary</div>
+      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="sorting" data-filter-value="second">Second</div>
+      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="sorting" data-filter-value="green">Green</div>
+      <div class="filtering__category flex-grow text-center text-20 cursor-pointer w-full p-4 md:p-0" data-filter-category="sorting" data-filter-value="mix">Mix</div>
+      <span class="hidden md:block absolute left-0 bottom-0 bg-primary rounded-t-2 h-1 ease-linear duration-3" data-filter-line="sorting"></span>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-10">
       <% for (var i = 0; i < 3; i++) { %>
-      <div class="filtering__card bg-primary py-10" data-filter-card="primary mix"></div>
-      <div class="filtering__card bg-second py-10" data-filter-card="second"></div>
-      <div class="filtering__card bg-green py-10" data-filter-card="green mix"></div>
+      <div class="filtering__card bg-primary py-10" data-filter-card="sorting" data-filter-value="primary mix"></div>
+      <div class="filtering__card bg-second py-10" data-filter-card="sorting" data-filter-value="second"></div>
+      <div class="filtering__card bg-green py-10" data-filter-card="sorting" data-filter-value="green mix"></div>
       <% } %>
     </div>
   </div>

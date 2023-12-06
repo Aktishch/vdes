@@ -14,7 +14,7 @@ window.AirDatepicker = AirDatepicker
 
 export default (): void => {
   const datepickers = document.querySelectorAll('*[data-datepicker]') as NodeListOf<Element>
-  const excludeDates: number[] = [+new Date(2023, 9, 5), +new Date(2023, 9, 7), +new Date(2023, 10, 10)]
+  const excludeDates: number[] = [+new Date(2023, 10, 5), +new Date(2023, 10, 7), +new Date(2023, 11, 10)]
 
   window.excludeDates = excludeDates
 
@@ -25,7 +25,8 @@ export default (): void => {
           ? 'filter-active btn btn-primary btn-fill text-14'
           : 'pointer-events-none',
         attrs: {
-          'data-filter-category': `date-${date.getDate()}-${date.getMonth() + 1}`,
+          'data-filter-category': 'calendar',
+          'data-filter-value': `date-${date.getDate()}-${date.getMonth() + 1}`,
         },
       }
     }
