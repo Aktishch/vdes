@@ -1,3 +1,4 @@
+import { safariOnMacbook } from './functions/safari-on-macbook'
 import { touchDevice } from './functions/touch-device'
 import { scrolledPage } from './functions/scrolled-page'
 import { animation } from './animation'
@@ -5,7 +6,7 @@ import { animation } from './animation'
 export default (): void => {
   const smoothScroll = document.querySelector('#smooth-scroll') as HTMLElement
 
-  if (!smoothScroll || touchDevice()) return
+  if (!smoothScroll || safariOnMacbook() || touchDevice()) return
 
   const html = document.documentElement as HTMLElement
   const body = document.body as HTMLBodyElement

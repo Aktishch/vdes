@@ -40,12 +40,24 @@ const submitHandler = (event: Event, data: File[]): void => {
         method: 'POST',
         body: formData,
       })
-        .then((response: Response): void => {
-          response.text()
+        .then((response: Response): Promise<any> => {
+          return response.json()
         })
-        .then((): void => {
+        .then((response: Response): void => {
           dialogClose()
-          dialogOpen('./dialogs/dialog-submit.html')
+
+          switch (response.status) {
+          case true: {
+            dialogOpen('./dialogs/dialog-success.html')
+            break
+          }
+
+          case false: {
+            dialogOpen('./dialogs/dialog-error.html')
+            break
+          }
+          }
+
           form.reset()
           submitBtn.removeAttribute('disabled')
 

@@ -5,6 +5,7 @@ import airDatepicker from './ts/air-datepicker'
 import smoothScroll from './ts/smooth-scroll'
 import scrollHeader from './ts/scroll-header'
 import currentTab from './ts/current-tab'
+import currentYear from './ts/current-year'
 import sidebar from './ts/sidebar'
 import progressLine from './ts/progress-line'
 import scrollTo from './ts/scroll-to'
@@ -49,12 +50,13 @@ import preloader from './ts/preloader'
 
 import './scss/style.scss'
 
-window.addEventListener('DOMContentLoaded', ((): void => {
+const initialization = (): void => {
   fancybox()
   sliderSwiper()
   yandexMap()
   airDatepicker()
   currentTab()
+  currentYear()
   smoothScroll()
   scrollHeader()
   sidebar()
@@ -97,4 +99,6 @@ window.addEventListener('DOMContentLoaded', ((): void => {
   timer()
   worldMap()
   preloader()
-}) as EventListener)
+}
+
+window.addEventListener('DOMContentLoaded', initialization as EventListener)
