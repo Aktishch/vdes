@@ -32,6 +32,7 @@ import dataSave from './ts/data-save'
 import dragAndDrop from './ts/drag-and-drop'
 import choiceFile from './ts/choice-file'
 import copyLink from './ts/copy-link'
+import createImage from './ts/create-image'
 import inputs from './ts/inputs'
 import phoneMask from './ts/phone-mask'
 import password from './ts/password'
@@ -84,6 +85,7 @@ const initialization = (): void => {
   dragAndDrop()
   choiceFile()
   copyLink()
+  createImage()
   inputs()
   phoneMask()
   password()
