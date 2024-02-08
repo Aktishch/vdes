@@ -61,6 +61,7 @@
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.0",
     "prettier": "^2.8.8",
+    "prettier-eslint": "^16.3.0",
     "swiper": "^8.2.4",
     "ymaps": "^0.2.1"
   }

@@ -3,25 +3,25 @@
   var picture = _.template(require('../components/picture.html').default)
 %>
 
-<dialog class="dialog dialog-xs dark:bg-black dark:text-white rounded-3 py-10 px-5">
+<dialog class="px-5 py-10 dialog dialog-xs dark:bg-black dark:text-white rounded-3">
   <form class="form" data-form="avatar">
     <input type="hidden" value="Аватарка" name="theme">
-    <div class="form-label items-center justify-center" data-label="download">
-      <div class="form-wrapper mb-5">
-        <div class="pack pack-box bg-primary rounded-max w-1/2 mx-auto">
-          <div class="flex items-center justify-center absolute inset-0 text-white dark:text-black text-7xl md:text-8xl">
+    <div class="items-center justify-center form-label" data-label="download">
+      <div class="mb-5 form-wrapper">
+        <div class="w-1/2 mx-auto pack pack-box bg-primary rounded-max">
+          <div class="absolute inset-0 flex items-center justify-center text-white dark:text-black text-7xl md:text-8xl">
             <%= icon({id: 'user'}) %>
           </div>
           <%= picture({src: '', format: '', webp: false, classes: 'image', data: 'data-file="image"', loading: 'eager'}) %>
         </div>
         <span class="form-error" data-error>Пожалуйста, загрузите изображение!</span>
       </div>
-      <div class="flex flex-wrap items-center justify-between gap-4 w-full">
-        <label class="btn btn-second btn-lg btn-fill flex-grow" data-waved="dark">
+      <div class="flex flex-wrap items-center justify-between w-full gap-4">
+        <label class="flex-grow btn btn-second btn-lg btn-fill" data-waved="dark">
           <input class="hidden" data-input="file" type="file" name="file[]">
           Загрузить
         </label>
-        <button class="btn btn-second btn-lg btn-fade btn-contur flex-grow" data-waved="light" type="button">Удалить</button>
+        <button class="flex-grow btn btn-second btn-lg btn-fade btn-contur" data-waved="light" type="button">Удалить</button>
       </div>
     </div>
   </form>

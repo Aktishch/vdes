@@ -14,7 +14,7 @@ window.AirDatepicker = AirDatepicker
 
 export default (): void => {
   const datepickers = document.querySelectorAll('*[data-datepicker]') as NodeListOf<Element>
-  const excludeDates: number[] = [+new Date(2023, 10, 5), +new Date(2023, 10, 7), +new Date(2023, 11, 10)]
+  const excludeDates: number[] = [+new Date(2024, 2, 5), +new Date(2024, 2, 7), +new Date(2024, 3, 10)]
 
   window.excludeDates = excludeDates
 

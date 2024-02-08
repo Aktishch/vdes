@@ -6,7 +6,7 @@ export default (): void => {
   const subtitle = counter.querySelector('*[data-counter-subtitle]') as HTMLElement
   const timer = counter.querySelector('*[data-counter-timer]') as HTMLElement
   const units = timer.querySelectorAll('*[data-counter-unit]') as NodeListOf<Element>
-  const date: number = new Date(2023, 11, 23, 0, 0, 0).getTime()
+  const date: number = new Date(2024, 11, 23, 0, 0, 0).getTime()
 
   const getTimeCounter = (): void => {
     const distance: number = date - new Date().getTime()
