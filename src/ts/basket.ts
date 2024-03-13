@@ -80,17 +80,13 @@ export default (): void => {
 
         if (basketName && productName) basketName.innerText = String(productName.textContent)
 
-        if (basketQuantity && productQuantity) {
-          basketQuantity.innerText = String(productQuantity.value)
-        } else {
-          basketQuantity.innerText = '1'
-        }
+        basketQuantity && productQuantity
+          ? (basketQuantity.innerText = String(productQuantity.value))
+          : (basketQuantity.innerText = '1')
 
-        if (basketOldPrice && productOldPrice) {
-          basketOldPrice.innerText = String(productOldPrice.textContent)
-        } else {
-          basketOldPrice.innerText = ''
-        }
+        basketOldPrice && productOldPrice
+          ? (basketOldPrice.innerText = String(productOldPrice.textContent))
+          : (basketOldPrice.innerText = '')
 
         if (basketPrice && productPrice) basketPrice.innerText = String(productPrice.textContent)
 

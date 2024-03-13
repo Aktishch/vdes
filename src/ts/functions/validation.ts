@@ -43,11 +43,17 @@ export const validation = (form: HTMLFormElement): boolean => {
         return !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/.test(value)
       }
 
-      if (input.value === null || input.value === '' || input.value.length === 0) {
+      switch (input.value === null || input.value === '' || input.value.length === 0) {
+      case true: {
         inputError()
-      } else {
+        break
+      }
+
+      case false: {
         input.classList.remove('input-error')
         error.classList.remove('visible', 'opacity-100')
+        break
+      }
       }
 
       switch (input.dataset.input) {

@@ -111,7 +111,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         if (!parsed.color) return null
 
         const [r, g, b] = parsed.color
-        const hex = '#' + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)
+        const hex = `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`
         const amount = 25
 
         return {
@@ -145,7 +145,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
   )
 
   const checkColor = (color, amount) => {
-    if (color[0] == '#') color = color.slice(1)
+    if (color[0] === '#') color = color.slice(1)
 
     const number = parseInt(color, 16)
     const r = (number >> 16) + amount
@@ -153,11 +153,9 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
     const b = ((number >> 8) & 0x00ff) + amount
 
     const checkColorValue = (value) => {
-      if (value > 255) {
-        value = 255
-      } else if (value < 0) {
-        value = 0
-      }
+      if (value > 255) value = 255
+
+      if (value < 0) value = 0
 
       return value
     }
@@ -180,13 +178,13 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       value = value > 0 ? value : 0
       value = Math.round(value)
 
-      return value.toString(16).length === 1 ? '0' + value.toString(16) : value.toString(16)
+      return value.toString(16).length === 1 ? `0${value.toString(16)}` : value.toString(16)
     }
 
     const red = getColorValue(r)
     const green = getColorValue(g)
     const blue = getColorValue(b)
 
-    return '#' + red + green + blue
+    return `#${red + green + blue}`
   }
 })

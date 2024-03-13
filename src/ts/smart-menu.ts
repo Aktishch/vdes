@@ -16,17 +16,24 @@ export default (): void => {
       ? smartMenu.offsetWidth
       : smartMenu.offsetWidth - nav.offsetWidth
 
-    if (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
+    switch (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
+    case true: {
       breaks.push(lengthWidth)
       list.prepend(length.lastElementChild as HTMLElement)
       count.innerText = String(breaks.length)
       updateSmartMenu()
-    } else {
+      break
+    }
+
+    case false: {
       if (smartMenuWidth > breaks[breaks.length - 1]) {
         breaks.pop()
         length.append(list.firstElementChild as HTMLElement)
         count.innerText = String(breaks.length)
       }
+
+      break
+    }
     }
 
     (list.querySelectorAll('li') as NodeListOf<Element>).length === 0

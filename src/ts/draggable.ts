@@ -19,11 +19,9 @@ const setDraggable = (id: string): void => {
   let initialX: number
 
   const getDragPosition = (): void => {
-    if (draggable.closest('[data-draggable]')) {
-      setTranslate(draggable.closest('[data-draggable]') as HTMLElement, coordinates.left, coordinates.top)
-    } else {
-      setTranslate(draggable, coordinates.left, coordinates.top)
-    }
+    draggable.closest('[data-draggable]')
+      ? setTranslate(draggable.closest('[data-draggable]') as HTMLElement, coordinates.left, coordinates.top)
+      : setTranslate(draggable, coordinates.left, coordinates.top)
   }
 
   const dragStart = (event: Event): void => {
