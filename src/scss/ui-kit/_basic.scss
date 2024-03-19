@@ -22,18 +22,24 @@ body {
   @apply bg-white font-base text-black;
 }
 
+main {
+  @apply flex flex-col min-h-screen;
+}
+
 ::selection {
   @apply text-white bg-primary;
 }
 
-h1:empty,
-h2:empty,
-h3:empty,
-h4:empty,
-h5:empty,
-h6:empty,
-p:empty {
-  @apply hidden;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  &:empty {
+    @apply hidden;
+  }
 }
 
 ul {

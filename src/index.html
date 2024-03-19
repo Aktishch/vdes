@@ -15,15 +15,15 @@
 
 <%= header({data, loader, preloader, icon, picture}) %>
 
-<!-- Главный блок -->
+<!-- Первоначальный блок -->
 
-<main class="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]" id="header">
+<section class="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]" id="header">
   <%= picture({src: 'img/pictures/logo', format: '.svg', webp: false, classes: 'block mb-10 duration-10 anim anim-up', data: 'data-anim="hidden"', loading: 'eager'}) %>
   <h1 class="mb-5 font-bold text-center font-alt text-48 lg:text-6xl leading-2 md:mb-10 duration-5 delay-2 anim anim-up" data-anim="hidden" data-movement="blend">Main block</h1>
   <div class="w-full duration-5 delay-4 anim anim-up" data-anim="hidden">
     <a class="btn btn-primary btn-lg btn-fill btn-glow w-full max-w-[200px] mx-auto" data-waved="light" data-scroll="top" draggable="false" href="#content">Show more</a>
   </div>
-</main>
+</section>
 
 <!-- Статьи -->
 
