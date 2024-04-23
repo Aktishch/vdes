@@ -47,6 +47,7 @@ import compare from './ts/compare'
 import timeCounter from './ts/time-counter'
 import timer from './ts/timer'
 import worldMap from './ts/world-map'
+import game from './ts/game'
 import preloader from './ts/preloader'
 
 import './scss/style.scss'
@@ -100,6 +101,7 @@ const initialization = (): void => {
   timeCounter()
   timer()
   worldMap()
+  game()
   preloader()
 }
 
