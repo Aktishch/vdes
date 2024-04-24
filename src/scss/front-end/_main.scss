@@ -103,6 +103,13 @@
   }
 }
 
+// Бегующая кнопка
+.running {
+  @media(pointer: coarse) {
+    @apply hidden;
+  }
+}
+
 // Корзина
 .basket[data-basket="hidden"] {
   transform: translateY(-40%);

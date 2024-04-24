@@ -14,6 +14,7 @@ import social from './ts/social'
 import draggable from './ts/draggable'
 import theme from './ts/theme'
 import snowflakes from './ts/snowflakes'
+import runningButton from './ts/running-button'
 import animation from './ts/animation'
 import waved from './ts/waved'
 import movement from './ts/movement'
@@ -69,6 +70,7 @@ const initialization = (): void => {
   draggable()
   theme()
   snowflakes()
+  runningButton()
   animation()
   waved()
   movement()
