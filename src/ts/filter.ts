@@ -1,4 +1,4 @@
-const filtering = (name: string, cards: NodeListOf<Element>): void => {
+const filtering = ({ name, cards }: { name: string; cards: NodeListOf<Element> }): void => {
   cards.forEach((element: Element): void => {
     const card = element as HTMLElement
     const absence: boolean = String(card.dataset.filterValue).split(' ').includes(name) === false
@@ -58,7 +58,7 @@ export default (): void => {
         line.style.left = `${category.offsetLeft}px`
       }
 
-      filtering(name, cards)
+      filtering({ name: name, cards: cards })
     }
 
     currentCard(currentCategory())

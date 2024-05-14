@@ -9,7 +9,7 @@ export const validation = (form: HTMLFormElement): boolean => {
     const input = download.querySelector('*[data-input="file"]') as HTMLInputElement
     const error = download.querySelector('*[data-error]') as HTMLElement
 
-    validate = fileHandler(input, error)
+    validate = fileHandler({ input: input, error: error })
   }
 
   labels.forEach((element: Element): void => {
@@ -32,8 +32,8 @@ export const validation = (form: HTMLFormElement): boolean => {
         validate = false
       }
 
-      const maxLengthInputTel = (numb: number): void => {
-        if (input.value.length > 0 && input.value.length < numb) {
+      const maxLengthInputTel = (value: number): void => {
+        if (input.value.length > 0 && input.value.length < value) {
           error.innerText = 'Введите корректный номер!'
           inputError()
         }
@@ -98,7 +98,7 @@ export const validation = (form: HTMLFormElement): boolean => {
           error.innerText = 'Введите не менее 10 символов!'
           inputError()
         } else {
-          error.innerText = 'Пожалуйста, оставьте отзыв!'
+          error.innerText = 'Пожалуйста, заполните это поле!'
         }
 
         break

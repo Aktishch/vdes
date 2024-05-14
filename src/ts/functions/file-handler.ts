@@ -1,4 +1,4 @@
-export const fileHandler = (input: HTMLInputElement, error: HTMLElement): boolean => {
+export const fileHandler = ({ input, error }: { input: HTMLInputElement; error: HTMLElement }): boolean => {
   const files = input.files as FileList
 
   if (files.length === 0) {

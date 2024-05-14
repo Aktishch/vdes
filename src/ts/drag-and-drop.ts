@@ -41,7 +41,7 @@ export default (): void => {
           file ? readFile.readAsDataURL(file) : (image.src = '')
 
           readFile.addEventListener('loadend', ((): void => {
-            image.src = fileHandler(input, error) ? String(readFile.result) : ''
+            image.src = fileHandler({ input: input, error: error }) ? String(readFile.result) : ''
           }) as EventListener)
 
           break

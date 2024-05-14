@@ -1,6 +1,6 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 
-const randomPpsition = (min: number, max: number): number => {
+const randomPpsition = ({ min, max }: { min: number; max: number }): number => {
   const random: number = min + Math.random() * (max - min + 1)
 
   return Math.floor(random)
@@ -14,9 +14,9 @@ export default (): void => {
   const button = running.querySelector('*[data-running-button]') as HTMLButtonElement
 
   running.addEventListener('mouseenter', ((): void => {
-    const coordinates: coordinates = {
-      top: randomPpsition(0, 90),
-      left: randomPpsition(0, 90),
+    const coordinates: Coordinates = {
+      top: randomPpsition({ min: 0, max: 90 }),
+      left: randomPpsition({ min: 0, max: 90 }),
     }
 
     running.style.top = `${coordinates.top}%`

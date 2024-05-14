@@ -17,6 +17,9 @@ export const dialogOpen = (requestUrl: string): void => {
       {
         src: requestUrl,
         type: 'ajax',
+      } as {
+        src: string
+        type: 'ajax'
       },
     ],
     {
@@ -34,12 +37,15 @@ export const dialogNotClosing = (requestUrl: string): void => {
       {
         src: requestUrl,
         type: 'ajax',
+      } as {
+        src: string
+        type: 'ajax'
       },
     ],
     {
       dragToClose: false,
       closeButton: false,
-      backdropClick: true,
+      backdropClick: false,
       on: {
         done: (): void => waved(),
       },

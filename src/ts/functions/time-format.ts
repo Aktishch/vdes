@@ -1,11 +1,11 @@
-export const timeFormat = (number: number): string => {
-  switch (number < 10 || number === 0) {
+export const timeFormat = (value: number): string => {
+  switch (value < 10 || value === 0) {
   case true: {
-    return `0${number}`
+    return `0${value}`
   }
 
   case false: {
-    return `${number}`
+    return `${value}`
   }
   }
 }

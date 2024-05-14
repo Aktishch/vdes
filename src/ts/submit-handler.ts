@@ -1,7 +1,7 @@
 import { dialogOpen, dialogNotClosing, dialogClose } from './fancybox'
 import { validation } from './functions/validation'
 
-const submitHandler = (event: Event, data: File[]): void => {
+const submitHandler = ({ event, data }: { event: Event; data: File[] }): void => {
   const form = event.target as HTMLFormElement
 
   switch (form.dataset.form) {
@@ -40,10 +40,10 @@ const submitHandler = (event: Event, data: File[]): void => {
         method: 'POST',
         body: formData,
       })
-        .then((response: Response): Promise<any> => {
+        .then((response: Response) => {
           return response.json()
         })
-        .then((response: Response): void => {
+        .then((response): void => {
           dialogClose()
 
           switch (response.status) {
@@ -90,6 +90,6 @@ const submitHandler = (event: Event, data: File[]): void => {
 
 export default (data: File[]): void => {
   document.addEventListener('submit', ((event: Event): void => {
-    if ((event.target as HTMLFormElement).hasAttribute('data-form')) submitHandler(event, data)
+    if ((event.target as HTMLFormElement).hasAttribute('data-form')) submitHandler({ event: event, data: data })
   }) as EventListener)
 }

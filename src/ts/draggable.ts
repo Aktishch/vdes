@@ -1,7 +1,15 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
 
-const setTranslate = (element: HTMLElement, positionX: number, positionY: number): void => {
+const setTranslate = ({
+  element,
+  positionX,
+  positionY,
+}: {
+  element: HTMLElement
+  positionX: number
+  positionY: number
+}): void => {
   element.style.transform = `translate(${positionX}px, ${positionY}px)`
 }
 
@@ -11,7 +19,7 @@ const setDraggable = (id: string): void => {
   if (!draggable) return
 
   const body = document.body as HTMLBodyElement
-  const coordinates: coordinates = { top: 0, left: 0 }
+  const coordinates: Coordinates = { top: 0, left: 0 }
   let active = false
   let currentY: number
   let currentX: number
@@ -20,8 +28,12 @@ const setDraggable = (id: string): void => {
 
   const getDragPosition = (): void => {
     draggable.closest('[data-draggable]')
-      ? setTranslate(draggable.closest('[data-draggable]') as HTMLElement, coordinates.left, coordinates.top)
-      : setTranslate(draggable, coordinates.left, coordinates.top)
+      ? setTranslate({
+        element: draggable.closest('[data-draggable]') as HTMLElement,
+        positionX: coordinates.left,
+        positionY: coordinates.top,
+      })
+      : setTranslate({ element: draggable, positionX: coordinates.left, positionY: coordinates.top })
   }
 
   const dragStart = (event: Event): void => {

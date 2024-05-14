@@ -1,4 +1,4 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 import { touchDevice } from './functions/touch-device'
 
 export default (): void => {
@@ -16,7 +16,7 @@ export default (): void => {
 
     const snowflake = document.createElement('span') as HTMLSpanElement
     const size: number = Math.random() * 60
-    const coordinates: coordinates = {
+    const coordinates: Coordinates = {
       top: event.clientY,
       left: event.clientX,
     }

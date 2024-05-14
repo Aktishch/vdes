@@ -1,4 +1,4 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 import { touchDevice } from './functions/touch-device'
 
 export default (): void => {
@@ -51,7 +51,7 @@ export default (): void => {
       parallax.addEventListener('mousemove', ((event: MouseEvent): void => {
         const height: number = parallax.offsetHeight
         const width: number = parallax.offsetWidth
-        const coordinates: coordinates = {
+        const coordinates: Coordinates = {
           top: event.clientY - height / 2,
           left: event.clientX - width / 2,
         }
@@ -86,7 +86,7 @@ export default (): void => {
 
       hovered.addEventListener('mousemove', ((event: MouseEvent): void => {
         const rect = (event.target as HTMLElement).getBoundingClientRect() as DOMRect
-        const coordinates: coordinates = {
+        const coordinates: Coordinates = {
           top: (event.clientY - rect.top) / rect.height,
           left: (event.clientX - rect.left) / rect.width,
         }

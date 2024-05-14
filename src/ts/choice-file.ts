@@ -16,7 +16,7 @@ const choiceFile = (event: Event): void => {
   file ? readFile.readAsDataURL(file) : (image.src = '')
 
   readFile.addEventListener('loadend', ((): void => {
-    if (!fileHandler(input, error)) return
+    if (!fileHandler({ input: input, error: error })) return
 
     image.src = String(readFile.result)
 

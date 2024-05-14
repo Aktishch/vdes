@@ -1,20 +1,14 @@
 import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
 import { timeFormat } from './functions/time-format'
 
-interface compositionCondition {
-  status: string
-  time: number
-  index: number
-}
-
-type playlistDetail = {
+type Playlist = {
   artist: string
   song: string
   audio: string
   poster: string
 }
 
-const playlist: playlistDetail[] = [
+const playlist: Playlist[] = [
   {
     artist: 'Slipknot',
     song: 'Snuff',
@@ -38,7 +32,7 @@ const playlist: playlistDetail[] = [
   },
 ]
 
-const setPlayer = (id: string, playlist: playlistDetail[]): void => {
+const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void => {
   const player = document.querySelector(`#${id}`) as HTMLElement
 
   if (!player) return
@@ -63,7 +57,11 @@ const setPlayer = (id: string, playlist: playlistDetail[]): void => {
   let index = 0
   let minutes: number
   let seconds: number
-  let condition: compositionCondition = {
+  let condition: {
+    status: string
+    time: number
+    index: number
+  } = {
     status: 'pause',
     time: 0,
     index: 0,
@@ -238,7 +236,7 @@ const setPlayer = (id: string, playlist: playlistDetail[]): void => {
     })
   }
 
-  const audioTiming = (type: string, time: HTMLElement): void => {
+  const audioTiming = ({ type, time }: { type: string; time: HTMLElement }): void => {
     switch (type) {
     case 'timeupdate': {
       minutes = Math.floor(audio.currentTime / 60)
@@ -258,14 +256,14 @@ const setPlayer = (id: string, playlist: playlistDetail[]): void => {
 
   const audioStart = (event: Event): void => {
     range.style.width = `${(audio.currentTime / audio.duration) * 100}%`
-    audioTiming(event.type, start)
+    audioTiming({ type: event.type, time: start })
     condition.time = audio.currentTime
     sessionStorage.setItem(`${id}`, JSON.stringify(condition))
   }
 
   const audioEnd = (): void => {
     audio.addEventListener('loadedmetadata', ((event: Event): void => {
-      audioTiming(event.type, end)
+      audioTiming({ type: event.type, time: end })
     }) as EventListener)
   }
 
@@ -373,6 +371,6 @@ const playOnlyOne = (event: Event): void => {
 }
 
 export default (): void => {
-  setPlayer('player', playlist)
+  setPlayer({ id: 'player', playlist: playlist })
   document.addEventListener('play', playOnlyOne as EventListener, true)
 }

@@ -1,10 +1,20 @@
-const getPosition = (num: number, input: HTMLInputElement, progress: HTMLElement, bubble: HTMLOutputElement): void => {
+const getPosition = ({
+  number,
+  input,
+  progress,
+  bubble,
+}: {
+  number: number
+  input: HTMLInputElement
+  progress: HTMLElement
+  bubble: HTMLOutputElement
+}): void => {
   const value = Number(input.value)
   const min: number = input.min ? Number(input.min) : 0
   const max: number = input.max ? Number(input.max) : 100
   let step: number
 
-  switch (num) {
+  switch (number) {
   case 0: {
     step = ((value - min) * 100) / (max - min)
     progress.style.left = '0'
@@ -45,7 +55,7 @@ export default (): void => {
       const bubble = range.querySelector('*[data-range-bubble]') as HTMLOutputElement
 
       const changeRange = (): void => {
-        getPosition(first, input, progress, bubble)
+        getPosition({ number: first, input: input, progress: progress, bubble: bubble })
         output.value = input.value
       }
 
@@ -68,8 +78,8 @@ export default (): void => {
       const lastBubble = (wrappers[last] as HTMLElement).querySelector('*[data-range-bubble]') as HTMLOutputElement
 
       const changeRanges = (): void => {
-        getPosition(first, firstInput, firstProgress, firstBubble)
-        getPosition(last, lastInput, lastProgress, lastBubble)
+        getPosition({ number: first, input: firstInput, progress: firstProgress, bubble: firstBubble })
+        getPosition({ number: last, input: lastInput, progress: lastProgress, bubble: lastBubble })
       }
 
       firstOutput.value = firstInput.value

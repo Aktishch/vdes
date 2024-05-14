@@ -1,7 +1,7 @@
-import { coordinates } from './coordinates'
+import { Coordinates } from './coordinates'
 
-export const scrolledPage = (): coordinates => {
-  const coordinates: coordinates = {
+export const scrolledPage = (): Coordinates => {
+  const coordinates: Coordinates = {
     top:
       (window && window.scrollY && window.self.pageYOffset) ||
       (document.documentElement && document.documentElement.scrollTop),

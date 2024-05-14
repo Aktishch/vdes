@@ -51,7 +51,7 @@ import worldMap from './ts/world-map'
 import game from './ts/game'
 import preloader from './ts/preloader'
 
-import './scss/style.scss'
+import './scss/main.scss'
 
 const initialization = (): void => {
   fancybox()

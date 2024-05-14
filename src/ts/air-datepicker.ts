@@ -14,11 +14,11 @@ window.AirDatepicker = AirDatepicker
 
 export default (): void => {
   const datepickers = document.querySelectorAll('*[data-datepicker]') as NodeListOf<Element>
-  const excludeDates: number[] = [+new Date(2024, 2, 5), +new Date(2024, 2, 7), +new Date(2024, 3, 10)]
+  const excludeDates: number[] = [+new Date(2024, 4, 5), +new Date(2024, 5, 7), +new Date(2024, 5, 10)]
 
   window.excludeDates = excludeDates
 
-  const renderCellHandler = ({ date, cellType }) => {
+  const renderCellHandler = ({ date, cellType }: { date: Date; cellType: string }) => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)
@@ -36,7 +36,7 @@ export default (): void => {
     locale: localeRu,
     onRenderCell: renderCellHandler,
     selectedDates: [new Date()],
-  })
+  }) as AirDatepicker<HTMLElement>
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLElement).closest('#calendar')) {

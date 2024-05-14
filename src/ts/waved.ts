@@ -1,4 +1,4 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 import { touchDevice } from './functions/touch-device'
 
 const setWaved = (event: Event): void => {
@@ -6,10 +6,10 @@ const setWaved = (event: Event): void => {
   const waved = item.querySelector('.waved') as HTMLDivElement
   const circle = document.createElement('div') as HTMLDivElement
 
-  const createCircle = (yPos: number, xPos: number): void => {
-    const coordinates: coordinates = {
-      top: yPos - item.getBoundingClientRect().top,
-      left: xPos - item.getBoundingClientRect().left,
+  const createCircle = ({ positionY, positionX }: { positionY: number; positionX: number }): void => {
+    const coordinates: Coordinates = {
+      top: positionY - item.getBoundingClientRect().top,
+      left: positionX - item.getBoundingClientRect().left,
     }
 
     circle.classList.add('waved-circle')
@@ -22,13 +22,16 @@ const setWaved = (event: Event): void => {
   switch (event.type) {
   case 'touchstart': {
     if (!touchDevice()) return
-    createCircle((event as TouchEvent).touches[0].clientY, (event as TouchEvent).touches[0].clientX)
+    createCircle({
+      positionY: (event as TouchEvent).touches[0].clientY,
+      positionX: (event as TouchEvent).touches[0].clientX,
+    })
     break
   }
 
   case 'mousedown': {
     if (touchDevice()) return
-    createCircle((event as MouseEvent).clientY, (event as MouseEvent).clientX)
+    createCircle({ positionY: (event as MouseEvent).clientY, positionX: (event as MouseEvent).clientX })
     break
   }
   }

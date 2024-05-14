@@ -1,4 +1,4 @@
-const invertedToggle = (event: Event, condition: string): void => {
+const invertedToggle = ({ event, condition }: { event: Event; condition: string }): void => {
   if ((event.target as HTMLButtonElement).closest(`[data-inverted-toggle="${condition}"]`)) {
     const inverted = (event.target as HTMLButtonElement).closest('[data-inverted]') as HTMLElement
 
@@ -8,7 +8,7 @@ const invertedToggle = (event: Event, condition: string): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    invertedToggle(event, 'after')
-    invertedToggle(event, 'before')
+    invertedToggle({ event: event, condition: 'after' })
+    invertedToggle({ event: event, condition: 'before' })
   }) as EventListener)
 }

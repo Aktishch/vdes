@@ -1,4 +1,4 @@
-type mediaScreen = {
+type Media = {
   xs: number
   sm: number
   md: number
@@ -7,7 +7,13 @@ type mediaScreen = {
   xxl: number
 }
 
-export const media: mediaScreen = {
+declare global {
+  interface Window {
+    media: Media
+  }
+}
+
+export const media: Media = {
   xs: 459.98,
   sm: 575.98,
   md: 767.98,
@@ -15,3 +21,5 @@ export const media: mediaScreen = {
   xl: 1365.98,
   xxl: 2559.98,
 }
+
+window.media = media

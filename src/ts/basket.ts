@@ -1,4 +1,4 @@
-import { coordinates } from './functions/coordinates'
+import { Coordinates } from './functions/coordinates'
 
 export default (): void => {
   const basket = document.querySelector('*[data-basket]') as HTMLElement
@@ -43,7 +43,7 @@ export default (): void => {
 
   const createAnimInBasket = (event: MouseEvent): void => {
     const inBasket = document.createElement('div') as HTMLDivElement
-    const coordinates: coordinates = {
+    const coordinates: Coordinates = {
       top: event.clientY,
       left: event.clientX,
     }

@@ -19,7 +19,7 @@ export default (): File[] => {
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
-      if (fileHandler(input, error)) {
+      if (fileHandler({ input: input, error: error })) {
         for (let i = 0; i < files.length; i++) {
           data.push(files[i])
           item.setAttribute('data-files-item', '')
