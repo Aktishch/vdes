@@ -20,29 +20,43 @@ const playlist: Playlist[] = [
   {
     artist: 'System of a down',
     song: 'Lonely Day',
-    audio: 'https://cdn1.shadam.net/uploads/files/2018-09/1536003683_system-of-a-down-lonely-day.mp3',
+    audio:
+      'https://cdn1.shadam.net/uploads/files/2018-09/1536003683_system-of-a-down-lonely-day.mp3',
     poster: 'https://picsum.photos/600/400?random=2',
   },
 
   {
     artist: 'Scorpions',
     song: 'Slave Me',
-    audio: 'https://ruo.morsmusic.org/load/941771577/Scorpions_-_Slave_Me_(musmore.com).mp3',
+    audio:
+      'https://ruo.morsmusic.org/load/941771577/Scorpions_-_Slave_Me_(musmore.com).mp3',
     poster: 'https://picsum.photos/600/400?random=3',
   },
 ]
 
-const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void => {
+const setPlayer = ({
+  id,
+  playlist,
+}: {
+  id: string
+  playlist: Playlist[]
+}): void => {
   const player = document.querySelector(`#${id}`) as HTMLElement
 
   if (!player) return
 
-  const compositions = player.querySelectorAll('*[data-player-composition]') as NodeListOf<Element>
-  const poster = player.querySelector('*[data-player-poster]') as HTMLImageElement
+  const compositions = player.querySelectorAll(
+    '*[data-player-composition]'
+  ) as NodeListOf<Element>
+  const poster = player.querySelector(
+    '*[data-player-poster]'
+  ) as HTMLImageElement
   const artist = player.querySelector('*[data-player-artist]') as HTMLElement
   const song = player.querySelector('*[data-player-song]') as HTMLElement
   const audio = player.querySelector('*[data-player-audio]') as HTMLAudioElement
-  const progress = player.querySelector('*[data-player-progress]') as HTMLElement
+  const progress = player.querySelector(
+    '*[data-player-progress]'
+  ) as HTMLElement
   const range = player.querySelector('*[data-player-range]') as HTMLElement
   const play = player.querySelector('*[data-player-play]') as HTMLButtonElement
   const loading = play.querySelector('*[data-player-loading]') as SVGElement
@@ -52,7 +66,9 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
   const next = player.querySelector('*[data-player-next]') as HTMLButtonElement
   const start = player.querySelector('*[data-player-start]') as HTMLElement
   const end = player.querySelector('*[data-player-end]') as HTMLElement
-  const volume = player.querySelector('*[data-player-volume]') as HTMLButtonElement
+  const volume = player.querySelector(
+    '*[data-player-volume]'
+  ) as HTMLButtonElement
   let active = false
   let index = 0
   let minutes: number
@@ -84,51 +100,57 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
       if (!composition) return
 
       const compositionIndex = Number(composition.dataset.playerComposition)
-      const compositionStatus = composition.querySelector('*[data-player-status]') as SVGElement
-      const compositionIcon = compositionStatus.querySelector('use') as SVGUseElement
+      const compositionStatus = composition.querySelector(
+        '*[data-player-status]'
+      ) as SVGElement
+      const compositionIcon = compositionStatus.querySelector(
+        'use'
+      ) as SVGUseElement
 
       if (audio.played) {
         switch (compositionIndex === index) {
-        case true: {
-          compositionIcon.setAttribute('xlink:href', 'img/icons.svg#pause')
-          break
-        }
+          case true: {
+            compositionIcon.setAttribute('xlink:href', 'img/icons.svg#pause')
+            break
+          }
 
-        case false: {
-          compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
-          break
-        }
+          case false: {
+            compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
+            break
+          }
         }
       }
 
-      if (audio.paused) compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
+      if (audio.paused)
+        compositionIcon.setAttribute('xlink:href', 'img/icons.svg#play')
     })
   }
 
   const statusComposition = (): void => {
     switch (audio.paused) {
-    case true: {
-      audio.play()
-      icon.setAttribute('xlink:href', 'img/icons.svg#pause')
-      currentComposition()
-      condition.status = 'play'
-      break
-    }
+      case true: {
+        audio.play()
+        icon.setAttribute('xlink:href', 'img/icons.svg#pause')
+        currentComposition()
+        condition.status = 'play'
+        break
+      }
 
-    case false: {
-      audio.pause()
-      icon.setAttribute('xlink:href', 'img/icons.svg#play')
-      currentComposition()
-      condition.status = 'pause'
-      break
-    }
+      case false: {
+        audio.pause()
+        icon.setAttribute('xlink:href', 'img/icons.svg#play')
+        currentComposition()
+        condition.status = 'pause'
+        break
+      }
     }
 
     condition.index = index
   }
 
   const randomComposition = (): void => {
-    if (player.dataset.player === 'random') index = Math.floor(Math.random() * playlist.length)
+    if (player.dataset.player === 'random')
+      index = Math.floor(Math.random() * playlist.length)
   }
 
   const nextComposition = (): void => {
@@ -178,22 +200,28 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
 
     if ((event.target as HTMLElement).closest('[data-player-controls]')) {
       switch (event.type) {
-      case 'mousemove': {
-        const clickX: number = (event as MouseEvent).offsetX
-
-        setProgress(clickX)
-        break
-      }
-
-      case 'touchmove': {
-        for (let i = 0; i < (event as TouchEvent).changedTouches.length; i++) {
-          const clickX: number = (event as TouchEvent).changedTouches[i].pageX - progress.getBoundingClientRect().left
+        case 'mousemove': {
+          const clickX: number = (event as MouseEvent).offsetX
 
           setProgress(clickX)
+          break
         }
 
-        break
-      }
+        case 'touchmove': {
+          for (
+            let i = 0;
+            i < (event as TouchEvent).changedTouches.length;
+            i++
+          ) {
+            const clickX: number =
+              (event as TouchEvent).changedTouches[i].pageX -
+              progress.getBoundingClientRect().left
+
+            setProgress(clickX)
+          }
+
+          break
+        }
       }
     }
   }
@@ -205,50 +233,60 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
       if (!composition) return
 
       const compositionIndex = Number(composition.dataset.playerComposition)
-      const compositionLoading = composition.querySelector('*[data-player-loading]') as SVGElement
-      const compositionStatus = composition.querySelector('*[data-player-status]') as SVGElement
+      const compositionLoading = composition.querySelector(
+        '*[data-player-loading]'
+      ) as SVGElement
+      const compositionStatus = composition.querySelector(
+        '*[data-player-status]'
+      ) as SVGElement
 
       switch (event.type) {
-      case 'loadstart': {
-        play.classList.add('pointer-events-none')
-        loading.classList.remove('hidden')
-        status.classList.add('hidden')
+        case 'loadstart': {
+          play.classList.add('pointer-events-none')
+          loading.classList.remove('hidden')
+          status.classList.add('hidden')
 
-        if (compositionIndex === index) {
-          composition.classList.add('pointer-events-none')
-          compositionLoading.classList.remove('hidden')
-          compositionStatus.classList.add('hidden')
+          if (compositionIndex === index) {
+            composition.classList.add('pointer-events-none')
+            compositionLoading.classList.remove('hidden')
+            compositionStatus.classList.add('hidden')
+          }
+
+          break
         }
 
-        break
-      }
-
-      case 'loadeddata': {
-        play.classList.remove('pointer-events-none')
-        loading.classList.add('hidden')
-        status.classList.remove('hidden')
-        composition.classList.remove('pointer-events-none')
-        compositionLoading.classList.add('hidden')
-        compositionStatus.classList.remove('hidden')
-        break
-      }
+        case 'loadeddata': {
+          play.classList.remove('pointer-events-none')
+          loading.classList.add('hidden')
+          status.classList.remove('hidden')
+          composition.classList.remove('pointer-events-none')
+          compositionLoading.classList.add('hidden')
+          compositionStatus.classList.remove('hidden')
+          break
+        }
       }
     })
   }
 
-  const audioTiming = ({ type, time }: { type: string; time: HTMLElement }): void => {
+  const audioTiming = ({
+    type,
+    time,
+  }: {
+    type: string
+    time: HTMLElement
+  }): void => {
     switch (type) {
-    case 'timeupdate': {
-      minutes = Math.floor(audio.currentTime / 60)
-      seconds = Math.floor(audio.currentTime % 60)
-      break
-    }
+      case 'timeupdate': {
+        minutes = Math.floor(audio.currentTime / 60)
+        seconds = Math.floor(audio.currentTime % 60)
+        break
+      }
 
-    case 'loadedmetadata': {
-      minutes = Math.floor(audio.duration / 60)
-      seconds = Math.floor(audio.duration % 60)
-      break
-    }
+      case 'loadedmetadata': {
+        minutes = Math.floor(audio.duration / 60)
+        seconds = Math.floor(audio.duration % 60)
+        break
+      }
     }
 
     if (time) time.innerText = `${timeFormat(minutes)}:${timeFormat(seconds)}`
@@ -317,21 +355,21 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
       const volumeIcon = volumeStatus.querySelector('use') as SVGUseElement
 
       switch (volume.dataset.playerVolume) {
-      case 'on': {
-        volume.dataset.playerVolume = 'off'
-        volumeStatus.classList.add('opacity-50')
-        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
-        audio.volume = 0
-        break
-      }
+        case 'on': {
+          volume.dataset.playerVolume = 'off'
+          volumeStatus.classList.add('opacity-50')
+          volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-off')
+          audio.volume = 0
+          break
+        }
 
-      case 'off': {
-        volume.dataset.playerVolume = 'on'
-        volumeStatus.classList.remove('opacity-50')
-        volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
-        audio.volume = 1
-        break
-      }
+        case 'off': {
+          volume.dataset.playerVolume = 'on'
+          volumeStatus.classList.remove('opacity-50')
+          volumeIcon.setAttribute('xlink:href', 'img/icons.svg#volume-on')
+          audio.volume = 1
+          break
+        }
       }
     }) as EventListener)
   }
@@ -361,7 +399,9 @@ const setPlayer = ({ id, playlist }: { id: string; playlist: Playlist[] }): void
 }
 
 const playOnlyOne = (event: Event): void => {
-  const audios = document.querySelectorAll('audio') as NodeListOf<HTMLAudioElement>
+  const audios = document.querySelectorAll(
+    'audio'
+  ) as NodeListOf<HTMLAudioElement>
 
   for (let i = 0; i < audios.length; i++) {
     const audio = audios[i] as HTMLAudioElement

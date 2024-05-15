@@ -13,12 +13,24 @@ declare global {
 window.AirDatepicker = AirDatepicker
 
 export default (): void => {
-  const datepickers = document.querySelectorAll('*[data-datepicker]') as NodeListOf<Element>
-  const excludeDates: number[] = [+new Date(2024, 4, 5), +new Date(2024, 5, 7), +new Date(2024, 5, 10)]
+  const datepickers = document.querySelectorAll(
+    '*[data-datepicker]'
+  ) as NodeListOf<Element>
+  const excludeDates: number[] = [
+    +new Date(2024, 4, 5),
+    +new Date(2024, 5, 7),
+    +new Date(2024, 5, 10),
+  ]
 
   window.excludeDates = excludeDates
 
-  const renderCellHandler = ({ date, cellType }: { date: Date; cellType: string }) => {
+  const renderCellHandler = ({
+    date,
+    cellType,
+  }: {
+    date: Date
+    cellType: string
+  }) => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)
@@ -40,7 +52,9 @@ export default (): void => {
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLElement).closest('#calendar')) {
-      const calendar = (event.target as HTMLElement).closest('#calendar') as HTMLElement
+      const calendar = (event.target as HTMLElement).closest(
+        '#calendar'
+      ) as HTMLElement
 
       if (calendar.querySelector('.filter-active')) filter()
     }
@@ -51,8 +65,12 @@ export default (): void => {
 
     if (!datepicker) return
 
-    const inputMin = datepicker.querySelector('*[data-input="min"]') as HTMLInputElement
-    const inputMax = datepicker.querySelector('*[data-input="max"]') as HTMLInputElement
+    const inputMin = datepicker.querySelector(
+      '*[data-input="min"]'
+    ) as HTMLInputElement
+    const inputMax = datepicker.querySelector(
+      '*[data-input="max"]'
+    ) as HTMLInputElement
 
     const min = new window.AirDatepicker(inputMin, {
       onSelect({ date }) {

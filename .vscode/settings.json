@@ -295,11 +295,11 @@
     ".gitignore": true,
     "node_modules": true,
     "package-lock.json": true,
-    ".eslintrc": true,
+    "prettier.config.js": true,
+    "eslint.config.js": true,
     ".stylelintrc": true,
     "postcss.config.js": true,
-    "tsconfig.json": true,
-    "server-deploy.sh": true
+    "tsconfig.json": true
   },
   "editor.detectIndentation": false,
   "editor.insertSpaces": true,

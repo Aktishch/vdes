@@ -1,13 +1,19 @@
 export default (): void => {
-  const images = document.querySelectorAll('*[data-image]') as NodeListOf<Element>
+  const images = document.querySelectorAll(
+    '*[data-image]'
+  ) as NodeListOf<Element>
 
   images.forEach((element: Element): void => {
     const image = element as HTMLElement
 
     if (!image) return
 
-    const canvas = image.querySelector('*[data-image-canvas]') as HTMLCanvasElement
-    const download = image.querySelector('*[data-image-download]') as HTMLAnchorElement
+    const canvas = image.querySelector(
+      '*[data-image-canvas]'
+    ) as HTMLCanvasElement
+    const download = image.querySelector(
+      '*[data-image-download]'
+    ) as HTMLAnchorElement
     const context = canvas.getContext('2d') as CanvasRenderingContext2D
     const createImage = new Image() as HTMLImageElement
 
@@ -18,7 +24,11 @@ export default (): void => {
       context.textAlign = 'center'
 
       if (image.dataset.image !== undefined)
-        context.fillText(String(image.dataset.image), canvas.width / 2, canvas.height / 1.5)
+        context.fillText(
+          String(image.dataset.image),
+          canvas.width / 2,
+          canvas.height / 1.5
+        )
 
       if (download) download.href = canvas.toDataURL()
     }) as EventListener)

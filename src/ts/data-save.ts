@@ -13,7 +13,8 @@ const dataSave = (id: string): void => {
       const input = element as HTMLInputElement
 
       if (input.dataset.input !== 'file') {
-        for (const key in formData) if (input.name === key) input.value = formData[key]
+        for (const key in formData)
+          if (input.name === key) input.value = formData[key]
       }
     })
   }

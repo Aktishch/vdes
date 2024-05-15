@@ -5,5 +5,9 @@ declare global {
 }
 
 export const touchDevice = (): boolean => {
-  return 'ontouchstart' in window || window.navigator.maxTouchPoints > 0 || window.navigator.msMaxTouchPoints > 0
+  return (
+    'ontouchstart' in window ||
+    window.navigator.maxTouchPoints > 0 ||
+    window.navigator.msMaxTouchPoints > 0
+  )
 }

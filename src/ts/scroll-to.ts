@@ -8,33 +8,36 @@ const scrollTo = (event: Event): void => {
   const block = document.querySelector(id) as HTMLElement
 
   switch (link.dataset.scroll) {
-  case 'top': {
-    const header = document.querySelector('*[data-header]') as HTMLElement
-    const offsetTop: number = header
-      ? block.getBoundingClientRect().top + scrolledPage().top - header.offsetHeight
-      : block.getBoundingClientRect().top + scrolledPage().top
+    case 'top': {
+      const header = document.querySelector('*[data-header]') as HTMLElement
+      const offsetTop: number = header
+        ? block.getBoundingClientRect().top +
+          scrolledPage().top -
+          header.offsetHeight
+        : block.getBoundingClientRect().top + scrolledPage().top
 
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth',
-    })
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      })
 
-    break
-  }
+      break
+    }
 
-  case 'center': {
-    block.scrollIntoView({
-      block: 'center',
-      behavior: 'smooth',
-    })
+    case 'center': {
+      block.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth',
+      })
 
-    break
-  }
+      break
+    }
   }
 }
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).hasAttribute('data-scroll')) scrollTo(event)
+    if ((event.target as HTMLElement).hasAttribute('data-scroll'))
+      scrollTo(event)
   }) as EventListener)
 }

@@ -1,4 +1,10 @@
-export const fileHandler = ({ input, error }: { input: HTMLInputElement; error: HTMLElement }): boolean => {
+export const fileHandler = ({
+  input,
+  error,
+}: {
+  input: HTMLInputElement
+  error: HTMLElement
+}): boolean => {
   const files = input.files as FileList
 
   if (files.length === 0) {
@@ -6,7 +12,9 @@ export const fileHandler = ({ input, error }: { input: HTMLInputElement; error: 
     error.innerText = 'Пожалуйста, загрузите изображение!'
 
     return false
-  } else if (!['image/jpeg', 'image/png', 'image/gif'].includes(files[0].type)) {
+  } else if (
+    !['image/jpeg', 'image/png', 'image/gif'].includes(files[0].type)
+  ) {
     error.classList.add('visible', 'opacity-100')
     error.innerText = 'Только изображения!'
 

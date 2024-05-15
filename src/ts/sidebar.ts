@@ -15,14 +15,18 @@ export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).closest('[data-sidebar-open]')) {
       const open = event.target as HTMLButtonElement
-      const sidebar = document.querySelector(`#${open.dataset.sidebarOpen}`) as HTMLElement
+      const sidebar = document.querySelector(
+        `#${open.dataset.sidebarOpen}`
+      ) as HTMLElement
 
       if (sidebar) openSidebar(sidebar)
     }
 
     if ((event.target as HTMLButtonElement).closest('[data-sidebar-close]')) {
       const close = event.target as HTMLButtonElement
-      const sidebar = document.querySelector(`#${close.dataset.sidebarClose}`) as HTMLElement
+      const sidebar = document.querySelector(
+        `#${close.dataset.sidebarClose}`
+      ) as HTMLElement
 
       if (sidebar) closeSidebar(sidebar)
     }
@@ -43,7 +47,9 @@ export default (): void => {
 
   window.addEventListener('resize', ((): void => {
     const html = document.documentElement as HTMLElement
-    const sidebars = document.querySelectorAll('*[data-sidebar]') as NodeListOf<Element>
+    const sidebars = document.querySelectorAll(
+      '*[data-sidebar]'
+    ) as NodeListOf<Element>
 
     sidebars.forEach((element: Element): void => {
       const sidebar = element as HTMLElement

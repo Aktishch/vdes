@@ -11,7 +11,9 @@ export default (): void => {
 
   if (!running) return
 
-  const button = running.querySelector('*[data-running-button]') as HTMLButtonElement
+  const button = running.querySelector(
+    '*[data-running-button]'
+  ) as HTMLButtonElement
 
   running.addEventListener('mouseenter', ((): void => {
     const coordinates: Coordinates = {

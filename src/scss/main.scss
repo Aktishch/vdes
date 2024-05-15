@@ -6,7 +6,7 @@
 // Базовые стили
 @layer base {
   @import "@fancyapps/ui/dist/fancybox/fancybox.css";
-  @import "swiper/swiper-bundle.min.css";
+  @import "swiper/css/bundle";
   @import "air-datepicker/air-datepicker.css";
   @import "./ui-kit/fonts";
   @import "./ui-kit/basic";

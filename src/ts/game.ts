@@ -20,12 +20,16 @@ export default (): void => {
     ]
 
     return combinations.some((combination: number[]): boolean => {
-      return combination.every((index: number): boolean => cells[index].textContent === player)
+      return combination.every(
+        (index: number): boolean => cells[index].textContent === player
+      )
     })
   }
 
   const checkDraw = (): boolean => {
-    return cells.every((cell: HTMLButtonElement): boolean => cell.textContent !== '')
+    return cells.every(
+      (cell: HTMLButtonElement): boolean => cell.textContent !== ''
+    )
   }
 
   const checkCell = (cell: HTMLButtonElement): void => {
@@ -34,7 +38,9 @@ export default (): void => {
   }
 
   const makeBotMove = (): void => {
-    const emptyCells: HTMLButtonElement[] = cells.filter((cell: HTMLButtonElement): boolean => cell.textContent === '')
+    const emptyCells: HTMLButtonElement[] = cells.filter(
+      (cell: HTMLButtonElement): boolean => cell.textContent === ''
+    )
 
     if (emptyCells.length > 0 && player === '0') {
       const randomIndex: number = Math.floor(Math.random() * emptyCells.length)
@@ -57,7 +63,14 @@ export default (): void => {
   for (let i = 0; i < 9; i++) {
     const cell = document.createElement('button') as HTMLButtonElement
 
-    cell.classList.add('pack', 'pack-box', 'btn', 'btn-black', 'btn-contur', 'active:transform-none')
+    cell.classList.add(
+      'pack',
+      'pack-box',
+      'btn',
+      'btn-black',
+      'btn-contur',
+      'active:transform-none'
+    )
     cells.push(cell)
     game.appendChild(cell)
 
@@ -66,7 +79,9 @@ export default (): void => {
         checkCell(cell)
 
         if (checkWin(player)) {
-          window.Fancybox.show([{ src: 'https://youtu.be/YAXoB3OseLM?si=_Pq1_CttmNpaOhtX' }])
+          window.Fancybox.show([
+            { src: 'https://youtu.be/YAXoB3OseLM?si=_Pq1_CttmNpaOhtX' },
+          ])
           over = true
         } else if (checkDraw()) {
           alert('Ничья!')

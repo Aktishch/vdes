@@ -1,4 +1,13 @@
-import Swiper, { Navigation, Pagination, Scrollbar, Autoplay, Grid, Thumbs, EffectCoverflow, EffectCube } from 'swiper'
+import Swiper from 'swiper'
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  Autoplay,
+  Grid,
+  Thumbs,
+  EffectCoverflow,
+} from 'swiper/modules'
 import { media } from './functions/media'
 import { checkQuizSlide } from './quiz'
 
@@ -8,7 +17,15 @@ declare global {
   }
 }
 
-Swiper.use([Navigation, Pagination, Scrollbar, Autoplay, Grid, Thumbs, EffectCoverflow, EffectCube])
+Swiper.use([
+  Navigation,
+  Pagination,
+  Scrollbar,
+  Autoplay,
+  Grid,
+  Thumbs,
+  EffectCoverflow,
+])
 Swiper.defaults.touchStartPreventDefault = false
 window.Swiper = Swiper
 
@@ -71,9 +88,9 @@ export default (): void => {
   }) as Swiper
 
   const quizImages = new window.Swiper('.quiz-images .swiper', {
-    effect: 'cube',
     slidesPerView: 1,
     slidesPerGroup: 1,
+    spaceBetween: 20,
     allowTouchMove: false,
   }) as Swiper
 
@@ -85,8 +102,12 @@ export default (): void => {
     pagination: {
       el: '.quiz-slider .swiper-pagination',
       type: 'custom',
-      renderCustom: (swiper: Swiper, current: number, total: number): number => {
-        return total - current
+      renderCustom: (
+        swiper: Swiper,
+        current: number,
+        total: number
+      ): string => {
+        return String(total - current)
       },
     },
     slidesPerView: 1,
@@ -97,18 +118,23 @@ export default (): void => {
     on: {
       slideChange: (swiper: Swiper): void => {
         quizImages.slideTo(swiper.activeIndex)
-        checkQuizSlide(swiper.visibleSlides[0])
+        checkQuizSlide(visibleSlides[0])
 
-        switch (swiper.visibleSlides[0] === swiper.slides[swiper.slides.length - 1]) {
-        case true: {
-          (swiper.el.closest('[data-quiz]') as HTMLElement).setAttribute('data-quiz-end', '')
-          break
-        }
+        switch (visibleSlides[0] === swiper.slides[swiper.slides.length - 1]) {
+          case true: {
+            ;(swiper.el.closest('[data-quiz]') as HTMLElement).setAttribute(
+              'data-quiz-end',
+              ''
+            )
+            break
+          }
 
-        case false: {
-          (swiper.el.closest('[data-quiz]') as HTMLElement).removeAttribute('data-quiz-end')
-          break
-        }
+          case false: {
+            ;(swiper.el.closest('[data-quiz]') as HTMLElement).removeAttribute(
+              'data-quiz-end'
+            )
+            break
+          }
         }
       },
     },

@@ -17,30 +17,32 @@ export default (): void => {
       : smartMenu.offsetWidth - nav.offsetWidth
 
     switch (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
-    case true: {
-      breaks.push(lengthWidth)
-      list.prepend(length.lastElementChild as HTMLElement)
-      count.innerText = String(breaks.length)
-      updateSmartMenu()
-      break
-    }
-
-    case false: {
-      if (smartMenuWidth > breaks[breaks.length - 1]) {
-        breaks.pop()
-        length.append(list.firstElementChild as HTMLElement)
+      case true: {
+        breaks.push(lengthWidth)
+        list.prepend(length.lastElementChild as HTMLElement)
         count.innerText = String(breaks.length)
+        updateSmartMenu()
+        break
       }
 
-      break
-    }
+      case false: {
+        if (smartMenuWidth > breaks[breaks.length - 1]) {
+          breaks.pop()
+          length.append(list.firstElementChild as HTMLElement)
+          count.innerText = String(breaks.length)
+        }
+
+        break
+      }
     }
 
-    (list.querySelectorAll('li') as NodeListOf<Element>).length === 0
+    ;(list.querySelectorAll('li') as NodeListOf<Element>).length === 0
       ? nav.classList.add('hidden')
       : nav.classList.remove('hidden')
 
-    lengthWidth === 0 ? title.classList.remove('hidden') : title.classList.add('hidden')
+    lengthWidth === 0
+      ? title.classList.remove('hidden')
+      : title.classList.add('hidden')
   }
 
   updateSmartMenu()

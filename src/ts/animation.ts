@@ -23,9 +23,11 @@ export const animation = (): void => {
     const screenPosition = 4
     let point: number = window.innerHeight - height / screenPosition
 
-    if (point > window.innerHeight) point = window.innerHeight - window.innerHeight / screenPosition
+    if (point > window.innerHeight)
+      point = window.innerHeight - window.innerHeight / screenPosition
 
-    scrolledPage().top > offsetTop - point && scrolledPage().top < offsetTop + height
+    scrolledPage().top > offsetTop - point &&
+    scrolledPage().top < offsetTop + height
       ? (item.dataset.anim = 'show')
       : (item.dataset.anim = 'hidden')
   })

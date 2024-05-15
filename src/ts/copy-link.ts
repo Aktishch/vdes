@@ -1,5 +1,7 @@
 const copyLink = (event: Event): void => {
-  const copy = (event.target as HTMLButtonElement).closest('[data-copy]') as HTMLElement
+  const copy = (event.target as HTMLButtonElement).closest(
+    '[data-copy]'
+  ) as HTMLElement
   const input = copy.querySelector('*[data-copy-input]') as HTMLInputElement
 
   setTimeout((): void => {
@@ -10,6 +12,7 @@ const copyLink = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLButtonElement).closest('[data-copy-button]')) copyLink(event)
+    if ((event.target as HTMLButtonElement).closest('[data-copy-button]'))
+      copyLink(event)
   }) as EventListener)
 }

@@ -1,24 +1,26 @@
 import ymaps from 'ymaps'
 
 declare global {
-  interface maps {
-    Map(element: HTMLElement, options: object): void
-    Placemark(mark: number[], empty: object, options: object): void
-    SuggestView(element: Element, options: object): void
+  interface Window {
+    ymaps: typeof ymaps
   }
 }
+
+window.ymaps = ymaps
 
 export default (): void => {
   const yandexMap = document.querySelector('#yandex-map') as HTMLElement
 
   if (!yandexMap) return
 
-  ymaps
+  window.ymaps
     .load('https://api-maps.yandex.ru/2.1/?lang=ru_RU')
-    .then((maps: maps): void => {
+    .then((maps): void => {
       const center: number[] = [45.03191007458623, 38.921171499999936]
       const mark: number[] = [45.03191007458623, 38.921171499999936]
-      const inputs: Element[] = [...document.querySelectorAll('[data-suggest-view]')]
+      const inputs: Element[] = [
+        ...document.querySelectorAll('[data-suggest-view]'),
+      ]
 
       const map = new maps.Map(yandexMap, {
         center: center,

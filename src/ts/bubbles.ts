@@ -12,6 +12,7 @@ const setBubbles = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).closest('[data-bubbles]')) setBubbles(event)
+    if ((event.target as HTMLElement).closest('[data-bubbles]'))
+      setBubbles(event)
   }) as EventListener)
 }

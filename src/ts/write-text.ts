@@ -4,10 +4,12 @@ const writeText = (section: HTMLElement): void => {
   if (!record) return
 
   const recordText = String(record.dataset.record)
-  const recordSpeed: number = record.dataset.recordSpeed ? Number(record.dataset.recordSpeed) : 30
+  const recordSpeed: number = record.dataset.recordSpeed
+    ? Number(record.dataset.recordSpeed)
+    : 30
   const letters: string[] = [recordText].join('').split('')
 
-  const interval: NodeJS.Timer = setInterval(
+  const interval = setInterval(
     (): void => {
       if (!letters[0]) return clearInterval(interval)
       record.innerHTML += letters.shift()
@@ -25,4 +27,5 @@ const scrollToText = (): void => {
   }
 }
 
-export default (): void => document.addEventListener('scroll', scrollToText as EventListener)
+export default (): void =>
+  document.addEventListener('scroll', scrollToText as EventListener)

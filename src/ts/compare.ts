@@ -1,16 +1,24 @@
 import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
 
 export default (): void => {
-  const compares = document.querySelectorAll('*[data-compare]') as NodeListOf<Element>
+  const compares = document.querySelectorAll(
+    '*[data-compare]'
+  ) as NodeListOf<Element>
 
   compares.forEach((element: Element): void => {
     const compare = element as HTMLElement
 
     if (!compare) return
 
-    const before = compare.querySelector('*[data-compare-before]') as HTMLElement
-    const image = compare.querySelector('*[data-compare-image]') as HTMLImageElement
-    const change = compare.querySelector('*[data-compare-change]') as HTMLElement
+    const before = compare.querySelector(
+      '*[data-compare-before]'
+    ) as HTMLElement
+    const image = compare.querySelector(
+      '*[data-compare-image]'
+    ) as HTMLImageElement
+    const change = compare.querySelector(
+      '*[data-compare-change]'
+    ) as HTMLElement
     let active = false
     let value: number
     let position: number
@@ -38,18 +46,22 @@ export default (): void => {
       if (!active) return
 
       switch (event.type) {
-      case 'mousemove': {
-        position = (event as MouseEvent).pageX
-        break
-      }
-
-      case 'touchmove': {
-        for (let i = 0; i < (event as TouchEvent).changedTouches.length; i++) {
-          position = (event as TouchEvent).changedTouches[i].pageX
+        case 'mousemove': {
+          position = (event as MouseEvent).pageX
+          break
         }
 
-        break
-      }
+        case 'touchmove': {
+          for (
+            let i = 0;
+            i < (event as TouchEvent).changedTouches.length;
+            i++
+          ) {
+            position = (event as TouchEvent).changedTouches[i].pageX
+          }
+
+          break
+        }
       }
 
       position -= compare.getBoundingClientRect().left

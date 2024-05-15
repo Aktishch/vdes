@@ -2,23 +2,33 @@ import { Coordinates } from './functions/coordinates'
 import { touchDevice } from './functions/touch-device'
 
 export default (): void => {
-  const parallaxes = document.querySelectorAll('*[data-parallax]') as NodeListOf<Element>
+  const parallaxes = document.querySelectorAll(
+    '*[data-parallax]'
+  ) as NodeListOf<Element>
 
   parallaxes.forEach((element: Element): void => {
     const parallax = element as HTMLElement
 
     if (!parallax || touchDevice()) return
 
-    const layers = parallax.querySelectorAll('*[data-parallax-layer]') as NodeListOf<Element>
-    const hovereds = parallax.querySelectorAll('*[data-parallax-hovered]') as NodeListOf<Element>
+    const layers = parallax.querySelectorAll(
+      '*[data-parallax-layer]'
+    ) as NodeListOf<Element>
+    const hovereds = parallax.querySelectorAll(
+      '*[data-parallax-hovered]'
+    ) as NodeListOf<Element>
 
     layers.forEach((element: Element): void => {
       const layer = element as HTMLElement
 
       if (!layer) return
 
-      const speed: number = layer.dataset.parallaxSpeed ? Number(layer.dataset.parallaxSpeed) / 100 : 0.05
-      const depth: number = layer.dataset.parallaxDepth ? Number(layer.dataset.parallaxDepth) : 1
+      const speed: number = layer.dataset.parallaxSpeed
+        ? Number(layer.dataset.parallaxSpeed) / 100
+        : 0.05
+      const depth: number = layer.dataset.parallaxDepth
+        ? Number(layer.dataset.parallaxDepth)
+        : 1
       let positionY = 0
       let positionX = 0
       let currentY = 0
@@ -32,15 +42,15 @@ export default (): void => {
         positionX += initialX * speed
 
         switch (layer.dataset.parallaxLayer) {
-        case 'auto': {
-          layer.style.transform = `translate(${positionX / depth}%, ${positionY / depth}%)`
-          break
-        }
+          case 'auto': {
+            layer.style.transform = `translate(${positionX / depth}%, ${positionY / depth}%)`
+            break
+          }
 
-        case 'opposite': {
-          layer.style.transform = `translate(${-positionX / depth}%, ${-positionY / depth}%)`
-          break
-        }
+          case 'opposite': {
+            layer.style.transform = `translate(${-positionX / depth}%, ${-positionY / depth}%)`
+            break
+          }
         }
 
         window.requestAnimationFrame(setParallaxPosition)
@@ -66,8 +76,12 @@ export default (): void => {
 
       if (!hovered) return
 
-      const perspective: number = hovered.dataset.parallaxHovered ? Number(hovered.dataset.parallaxHovered) : 600
-      const items = hovered.querySelectorAll('*[data-parallax-item]') as NodeListOf<Element>
+      const perspective: number = hovered.dataset.parallaxHovered
+        ? Number(hovered.dataset.parallaxHovered)
+        : 600
+      const items = hovered.querySelectorAll(
+        '*[data-parallax-item]'
+      ) as NodeListOf<Element>
       const depth = 10
       let positionY = 0
       let positionX = 0
@@ -79,13 +93,17 @@ export default (): void => {
 
         if (!item) return
 
-        const translateZ = item.dataset.parallaxItem ? Number(item.dataset.parallaxItem) : 100
+        const translateZ = item.dataset.parallaxItem
+          ? Number(item.dataset.parallaxItem)
+          : 100
 
         item.style.transform = `rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateZ(${translateZ}px)`
       })
 
       hovered.addEventListener('mousemove', ((event: MouseEvent): void => {
-        const rect = (event.target as HTMLElement).getBoundingClientRect() as DOMRect
+        const rect = (
+          event.target as HTMLElement
+        ).getBoundingClientRect() as DOMRect
         const coordinates: Coordinates = {
           top: (event.clientY - rect.top) / rect.height,
           left: (event.clientX - rect.left) / rect.width,

@@ -41,15 +41,15 @@ const onKeyUp = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
 
   switch (input.value[0]) {
-  case '8': {
-    input.maxLength = 17
-    break
-  }
+    case '8': {
+      input.maxLength = 17
+      break
+    }
 
-  default: {
-    input.maxLength = 18
-    break
-  }
+    default: {
+      input.maxLength = 18
+      break
+    }
   }
 }
 
@@ -81,25 +81,25 @@ export default (): void => {
     document.addEventListener(phoneEvent, ((event: Event): void => {
       if ((event.target as HTMLInputElement).getAttribute('type') === 'tel') {
         switch (event.type) {
-        case 'input': {
-          onInput(event as InputEvent)
-          break
-        }
+          case 'input': {
+            onInput(event as InputEvent)
+            break
+          }
 
-        case 'keyup': {
-          onKeyUp(event as KeyboardEvent)
-          break
-        }
+          case 'keyup': {
+            onKeyUp(event as KeyboardEvent)
+            break
+          }
 
-        case 'keydown': {
-          onKeyDown(event as KeyboardEvent)
-          break
-        }
+          case 'keydown': {
+            onKeyDown(event as KeyboardEvent)
+            break
+          }
 
-        case 'paste': {
-          onPaste(event as ClipboardEvent)
-          break
-        }
+          case 'paste': {
+            onPaste(event as ClipboardEvent)
+            break
+          }
         }
       }
     }) as EventListener)

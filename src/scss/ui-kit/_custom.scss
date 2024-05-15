@@ -19,10 +19,14 @@
 
 .swiper {
   &-pagination {
-    @apply flex items-center justify-center static;
+    @apply flex items-center justify-center static gap-2;
 
     & &-bullet {
-      @apply bg-current w-3 h-3 duration-2;
+      @apply bg-current rounded-max w-3 h-3 duration-2;
+
+      &:not(.swiper-pagination-bullet-active) {
+        @apply opacity-50;
+      }
     }
   }
 
@@ -32,6 +36,10 @@
     &-next {
       &::after {
         @apply hidden;
+      }
+
+      svg {
+        @apply icon object-none;
       }
     }
   }

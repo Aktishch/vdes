@@ -4,6 +4,6 @@ declare global {
   }
 }
 
-export const safariOnMacbook = (): boolean => {
+export const isSafari = (): boolean => {
   return window.safari !== undefined
 }

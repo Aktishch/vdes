@@ -1,5 +1,7 @@
 const quantityDecrease = (event: InputEvent): void => {
-  const quantity = (event.target as HTMLButtonElement).closest('[data-quantity]') as HTMLElement
+  const quantity = (event.target as HTMLButtonElement).closest(
+    '[data-quantity]'
+  ) as HTMLElement
   const input = quantity.querySelector('*[data-input]') as HTMLInputElement
   let value = Number(input.value)
 
@@ -9,7 +11,9 @@ const quantityDecrease = (event: InputEvent): void => {
 }
 
 const quantityIncrease = (event: InputEvent): void => {
-  const quantity = (event.target as HTMLButtonElement).closest('[data-quantity]') as HTMLElement
+  const quantity = (event.target as HTMLButtonElement).closest(
+    '[data-quantity]'
+  ) as HTMLElement
   const input = quantity.querySelector('*[data-input]') as HTMLInputElement
   let value = Number(input.value)
 
@@ -19,8 +23,10 @@ const quantityIncrease = (event: InputEvent): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: InputEvent): void => {
-    if ((event.target as HTMLElement).closest('[data-quantity-decrease]')) quantityDecrease(event)
+    if ((event.target as HTMLElement).closest('[data-quantity-decrease]'))
+      quantityDecrease(event)
 
-    if ((event.target as HTMLElement).closest('[data-quantity-increase]')) quantityIncrease(event)
+    if ((event.target as HTMLElement).closest('[data-quantity-increase]'))
+      quantityIncrease(event)
   }) as EventListener)
 }

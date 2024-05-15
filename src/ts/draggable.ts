@@ -29,26 +29,30 @@ const setDraggable = (id: string): void => {
   const getDragPosition = (): void => {
     draggable.closest('[data-draggable]')
       ? setTranslate({
-        element: draggable.closest('[data-draggable]') as HTMLElement,
-        positionX: coordinates.left,
-        positionY: coordinates.top,
-      })
-      : setTranslate({ element: draggable, positionX: coordinates.left, positionY: coordinates.top })
+          element: draggable.closest('[data-draggable]') as HTMLElement,
+          positionX: coordinates.left,
+          positionY: coordinates.top,
+        })
+      : setTranslate({
+          element: draggable,
+          positionX: coordinates.left,
+          positionY: coordinates.top,
+        })
   }
 
   const dragStart = (event: Event): void => {
     switch (event.type) {
-    case 'touchstart': {
-      initialY = (event as TouchEvent).touches[0].clientY - coordinates.top
-      initialX = (event as TouchEvent).touches[0].clientX - coordinates.left
-      break
-    }
+      case 'touchstart': {
+        initialY = (event as TouchEvent).touches[0].clientY - coordinates.top
+        initialX = (event as TouchEvent).touches[0].clientX - coordinates.left
+        break
+      }
 
-    case 'mousedown': {
-      initialY = (event as MouseEvent).clientY - coordinates.top
-      initialX = (event as MouseEvent).clientX - coordinates.left
-      break
-    }
+      case 'mousedown': {
+        initialY = (event as MouseEvent).clientY - coordinates.top
+        initialX = (event as MouseEvent).clientX - coordinates.left
+        break
+      }
     }
 
     if (event.target === draggable) active = true
@@ -64,17 +68,17 @@ const setDraggable = (id: string): void => {
     if (!active) return
 
     switch (event.type) {
-    case 'touchmove': {
-      currentX = (event as TouchEvent).touches[0].clientX - initialX
-      currentY = (event as TouchEvent).touches[0].clientY - initialY
-      break
-    }
+      case 'touchmove': {
+        currentX = (event as TouchEvent).touches[0].clientX - initialX
+        currentY = (event as TouchEvent).touches[0].clientY - initialY
+        break
+      }
 
-    case 'mousemove': {
-      currentX = (event as MouseEvent).clientX - initialX
-      currentY = (event as MouseEvent).clientY - initialY
-      break
-    }
+      case 'mousemove': {
+        currentX = (event as MouseEvent).clientX - initialX
+        currentY = (event as MouseEvent).clientY - initialY
+        break
+      }
     }
 
     coordinates.top = currentY

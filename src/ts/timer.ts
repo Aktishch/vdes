@@ -5,7 +5,9 @@ export default (): void => {
 
   if (!timer) return
 
-  const stopwatch = timer.querySelector('*[data-timer-stopwatch]') as HTMLElement
+  const stopwatch = timer.querySelector(
+    '*[data-timer-stopwatch]'
+  ) as HTMLElement
   const units = timer.querySelector('*[data-timer-units]') as HTMLElement
   const turn = timer.querySelector('*[data-timer-turn]') as HTMLButtonElement
   const icon = turn.querySelector('use') as SVGUseElement
@@ -39,18 +41,18 @@ export default (): void => {
 
   const statusTimer = (): void => {
     switch (status) {
-    case true: {
-      status = false
-      icon.setAttribute('xlink:href', 'img/icons.svg#play')
-      break
-    }
+      case true: {
+        status = false
+        icon.setAttribute('xlink:href', 'img/icons.svg#play')
+        break
+      }
 
-    case false: {
-      status = true
-      icon.setAttribute('xlink:href', 'img/icons.svg#pause')
-      setTime()
-      break
-    }
+      case false: {
+        status = true
+        icon.setAttribute('xlink:href', 'img/icons.svg#pause')
+        setTime()
+        break
+      }
     }
   }
 

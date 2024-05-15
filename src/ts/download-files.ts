@@ -4,12 +4,18 @@ export default (): File[] => {
   const data: File[] = []
 
   document.addEventListener('change', ((event: Event): void => {
-    if ((event.target as HTMLInputElement).getAttribute('data-input') === 'file') {
-      const form = (event.target as HTMLInputElement).closest('[data-files]') as HTMLFormElement
+    if (
+      (event.target as HTMLInputElement).getAttribute('data-input') === 'file'
+    ) {
+      const form = (event.target as HTMLInputElement).closest(
+        '[data-files]'
+      ) as HTMLFormElement
 
       if (!form) return
 
-      const download = form.querySelector('*[data-label="download"]') as HTMLLabelElement
+      const download = form.querySelector(
+        '*[data-label="download"]'
+      ) as HTMLLabelElement
       const input = event.target as HTMLInputElement
       const files = input.files as FileList
       const text = download.querySelector('*[data-files-text]') as HTMLElement
@@ -35,16 +41,16 @@ export default (): File[] => {
           if (!listing.classList.contains('mb-5')) listing.classList.add('mb-5')
 
           switch (data.length) {
-          case 3: {
-            download.classList.add('pointer-events-none', 'opacity-50')
-            text.innerText = 'Не более 3 файлов'
-            break
-          }
+            case 3: {
+              download.classList.add('pointer-events-none', 'opacity-50')
+              text.innerText = 'Не более 3 файлов'
+              break
+            }
 
-          default: {
-            text.innerText = 'Добавить еще'
-            break
-          }
+            default: {
+              text.innerText = 'Добавить еще'
+              break
+            }
           }
         }
       }
@@ -53,15 +59,23 @@ export default (): File[] => {
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).closest('[data-files-remove]')) {
-      const form = (event.target as HTMLInputElement).closest('[data-files') as HTMLFormElement
+      const form = (event.target as HTMLInputElement).closest(
+        '[data-files'
+      ) as HTMLFormElement
 
       if (!form) return
 
-      const download = form.querySelector('*[data-label="download"]') as HTMLLabelElement
-      const input = download.querySelector('*[data-input="file"]') as HTMLInputElement
+      const download = form.querySelector(
+        '*[data-label="download"]'
+      ) as HTMLLabelElement
+      const input = download.querySelector(
+        '*[data-input="file"]'
+      ) as HTMLInputElement
       const text = download.querySelector('*[data-files-text]') as HTMLElement
       const listing = form.querySelector('*[data-files-listing]') as HTMLElement
-      const item = (event.target as HTMLButtonElement).closest('[data-files-item]') as HTMLElement
+      const item = (event.target as HTMLButtonElement).closest(
+        '[data-files-item]'
+      ) as HTMLElement
       const btn = event.target as HTMLButtonElement
 
       for (let i = 0; i < data.length; i++) {
@@ -72,18 +86,18 @@ export default (): File[] => {
       }
 
       switch (data.length) {
-      case 0: {
-        input.value = ''
-        text.innerText = 'Загрузить файлы'
-        listing.classList.remove('mb-5')
-        break
-      }
+        case 0: {
+          input.value = ''
+          text.innerText = 'Загрузить файлы'
+          listing.classList.remove('mb-5')
+          break
+        }
 
-      default: {
-        download.classList.remove('pointer-events-none', 'opacity-50')
-        text.innerText = 'Добавить еще'
-        break
-      }
+        default: {
+          download.classList.remove('pointer-events-none', 'opacity-50')
+          text.innerText = 'Добавить еще'
+          break
+        }
       }
     }
   }) as EventListener)

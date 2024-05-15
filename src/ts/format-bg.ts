@@ -20,7 +20,8 @@ const createBackground = (data: string): void => {
 }
 
 export default (): void => {
-  const firefox: RegExpMatchArray | null = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./)
+  const firefox: RegExpMatchArray | null =
+    window.navigator.userAgent.match(/Firefox\/([0-9]+)\./)
   const firefoxVersion: number = firefox ? Number(firefox[1]) : 0
 
   createBackground('data-bg')

@@ -4,7 +4,9 @@ export default (): void => {
   if (!world) return
 
   const map = world.querySelector('*[data-world-map]') as SVGElement
-  const countries = map.querySelectorAll('*[data-world-country]') as NodeListOf<Element>
+  const countries = map.querySelectorAll(
+    '*[data-world-country]'
+  ) as NodeListOf<Element>
   const flag = world.querySelector('*[data-world-flag]') as HTMLImageElement
   const title = world.querySelector('*[data-world-title]') as HTMLElement
   const offsetY: number = map.getBoundingClientRect().y
@@ -16,11 +18,22 @@ export default (): void => {
     const path = country.querySelector('path') as SVGPathElement
     const pathHeight: number = path.getBoundingClientRect().height * ratio
     const pathWidth: number = path.getBoundingClientRect().width * ratio
-    const positionY: number = (path.getBoundingClientRect().y - offsetY) * ratio + pathHeight / 2
-    const positionX: number = (path.getBoundingClientRect().x - offsetX) * ratio + pathWidth / 2
-    const image = document.createElementNS('http://www.w3.org/2000/svg', 'image') as SVGImageElement
-    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect') as SVGRectElement
-    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text') as SVGTextElement
+    const positionY: number =
+      (path.getBoundingClientRect().y - offsetY) * ratio + pathHeight / 2
+    const positionX: number =
+      (path.getBoundingClientRect().x - offsetX) * ratio + pathWidth / 2
+    const image = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'image'
+    ) as SVGImageElement
+    const rect = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'rect'
+    ) as SVGRectElement
+    const text = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'text'
+    ) as SVGTextElement
 
     const elementsShow = (): void => {
       rect.classList.remove('invisible', 'opacity-0')
@@ -38,23 +51,43 @@ export default (): void => {
     }
 
     image.classList.add('pointer-events-none')
-    rect.classList.add('pointer-events-none', 'invisible', 'opacity-0', 'duration-2')
-    text.classList.add('pointer-events-none', 'invisible', 'opacity-0', 'duration-2', 'text-14')
+    rect.classList.add(
+      'pointer-events-none',
+      'invisible',
+      'opacity-0',
+      'duration-2'
+    )
+    text.classList.add(
+      'pointer-events-none',
+      'invisible',
+      'opacity-0',
+      'duration-2',
+      'text-14'
+    )
     map.appendChild(image)
     map.appendChild(rect)
     map.appendChild(text)
     image.setAttribute('href', 'img/pictures/flag.svg')
     image.setAttribute('width', '18')
     image.setAttribute('height', '18')
-    image.setAttribute('y', `${positionY - (image.getBoundingClientRect().height * ratio) / 1.2}`)
+    image.setAttribute(
+      'y',
+      `${positionY - (image.getBoundingClientRect().height * ratio) / 1.2}`
+    )
     image.setAttribute('x', `${positionX}`)
     text.innerHTML = String(country.dataset.worldCountry)
     text.setAttribute('fill', '#000000')
-    text.setAttribute('y', `${positionY + (text.getBoundingClientRect().height * ratio) / 1.2}`)
+    text.setAttribute(
+      'y',
+      `${positionY + (text.getBoundingClientRect().height * ratio) / 1.2}`
+    )
     text.setAttribute('x', `${positionX}`)
     rect.setAttribute('fill', '#ffffff')
     rect.setAttribute('width', `${text.getBoundingClientRect().width * ratio}`)
-    rect.setAttribute('height', `${text.getBoundingClientRect().height * ratio}`)
+    rect.setAttribute(
+      'height',
+      `${text.getBoundingClientRect().height * ratio}`
+    )
     rect.setAttribute('y', `${positionY}`)
     rect.setAttribute('x', `${positionX}`)
     rect.setAttribute('rx', '2')

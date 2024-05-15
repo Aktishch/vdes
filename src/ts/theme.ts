@@ -1,6 +1,8 @@
 export default (): void => {
   const html = document.documentElement as HTMLElement
-  const toggles = html.querySelectorAll('*[data-theme="toggle"]') as NodeListOf<Element>
+  const toggles = html.querySelectorAll(
+    '*[data-theme="toggle"]'
+  ) as NodeListOf<Element>
   let theme = 'default'
 
   const togglesChecked = (check: boolean): void => {
@@ -13,21 +15,21 @@ export default (): void => {
 
   const variationTheme = (): void => {
     switch (html.classList.contains('dark')) {
-    case true: {
-      theme = 'default'
-      localStorage.setItem('theme', theme)
-      html.classList.remove('dark')
-      togglesChecked(false)
-      break
-    }
+      case true: {
+        theme = 'default'
+        localStorage.setItem('theme', theme)
+        html.classList.remove('dark')
+        togglesChecked(false)
+        break
+      }
 
-    case false: {
-      theme = 'dark'
-      localStorage.setItem('theme', theme)
-      html.classList.add('dark')
-      togglesChecked(true)
-      break
-    }
+      case false: {
+        theme = 'dark'
+        localStorage.setItem('theme', theme)
+        html.classList.add('dark')
+        togglesChecked(true)
+        break
+      }
     }
   }
 
@@ -35,17 +37,17 @@ export default (): void => {
     theme = String(localStorage.getItem('theme'))
 
     switch (theme) {
-    case 'default': {
-      html.classList.remove('dark')
-      togglesChecked(false)
-      break
-    }
+      case 'default': {
+        html.classList.remove('dark')
+        togglesChecked(false)
+        break
+      }
 
-    case 'dark': {
-      html.classList.add('dark')
-      togglesChecked(true)
-      break
-    }
+      case 'dark': {
+        html.classList.add('dark')
+        togglesChecked(true)
+        break
+      }
     }
   }
 

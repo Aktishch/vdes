@@ -3,9 +3,13 @@ export default (): void => {
 
   if (!counter) return
 
-  const subtitle = counter.querySelector('*[data-counter-subtitle]') as HTMLElement
+  const subtitle = counter.querySelector(
+    '*[data-counter-subtitle]'
+  ) as HTMLElement
   const timer = counter.querySelector('*[data-counter-timer]') as HTMLElement
-  const units = timer.querySelectorAll('*[data-counter-unit]') as NodeListOf<Element>
+  const units = timer.querySelectorAll(
+    '*[data-counter-unit]'
+  ) as NodeListOf<Element>
   const date: number = new Date(2024, 11, 23, 0, 0, 0).getTime()
 
   const getTimeCounter = (): void => {
@@ -22,13 +26,14 @@ export default (): void => {
     ]
 
     units.forEach(
-      (element: Element, index: number): void => ((element as HTMLElement).textContent = values[String(index)])
+      (element: Element, index: number): void =>
+        ((element as HTMLElement).textContent = values[String(index)])
     )
 
     if (distance < 0) removeTimeCounter()
   }
 
-  const interval: NodeJS.Timer = setInterval(getTimeCounter, 1000)
+  const interval = setInterval(getTimeCounter, 1000)
 
   const removeTimeCounter = (): void => {
     clearInterval(interval)

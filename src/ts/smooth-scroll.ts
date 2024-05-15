@@ -1,4 +1,4 @@
-import { safariOnMacbook } from './functions/safari-on-macbook'
+import { isSafari } from './functions/is-safari'
 import { touchDevice } from './functions/touch-device'
 import { scrolledPage } from './functions/scrolled-page'
 import { animation } from './animation'
@@ -6,12 +6,16 @@ import { animation } from './animation'
 export default (): void => {
   const smoothScroll = document.querySelector('#smooth-scroll') as HTMLElement
 
-  if (!smoothScroll || safariOnMacbook() || touchDevice()) return
+  if (!smoothScroll || isSafari() || touchDevice()) return
 
   const html = document.documentElement as HTMLElement
   const body = document.body as HTMLBodyElement
-  const wrappers = smoothScroll.querySelectorAll('*[data-smooth-wrapper]') as NodeListOf<Element>
-  const speed: number = smoothScroll.dataset.smoothSpeed ? Number(smoothScroll.dataset.smoothSpeed) / 100 : 0.02
+  const wrappers = smoothScroll.querySelectorAll(
+    '*[data-smooth-wrapper]'
+  ) as NodeListOf<Element>
+  const speed: number = smoothScroll.dataset.smoothSpeed
+    ? Number(smoothScroll.dataset.smoothSpeed) / 100
+    : 0.02
   let smoothSpeed: number = speed
   let offset = 0
 
@@ -33,7 +37,10 @@ export default (): void => {
     window.requestAnimationFrame(createSmoothScroll)
   }
 
-  if (performance.navigation.type === 1 && sessionStorage.getItem('translateY')) {
+  if (
+    performance.navigation.type === 1 &&
+    sessionStorage.getItem('translateY')
+  ) {
     setBodyHeight()
     smoothSpeed = 1
     smoothScroll.style.transform = String(sessionStorage.getItem('translateY'))
@@ -44,7 +51,13 @@ export default (): void => {
 
   html.classList.add('overflow-x-hidden')
   body.classList.add('overflow-hidden')
-  smoothScroll.classList.add('fixed', 'top-0', 'left-0', 'right-0', 'overflow-hidden')
+  smoothScroll.classList.add(
+    'fixed',
+    'top-0',
+    'left-0',
+    'right-0',
+    'overflow-hidden'
+  )
   window.requestAnimationFrame(createSmoothScroll)
 
   wrappers.forEach((element: Element): void => {
@@ -52,8 +65,12 @@ export default (): void => {
 
     if (!wrapper) return
 
-    const stickys = wrapper.querySelectorAll('*[data-smooth-sticky]') as NodeListOf<Element>
-    const layers = wrapper.querySelectorAll('*[data-smooth-layer]') as NodeListOf<Element>
+    const stickys = wrapper.querySelectorAll(
+      '*[data-smooth-sticky]'
+    ) as NodeListOf<Element>
+    const layers = wrapper.querySelectorAll(
+      '*[data-smooth-layer]'
+    ) as NodeListOf<Element>
 
     stickys.forEach((element: Element): void => {
       const sticky = element as HTMLElement
@@ -67,7 +84,8 @@ export default (): void => {
           wrapper.getBoundingClientRect().top < 0 &&
           wrapper.getBoundingClientRect().bottom - window.screen.height > 0
         ) {
-          stickyPosition += (scrolledPage().top - wrapper.offsetTop - stickyPosition) * speed
+          stickyPosition +=
+            (scrolledPage().top - wrapper.offsetTop - stickyPosition) * speed
           sticky.style.transform = `translateY(${stickyPosition}px)`
         }
 
@@ -82,8 +100,12 @@ export default (): void => {
 
       if (!layer) return
 
-      const layerSpeed: number = layer.dataset.smoothSpeed ? Number(layer.dataset.smoothSpeed) / 100 : 0.02
-      const layerDepth: number = layer.dataset.smoothDepth ? Number(layer.dataset.smoothDepth) : 1
+      const layerSpeed: number = layer.dataset.smoothSpeed
+        ? Number(layer.dataset.smoothSpeed) / 100
+        : 0.02
+      const layerDepth: number = layer.dataset.smoothDepth
+        ? Number(layer.dataset.smoothDepth)
+        : 1
       let layerPosition = 0
 
       const createSmoothLayer = (): void => {
@@ -91,28 +113,30 @@ export default (): void => {
           wrapper.getBoundingClientRect().top - window.screen.height <= 0 &&
           scrolledPage().top < wrapper.offsetTop + wrapper.offsetHeight
         ) {
-          layerPosition += (scrolledPage().top - wrapper.offsetTop - layerPosition) * layerSpeed
+          layerPosition +=
+            (scrolledPage().top - wrapper.offsetTop - layerPosition) *
+            layerSpeed
 
           switch (layer.dataset.smoothLayer) {
-          case 'top': {
-            layer.style.transform = `translateY(${-layerPosition / layerDepth}px)`
-            break
-          }
+            case 'top': {
+              layer.style.transform = `translateY(${-layerPosition / layerDepth}px)`
+              break
+            }
 
-          case 'bottom': {
-            layer.style.transform = `translateY(${layerPosition / layerDepth}px)`
-            break
-          }
+            case 'bottom': {
+              layer.style.transform = `translateY(${layerPosition / layerDepth}px)`
+              break
+            }
 
-          case 'left': {
-            layer.style.transform = `translateX(${-layerPosition / layerDepth}px)`
-            break
-          }
+            case 'left': {
+              layer.style.transform = `translateX(${-layerPosition / layerDepth}px)`
+              break
+            }
 
-          case 'right': {
-            layer.style.transform = `translateX(${layerPosition / layerDepth}px)`
-            break
-          }
+            case 'right': {
+              layer.style.transform = `translateX(${layerPosition / layerDepth}px)`
+              break
+            }
           }
         }
 

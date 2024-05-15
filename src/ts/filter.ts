@@ -1,27 +1,36 @@
-const filtering = ({ name, cards }: { name: string; cards: NodeListOf<Element> }): void => {
+const filtering = ({
+  name,
+  cards,
+}: {
+  name: string
+  cards: NodeListOf<Element>
+}): void => {
   cards.forEach((element: Element): void => {
     const card = element as HTMLElement
-    const absence: boolean = String(card.dataset.filterValue).split(' ').includes(name) === false
+    const absence: boolean =
+      String(card.dataset.filterValue).split(' ').includes(name) === false
     const showAll: boolean = name.toLowerCase() === 'all'
 
     switch (absence && !showAll) {
-    case true: {
-      card.classList.add('hidden')
-      break
-    }
+      case true: {
+        card.classList.add('hidden')
+        break
+      }
 
-    case false: {
-      card.classList.remove('hidden')
-      card.classList.add('filter-show')
-      setTimeout((): void => card.classList.remove('filter-show'), 300)
-      break
-    }
+      case false: {
+        card.classList.remove('hidden')
+        card.classList.add('filter-show')
+        setTimeout((): void => card.classList.remove('filter-show'), 300)
+        break
+      }
     }
   })
 }
 
 export default (): void => {
-  const filters = document.querySelectorAll('*[data-filter]') as NodeListOf<Element>
+  const filters = document.querySelectorAll(
+    '*[data-filter]'
+  ) as NodeListOf<Element>
 
   filters.forEach((element: Element): void => {
     const filter = element as HTMLElement
@@ -30,9 +39,15 @@ export default (): void => {
 
     const value = String(filter.dataset.filter)
     const hash: string = window.location.hash.substr(1)
-    const categories = document.querySelectorAll(`*[data-filter-category="${value}"]`) as NodeListOf<Element>
-    const cards = document.querySelectorAll(`*[data-filter-card="${value}"]`) as NodeListOf<Element>
-    const line = document.querySelector(`*[data-filter-line="${value}"]`) as HTMLElement
+    const categories = document.querySelectorAll(
+      `*[data-filter-category="${value}"]`
+    ) as NodeListOf<Element>
+    const cards = document.querySelectorAll(
+      `*[data-filter-card="${value}"]`
+    ) as NodeListOf<Element>
+    const line = document.querySelector(
+      `*[data-filter-line="${value}"]`
+    ) as HTMLElement
 
     const currentCategory = (): HTMLElement => {
       let active = categories[0] as HTMLElement
