@@ -6,7 +6,7 @@
 
   var icon = _.template(require('./components/icon.html').default)
   var picture = _.template(require('./components/picture.html').default)
-  var loader = _.template(require('./components/loader.html').default)({icon: icon({id: 'loader'})})
+  var loader = _.template(require('./components/loader.html').default)({icon: icon})
   var preloader = require('./components/preloader.html').default
   var header = _.template(require('./includes/header.html').default)
   var heading = _.template(require('./includes/heading.html').default)
@@ -31,17 +31,17 @@
         <% for (var i = 0; i < 6; i++) { %>
         <a class="shadow-md swiper-slide pack pack-rect-md bg-grey dark:bg-dark rounded-4" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: '.jpg', webp: true, classes: 'image image-rise', data: 'draggable="false"', loading: 'lazy'}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false, draggable: false}) %>
         </a>
         <% } %>
       </div>
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
     <button class="absolute hidden w-12 h-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6 rounded-max" data-waved="light">
-      <%= icon({id: 'arrow-left'}) %>
+      <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
     <button class="absolute hidden w-12 h-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6 rounded-max" data-waved="light">
-      <%= icon({id: 'arrow-right'}) %>
+      <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
 </section>
@@ -99,8 +99,8 @@
                 <option>Meat</option>
                 <option>Potatoes</option>
               </datalist>
-              <button class="text-black form-icon form-icon-pointer form-icon-left text-20 opacity-30" type="submit">
-                <%= icon({id: 'search'}) %>
+              <button class="form-icon form-icon-pointer form-icon-left opacity-30" type="submit">
+                <%= icon({id: 'search', className: 'icon text-black text-20', data: false}) %>
               </button>
             </div>
           </label>
@@ -117,11 +117,11 @@
           <div class="h-full p-1 cursor-pointer product card card-active dark:bg-black" data-product>
             <div class="pack pack-rect-md bg-grey dark:bg-dark rounded-4">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: '.jpg', webp: true, classes: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"', loading: 'lazy'}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"', draggable: true}) %>
               <label class="absolute like top-2 right-2">
                 <input class="hidden product__toggle like-toggle" type="checkbox">
                 <div class="product__heart like-heart">
-                  <%= icon({id: 'like'}) %>
+                  <%= icon({id: 'like', className: 'icon', data: false}) %>
                 </div>
               </label>
             </div>
@@ -144,9 +144,7 @@
                 </div>
               </div>
               <button class="swiper-no-swiping btn btn-primary btn-lg btn-fade" data-product-button data-waved="light">
-                <span class="mr-2">
-                  <%= icon({id: 'basket'}) %>
-                </span>
+                <%= icon({id: 'basket', className: 'icon mr-2', data: false}) %>
                 Basket
               </button>
             </div>
@@ -157,10 +155,10 @@
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
     <button class="absolute hidden w-12 h-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6 rounded-max" data-waved="light">
-      <%= icon({id: 'arrow-left'}) %>
+      <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
     <button class="absolute hidden w-12 h-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6 rounded-max" data-waved="light">
-      <%= icon({id: 'arrow-right'}) %>
+      <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
 </section>
@@ -175,7 +173,7 @@
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-half bg-grey dark:bg-dark rounded-6 shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: '.jpg', webp: true, classes: 'scrolling__image image ease-in-out duration-3', data: 'draggable="false"', loading: 'lazy'}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: false, draggable: false}) %>
     </a>
     <% } %>
   </div>
@@ -240,16 +238,12 @@
           </div>
           <div class="flex items-center gap-5">
             <button class="inset-0 w-auto mt-0 swiper-button-prev btn btn-primary btn-lg btn-fill" data-waved="light">
-              <span class="mr-2 text-12">
-                <%= icon({id: 'arrow-left'}) %>
-              </span>
+              <%= icon({id: 'arrow-left', className: 'icon mr-2 text-12', data: false}) %>
               Prev
             </button>
             <button class="inset-0 w-auto mt-0 swiper-button-next btn btn-primary btn-lg btn-fill" data-waved="light">
               Next
-              <span class="ml-2 text-12">
-                <%= icon({id: 'arrow-right'}) %>
-              </span>
+              <%= icon({id: 'arrow-right', className: 'icon ml-2 text-12', data: false}) %>
             </button>
           </div>
         </div>
@@ -261,7 +255,7 @@
           <% for (var i = 0; i < 3; i++) { %>
           <div class="swiper-slide pack pack-box bg-grey dark:bg-dark rounded-3" data-movement="light">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: '.jpg', webp: true, classes: 'image image-rise', data: false, loading: 'lazy'}) %>
+            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
           </div>
           <% } %>
         </div>
@@ -280,7 +274,7 @@
           <% for (var i = 0; i < 6; i++) { %>
           <div class="h-full swiper-slide pack pack-rect-lg bg-grey dark:bg-dark">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town', format: '.jpg', webp: true, classes: 'image', data: false, loading: 'lazy'}) %>
+            <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: false, draggable: true}) %>
           </div>
           <% } %>
         </div>
@@ -295,7 +289,7 @@
             <% for (var i = 0; i < 6; i++) { %>
             <a class="h-full swiper-slide pack pack-box" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town', format: '.jpg', webp: true, classes: 'image image-rise', data: 'draggable="false"', loading: 'lazy'}) %>
+              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false, draggable: false}) %>
             </a>
             <% } %>
           </div>
@@ -307,7 +301,7 @@
             <% for (var i = 0; i < 6; i++) { %>
             <div class="cursor-pointer swiper-slide pack pack-box bg-grey dark:bg-dark rounded-4">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: '.jpg', webp: true, classes: 'image image-rise', data: false, loading: 'lazy'}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
             </div>
             <% } %>
           </div>

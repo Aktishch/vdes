@@ -118,9 +118,11 @@ export default (): void => {
     on: {
       slideChange: (swiper: Swiper): void => {
         quizImages.slideTo(swiper.activeIndex)
-        checkQuizSlide(visibleSlides[0])
+        checkQuizSlide(swiper.visibleSlides[0])
 
-        switch (visibleSlides[0] === swiper.slides[swiper.slides.length - 1]) {
+        switch (
+          swiper.visibleSlides[0] === swiper.slides[swiper.slides.length - 1]
+        ) {
           case true: {
             ;(swiper.el.closest('[data-quiz]') as HTMLElement).setAttribute(
               'data-quiz-end',

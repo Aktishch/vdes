@@ -2,7 +2,7 @@
   width : var(--bubble-size);
   height: var(--bubble-size);
 
-  @apply bg-transparent border-none cursor-ew-resize pointer-events-auto appearance-none;
+  @apply bg-transparent border-none opacity-0 cursor-ew-resize pointer-events-auto appearance-none;
 }
 
 .range {

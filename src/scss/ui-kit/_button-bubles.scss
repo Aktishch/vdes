@@ -2,10 +2,9 @@
 
   &::before,
   &::after {
-    width    : 150%;
-    transform: translateX(-50%);
+    width: 150%;
 
-    @apply content-auto absolute left-1/2 bg-no-repeat h-full;
+    @apply content-auto absolute left-1/2 bg-no-repeat -translate-x-1/2 h-full;
   }
 
   &::before {

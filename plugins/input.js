@@ -87,7 +87,11 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         if (!parsed.color) return null
 
         return {
-          '--input-color': formatColor({ mode: 'rgba', color: parsed.color, alpha: 0.3 }),
+          '--input-color': formatColor({
+            mode: 'rgba',
+            color: parsed.color,
+            alpha: 0.3,
+          }),
           '--input-focus': color.DEFAULT,
         }
       },

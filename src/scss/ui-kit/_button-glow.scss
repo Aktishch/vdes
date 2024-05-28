@@ -1,9 +1,8 @@
 .btn-glow {
   &::before {
     animation: glowing 20s linear infinite;
-    filter   : blur(4px);
 
-    @apply content-auto absolute -z-1 -inset-1 rounded-inherit opacity-0 ease-in-out duration-3;
+    @apply content-auto absolute -z-1 -inset-1 rounded-inherit opacity-0 blur-sm ease-in-out duration-3;
 
     background: {
       image: linear-gradient(120deg, #ff304f, #581b98, #482ff7, #fc5185, #17b978, #ea5455, #2b1de8, #dd00f3);

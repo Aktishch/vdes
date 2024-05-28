@@ -136,7 +136,8 @@ module.exports = plugin(({ addComponents, theme }) => {
           left: '50px',
           right: '4px',
           backgroundColor: 'currentColor',
-          transition: 'left 0.4s ease 0.2s, right 0.5s ease, background-color 0.35s ease -0.1s',
+          transition:
+            'left 0.4s ease 0.2s, right 0.5s ease, background-color 0.35s ease -0.1s',
         },
       },
     },

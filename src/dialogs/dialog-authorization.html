@@ -16,12 +16,12 @@
       <span class="mb-3 text-20">Password</span>
       <div class="form-wrapper">
         <div class="input-cover">
-          <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="off" name="password">
+          <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
         </div>
         <span class="form-error" data-error>Пожалуйста, введите пароль!</span>
-        <div class="text-black form-icon form-icon-pointer form-icon-right text-20" data-password="/">
-          <%= icon({id: 'eye-visible'}) %>
-        </div>
+        <button class="form-icon form-icon-pointer form-icon-right" data-password="/" type="button">
+          <%= icon({id: 'eye-visible', className: 'icon text-black text-20', data: false}) %>
+        </button>
       </div>
     </label>
     <button class="mb-5 btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Enter</button>

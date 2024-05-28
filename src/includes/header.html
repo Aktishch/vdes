@@ -27,39 +27,39 @@
     <!-- Шапка документа -->
 
     <% var nav = {
-    pages: [
-      {
-        link: 'index.html',
-        text: 'Front-page'
-      },
-      {
-        link: 'primary.html',
-        text: 'Primary-page'
-      },
-      {
-        link: 'second.html',
-        text: 'Second-page'
-      }
-    ],
-    blocks: [
-      {
-        id: '#header',
-        text: 'Header'
-      },
-      {
-        id: '#player',
-        text: 'Player'
-      },
-      {
-        id: '#footer',
-        text: 'Footer'
-      }
-    ]
-  } %>
+      pages: [
+        {
+          link: 'index.html',
+          text: 'Front-page'
+        },
+        {
+          link: 'primary.html',
+          text: 'Primary-page'
+        },
+        {
+          link: 'second.html',
+          text: 'Second-page'
+        }
+      ],
+      blocks: [
+        {
+          id: '#header',
+          text: 'Header'
+        },
+        {
+          id: '#player',
+          text: 'Player'
+        },
+        {
+          id: '#footer',
+          text: 'Footer'
+        }
+      ]
+    } %>
 
     <header class="container fixed top-0 left-0 right-0 flex items-center justify-between gap-5 py-4 bg-black z-3 duration-3" data-header>
       <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
-        <%= picture({src: 'img/pictures/logo', format: '.png', webp: true, classes: 'w-full', data: false, loading: 'auto'}) %>
+        <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false, draggable: true}) %>
       </a>
       <nav class="nav hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
         <% _.forEach((nav.pages), (page) => { %>
@@ -68,9 +68,7 @@
         <div class="relative nav__accordion" data-accordion="hidden" data-accordion-close="scroll">
           <button class="p-1 font-normal uppercase btn btn-second hover:underline underline-offset-4 text-14" data-accordion-toggle data-waved="light">
             Navigation
-            <span class="ml-2 ease-linear nav__arrow text-12 duration-3">
-              <%= icon({id: 'arrow-right'}) %>
-            </span>
+            <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear nav__arrow text-12 duration-3', data: false}) %>
           </button>
           <div class="absolute right-0 w-full bg-white shadow-md nav__items top-16 rounded-2" data-accordion-content>
             <div class="flex flex-col gap-4 p-4">
@@ -81,8 +79,8 @@
           </div>
         </div>
       </nav>
-      <button class="btn btn-second lg:hidden text-48" data-sidebar-open="menu" data-waved="light">
-        <%= icon({id: 'burger'}) %>
+      <button class="btn btn-second lg:hidden" data-sidebar-open="menu" data-waved="light">
+        <%= icon({id: 'burger', className: 'icon text-48', data: false}) %>
       </button>
     </header>
 
@@ -94,11 +92,11 @@
       <div class="menu__content flex flex-col bg-black bg-opacity-90 invisible opacity-0 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-3">
         <div class="flex items-center justify-between gap-2 p-4 bg-black menu__head duration-5 delay-3">
           <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
-            <%= picture({src: 'img/pictures/logo', format: '.png', webp: true, classes: 'w-full', data: false, loading: 'auto'}) %>
+            <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false, draggable: true}) %>
           </a>
           <input class="switch switch-toggle" data-theme="toggle" type="checkbox">
-          <button class="p-1 text-white btn btn-second text-24" data-sidebar-close="menu" data-waved="light">
-            <%= icon({id: 'close'}) %>
+          <button class="p-1 btn btn-second" data-sidebar-close="menu" data-waved="light">
+            <%= icon({id: 'close', className: 'icon text-white text-24', data: false}) %>
           </button>
         </div>
         <div class="flex flex-col items-start invisible gap-4 px-4 pt-4 pb-10 text-white opacity-0 menu__nav duration-9 delay-5">
@@ -108,9 +106,7 @@
           <div class="menu__accordion" data-accordion="hidden" data-accordion-close="click">
             <button class="flex items-center hover:underline underline-offset-4 text-20" data-accordion-toggle>
               Navigation
-              <span class="ml-2 ease-linear menu__arrow text-14 opacity-60 duration-3">
-                <%= icon({id: 'arrow-right'}) %>
-              </span>
+              <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear menu__arrow text-14 opacity-60 duration-3', data: false}) %>
             </button>
             <div data-accordion-content>
               <div class="flex flex-col items-start gap-2 pl-5 mt-2">
@@ -124,8 +120,8 @@
         <div class="invisible px-4 pt-4 pb-10 mt-auto opacity-0 menu__footer duration-5 delay-9">
           <div class="flex items-center justify-center gap-4">
             <% for (var i = 0; i < social.length; i++) { %>
-            <a class="btn btn-second text-30 rounded-max" data-waved="dark" draggable="false" href="javascript: ;">
-              <%= icon({id: social[i]}) %>
+            <a class="btn btn-second rounded-max" data-waved="dark" draggable="false" href="javascript: ;">
+              <%= icon({id: social[i], className: 'icon text-30', data: false}) %>
             </a>
             <% } %>
           </div>
@@ -138,8 +134,8 @@
     <nav class="fixed bottom-0 flex flex-col items-center justify-center w-48 h-48 pointer-events-none select-none social z-2 rounded-max touch-none" data-social data-draggable>
       <div class="absolute inset-0 overflow-hidden ease-in-out opacity-0 pointer-events-auto social__round bg-primary bg-opacity-30 rounded-max duration-4" data-social-round="hidden">
         <% for (var i = 0; i < social.length; i++) { %>
-        <a class="absolute btn btn-second text-30 rounded-max" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
-          <%= icon({id: social[i]}) %>
+        <a class="absolute btn btn-second rounded-max" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
+          <%= icon({id: social[i], className: 'icon text-30', data: false}) %>
         </a>
         <% } %>
       </div>
@@ -168,14 +164,14 @@
     <div class="basket fixed z-1 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-4 -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-[320px] mx-auto p-5 duration-3" data-basket="hidden">
       <div class="flex items-center justify-between mb-4">
         <h4 class="mr-3 font-semibold font-alt text-24">Product in basket</h4>
-        <button class="p-1 btn btn-primary text-18 rounded-1" data-basket-close data-waved="light">
-          <%= icon({id: 'close'}) %>
+        <button class="p-1 btn btn-primary rounded-1" data-basket-close data-waved="light">
+          <%= icon({id: 'close', className: 'icon text-18', data: false}) %>
         </button>
       </div>
       <div class="flex items-center mb-4">
         <div class="pack pack-box bg-grey rounded-4 w-full max-w-[100px] mr-5">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: '.jpg', webp: false, classes: 'image', data: 'data-basket-image', loading: 'lazy'}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: 'data-basket-image', draggable: true}) %>
         </div>
         <div class="flex flex-col">
           <span class="mb-3 font-bold text-18 md:text-20" data-basket-name>Name 4</span>

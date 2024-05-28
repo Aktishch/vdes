@@ -9,10 +9,10 @@
     <div class="items-center justify-center form-label" data-label="download">
       <div class="mb-5 form-wrapper">
         <div class="w-1/2 mx-auto pack pack-box bg-primary rounded-max">
-          <div class="absolute inset-0 flex items-center justify-center text-white dark:text-black text-7xl md:text-8xl">
-            <%= icon({id: 'user'}) %>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <%= icon({id: 'user', className: 'icon text-white dark:text-black text-7xl md:text-8xl', data: false}) %>
           </div>
-          <%= picture({src: '', format: '', webp: false, classes: 'image', data: 'data-file="image"', loading: 'eager'}) %>
+          <%= picture({src: '', format: '', className: 'image', data: 'data-file="image"', draggable: true}) %>
         </div>
         <span class="form-error" data-error>Пожалуйста, загрузите изображение!</span>
       </div>
