@@ -11,6 +11,36 @@ const closeSidebar = (sidebar: HTMLElement): void => {
   sidebar.dataset.sidebar = 'close'
 }
 
+const swipeOnMenu = (): void => {
+  const menu = document.getElementById('menu') as HTMLElement
+
+  if (!menu) return
+
+  let active = false
+  let initial = 0
+
+  menu.addEventListener('touchstart', ((event: TouchEvent): void => {
+    if ((event.target as HTMLElement).closest('[data-sidebar="open"]')) {
+      initial = event.touches[0].clientX
+    }
+  }) as EventListener)
+
+  menu.addEventListener('touchmove', ((event: TouchEvent): void => {
+    if ((event.target as HTMLElement).closest('[data-sidebar="open"]')) {
+      if (initial - event.touches[0].clientX > 100) active = true
+    }
+  }) as EventListener)
+
+  menu.addEventListener('touchend', ((event: TouchEvent): void => {
+    if ((event.target as HTMLElement).closest('[data-sidebar="open"]')) {
+      if (active) {
+        closeSidebar(menu)
+        active = false
+      }
+    }
+  }) as EventListener)
+}
+
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).closest('[data-sidebar-open]')) {
@@ -61,4 +91,6 @@ export default (): void => {
       }
     })
   }) as EventListener)
+
+  swipeOnMenu()
 }
