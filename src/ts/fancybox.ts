@@ -1,6 +1,6 @@
 import { Fancybox } from '@fancyapps/ui'
 import airDatepicker from './air-datepicker'
-import filter from './filter'
+import filtering from './filtering'
 import waved from './waved'
 
 declare global {
@@ -69,7 +69,7 @@ export default (): void => {
     on: {
       done: (): void => {
         airDatepicker()
-        filter()
+        filtering()
         waved()
       },
     },

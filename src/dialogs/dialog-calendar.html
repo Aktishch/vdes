@@ -6,11 +6,11 @@
 %>
 
 <dialog class="px-5 py-10 dialog dialog-md dark:bg-black dark:text-white rounded-3">
-  <div class="flex flex-wrap items-center justify-between gap-5 filtering" data-filter="calendar">
+  <div class="flex flex-wrap items-center justify-between gap-5 filtering" data-filtering="calendar">
     <div class="w-full md:w-auto" id="calendar"></div>
     <div class="w-full md:w-1/2">
       <% for (var i = 0; i < calendar.length; i++) { %>
-      <div class="w-full filtering__card pack pack-rect-md bg-gray rounded-4" data-filter-card="calendar" data-filter-value="<%= calendar[i] %>">
+      <div class="w-full filtering__card pack pack-rect-md bg-gray rounded-4" data-filtering-card="calendar" data-filtering-value="<%= calendar[i] %>">
         <%= loader %>
         <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
       </div>

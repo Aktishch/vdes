@@ -12,14 +12,14 @@ export default (): void => {
   const turn = timer.querySelector('*[data-timer-turn]') as HTMLButtonElement
   const icon = turn.querySelector('use') as SVGUseElement
   const reset = timer.querySelector('*[data-timer-reset]') as HTMLButtonElement
-  let status = false
+  let active = false
   let seconds = 0
   let minutes = 0
   let hours = 0
   let steps = 0
 
   const setTime = (): void => {
-    if (status) {
+    if (active) {
       seconds += 1
       steps += 1
 
@@ -40,15 +40,15 @@ export default (): void => {
   }
 
   const statusTimer = (): void => {
-    switch (status) {
+    switch (active) {
       case true: {
-        status = false
+        active = false
         icon.setAttribute('xlink:href', 'img/icons.svg#play')
         break
       }
 
       case false: {
-        status = true
+        active = true
         icon.setAttribute('xlink:href', 'img/icons.svg#pause')
         setTime()
         break
@@ -57,7 +57,7 @@ export default (): void => {
   }
 
   const timerReset = (): void => {
-    status = false
+    active = false
     seconds = 0
     minutes = 0
     hours = 0

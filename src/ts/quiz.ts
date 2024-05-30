@@ -6,7 +6,7 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
       ...slide.querySelectorAll('select'),
       ...slide.querySelectorAll('textarea'),
     ]
-  let empty = true
+  let active = true
 
   for (const index in inputs) {
     if (!Object.hasOwnProperty.call(inputs, index)) continue
@@ -18,16 +18,16 @@ export const checkQuizSlide = (slide: HTMLElement): void => {
 
     if (input.type === 'checkbox' || input.type === 'radio') {
       if ((input as HTMLInputElement).checked !== false) {
-        empty = false
+        active = false
         break
       }
     } else if (input.value !== '') {
-      empty = false
+      active = false
       break
     }
   }
 
-  empty ? (quiz.dataset.quiz = 'stop') : (quiz.dataset.quiz = 'auto')
+  active ? (quiz.dataset.quiz = 'stop') : (quiz.dataset.quiz = 'auto')
 }
 
 export default (): void => {

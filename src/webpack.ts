@@ -7,6 +7,7 @@ import scrollHeader from './ts/scroll-header'
 import currentTab from './ts/current-tab'
 import currentYear from './ts/current-year'
 import sidebar from './ts/sidebar'
+import menu from './ts/menu'
 import progressLine from './ts/progress-line'
 import scrollTo from './ts/scroll-to'
 import smartMenu from './ts/smart-menu'
@@ -24,7 +25,7 @@ import listing from './ts/listing'
 import accordion from './ts/accordion'
 import formatBg from './ts/format-bg'
 import parallax from './ts/parallax'
-import filter from './ts/filter'
+import filtering from './ts/filtering'
 import outNumber from './ts/out-number'
 import writeText from './ts/write-text'
 import downloadFiles from './ts/download-files'
@@ -40,7 +41,7 @@ import password from './ts/password'
 import quantity from './ts/quantity'
 import range from './ts/range'
 import player from './ts/player'
-import basket from './ts/basket'
+import shop from './ts/shop'
 import warning from './ts/warning'
 import horizontalScrolling from './ts/horizontal-scrolling'
 import quiz from './ts/quiz'
@@ -63,6 +64,7 @@ const initialization = (): void => {
   smoothScroll()
   scrollHeader()
   sidebar()
+  menu()
   progressLine()
   scrollTo()
   smartMenu()
@@ -80,7 +82,7 @@ const initialization = (): void => {
   accordion()
   formatBg()
   parallax()
-  filter()
+  filtering()
   outNumber()
   writeText()
   submitHandler(downloadFiles())
@@ -95,7 +97,7 @@ const initialization = (): void => {
   quantity()
   range()
   player()
-  basket()
+  shop()
   warning()
   horizontalScrolling()
   quiz()

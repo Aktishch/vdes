@@ -112,7 +112,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
     },
 
     {
-      values: theme('size'),
+      values: theme('constants'),
     }
   )
 })

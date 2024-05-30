@@ -190,19 +190,19 @@
 <section class="container flex flex-col items-center min-h-screen overflow-hidden text-white bg-white bg-center bg-no-repeat bg-cover filtering dark:bg-black" data-smooth-wrapper data-parallax data-section data-bg="img/pictures/town-grey.jpg" data-bg-webp="img/pictures/town-grey.webp">
   <h2 class="mb-3 font-bold text-center font-alt text-36 lg:text-48 leading-2 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Filter</h2>
   <h3 class="mb-5 font-semibold text-16 md:text-18 leading-2 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">paralax, form and other...</h3>
-  <div class="relative w-full max-w-xl mx-auto" data-filter="filtering">
+  <div class="relative w-full max-w-xl mx-auto" data-filtering="filtering">
     <%= picture({src: 'img/pictures/circle-grey', format: 'png', className: 'absolute z-1 top-20 -left-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="auto" data-parallax-speed="4" data-parallax-depth="2"', draggable: true}) %>
     <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-1 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="opposite" data-parallax-speed="4" data-parallax-depth="2"', draggable: true}) %>
     <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-1 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"', draggable: true}) %>
     <div class="relative flex flex-col items-center justify-between gap-0 mb-5 overflow-hidden md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-4 md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 duration-5 anim anim-up" data-anim="hidden">
-      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category filter-active text-20 md:p-0" data-filter-category="filtering" data-filter-value="text-style">Text-style</div>
-      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filter-category="filtering" data-filter-value="form-validate">Form-validate</div>
-      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filter-category="filtering" data-filter-value="switches">Switches</div>
-      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filter-category="filtering" data-filter-value="file">File</div>
-      <span class="absolute bottom-0 left-0 hidden h-1 ease-linear md:block bg-primary rounded-t-2 duration-3" data-filter-line="filtering"></span>
+      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category filtering-active text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="text-style">Text-style</div>
+      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="form-validate">Form-validate</div>
+      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="switches">Switches</div>
+      <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="file">File</div>
+      <span class="absolute bottom-0 left-0 hidden h-1 ease-linear md:block bg-primary rounded-t-2 duration-3" data-filtering-line="filtering"></span>
     </div>
     <div class="text-black bg-white shadow-md rounded-6 p-7 md:p-10 duration-5 anim anim-fade" data-anim="hidden">
-      <div class="filtering__card" data-filter-card="filtering" data-filter-value="text-style">
+      <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="text-style">
         <ul class="flex flex-col gap-4 list-disc list-inside text-primary">
           <% _.forEach((numbers), (number) => { %>
           <li>
@@ -216,7 +216,7 @@
           <q class="px-3 py-1 font-semibold leading-9 text-justify shadow-md bg-grey text-18 box-decoration-clone rounded-4" data-record="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ex omnis, ut dolorem dolore enim expedita?" data-record-speed="50"></q>
         </p>
       </div>
-      <div class="filtering__card" data-filter-card="filtering" data-filter-value="form-validate">
+      <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="form-validate">
         <form class="form w-full max-w-[400px] mx-auto" data-form="submit" data-files data-datepicker id="data-save">
           <input type="hidden" value="Главная" name="theme">
           <label class="mb-5 form-label" data-label="input">
@@ -316,7 +316,7 @@
           <div class="mx-auto cursor-pointer hover:underline underline-offset-4 text-second text-18 w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
         </form>
       </div>
-      <div class="filtering__card" data-filter-card="filtering" data-filter-value="switches">
+      <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="switches">
         <div class="flex flex-col gap-6">
           <h4 class="font-semibold text-24">Checkbox:</h4>
           <div class="flex items-center gap-5">
@@ -387,7 +387,7 @@
           </div>
         </div>
       </div>
-      <div class="filtering__card" data-filter-card="filtering" data-filter-value="file">
+      <div class="filtering__card" data-filtering-card="filtering" data-filtering-value="file">
         <div class="w-full max-w-xs mx-auto" id="copy">
           <div class="flex items-center w-full gap-3 mb-5">
             <div class="w-10 cursor-pointer pack pack-box bg-primary bg-opacity-40 rounded-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-avatar.html">

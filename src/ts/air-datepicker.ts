@@ -1,7 +1,7 @@
 import AirDatepicker from 'air-datepicker'
 import localeRu from 'air-datepicker/locale/ru'
 import { touchDevice } from './functions/touch-device'
-import filter from './filter'
+import filtering from './filtering'
 
 declare global {
   interface Window {
@@ -34,11 +34,11 @@ export default (): void => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)
-          ? 'filter-active btn btn-primary btn-fill text-14'
+          ? 'filtering-active btn btn-primary btn-fill text-14'
           : 'pointer-events-none',
         attrs: {
-          'data-filter-category': 'calendar',
-          'data-filter-value': `date-${date.getDate()}-${date.getMonth() + 1}`,
+          'data-filtering-category': 'calendar',
+          'data-filtering-value': `date-${date.getDate()}-${date.getMonth() + 1}`,
         },
       }
     }
@@ -56,7 +56,7 @@ export default (): void => {
         '#calendar'
       ) as HTMLElement
 
-      if (calendar.querySelector('.filter-active')) filter()
+      if (calendar.querySelector('.filtering-active')) filtering()
     }
   }) as EventListener)
 

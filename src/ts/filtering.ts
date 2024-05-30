@@ -1,4 +1,4 @@
-const filtering = ({
+const filterHandler = ({
   name,
   cards,
 }: {
@@ -8,7 +8,7 @@ const filtering = ({
   cards.forEach((element: Element): void => {
     const card = element as HTMLElement
     const absence: boolean =
-      String(card.dataset.filterValue).split(' ').includes(name) === false
+      String(card.dataset.filteringValue).split(' ').includes(name) === false
     const showAll: boolean = name.toLowerCase() === 'all'
 
     switch (absence && !showAll) {
@@ -19,8 +19,8 @@ const filtering = ({
 
       case false: {
         card.classList.remove('hidden')
-        card.classList.add('filter-show')
-        setTimeout((): void => card.classList.remove('filter-show'), 300)
+        card.classList.add('filtering-active')
+        setTimeout((): void => card.classList.remove('filtering-active'), 300)
         break
       }
     }
@@ -29,7 +29,7 @@ const filtering = ({
 
 export default (): void => {
   const filters = document.querySelectorAll(
-    '*[data-filter]'
+    '*[data-filtering]'
   ) as NodeListOf<Element>
 
   filters.forEach((element: Element): void => {
@@ -37,16 +37,16 @@ export default (): void => {
 
     if (!filter) return
 
-    const value = String(filter.dataset.filter)
+    const value = String(filter.dataset.filtering)
     const hash: string = window.location.hash.substr(1)
     const categories = document.querySelectorAll(
-      `*[data-filter-category="${value}"]`
+      `*[data-filtering-category="${value}"]`
     ) as NodeListOf<Element>
     const cards = document.querySelectorAll(
-      `*[data-filter-card="${value}"]`
+      `*[data-filtering-card="${value}"]`
     ) as NodeListOf<Element>
     const line = document.querySelector(
-      `*[data-filter-line="${value}"]`
+      `*[data-filtering-line="${value}"]`
     ) as HTMLElement
 
     const currentCategory = (): HTMLElement => {
@@ -55,7 +55,7 @@ export default (): void => {
       categories.forEach((element: Element): void => {
         const category = element as HTMLElement
 
-        if (category.classList.contains('filter-active')) active = category
+        if (category.classList.contains('filtering-active')) active = category
       })
 
       return active
@@ -63,17 +63,17 @@ export default (): void => {
 
     const currentCard = (category: HTMLElement): void => {
       const active = currentCategory()
-      const name = String(category.dataset.filterValue)
+      const name = String(category.dataset.filteringValue)
 
-      active.classList.remove('filter-active')
-      category.classList.add('filter-active')
+      active.classList.remove('filtering-active')
+      category.classList.add('filtering-active')
 
       if (line) {
         line.style.width = `${category.offsetWidth}px`
         line.style.left = `${category.offsetLeft}px`
       }
 
-      filtering({ name: name, cards: cards })
+      filterHandler({ name: name, cards: cards })
     }
 
     currentCard(currentCategory())

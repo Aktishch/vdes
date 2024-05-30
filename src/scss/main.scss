@@ -138,17 +138,18 @@
   }
 }
 
-// Корзина
-.basket[data-basket="hidden"] {
-  @apply -translate-y-1/3;
+// Покупка
+.shop {
+  &[data-shop="hidden"] {
+    @apply -translate-y-1/3;
+  }
+
+  &-add {
+    animation: shop-add 2s ease both;
+  }
 }
 
-// В корзину
-.in-basket {
-  animation: in-basket 2s ease both;
-}
-
-@keyframes in-basket {
+@keyframes shop-add {
   100% {
     @apply -top-24 left-full;
   }
@@ -161,9 +162,9 @@
   }
 }
 
-// Фильтер
+// Фильтр
 .filtering {
-  &__category.filter-active {
+  &__category.filtering-active {
     @apply text-white bg-second pointer-events-none;
 
     @screen md {
@@ -171,12 +172,12 @@
     }
   }
 
-  &__card.filter-show {
-    animation: filtering-show 0.3s ease both 1;
+  &__card.filtering-active {
+    animation: filtering-active 0.3s ease both 1;
   }
 }
 
-@keyframes filtering-show {
+@keyframes filtering-active {
   0% {
     transform: translateY(50px);
 
