@@ -173,7 +173,7 @@
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-half bg-grey dark:bg-dark rounded-6 shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: false, draggable: false}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: 'data-scrolling-image', draggable: false}) %>
     </a>
     <% } %>
   </div>

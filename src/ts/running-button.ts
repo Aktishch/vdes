@@ -1,13 +1,11 @@
 import { Coordinates } from './functions/coordinates'
 
 const randomPpsition = ({ min, max }: { min: number; max: number }): number => {
-  const random: number = min + Math.random() * (max - min + 1)
-
-  return Math.floor(random)
+  return Math.floor(min + Math.random() * (max - min + 1))
 }
 
 export default (): void => {
-  const running = document.querySelector('*[data-running]') as HTMLElement
+  const running = document.querySelector('*[data-running]') as HTMLDivElement
 
   if (!running) return
 

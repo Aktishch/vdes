@@ -4,16 +4,14 @@ import { media } from './functions/media'
 const setScrollingHeight = (): void => {
   const scrollings = document.querySelectorAll(
     '*[data-scrolling]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  scrollings.forEach((element: Element): void => {
-    const scrolling = element as HTMLElement
-
+  scrollings.forEach((scrolling: HTMLElement): void => {
     if (!scrolling) return
 
     const horizontal = scrolling.querySelector(
       '*[data-scrolling-horizontal]'
-    ) as HTMLElement
+    ) as HTMLDivElement
     const height: number =
       (horizontal.scrollWidth - horizontal.clientWidth) * 1.2
 
@@ -24,11 +22,9 @@ const setScrollingHeight = (): void => {
 const setHorizontalScrolling = (): void => {
   const scrollings = document.querySelectorAll(
     '*[data-scrolling]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  scrollings.forEach((element: Element): void => {
-    const scrolling = element as HTMLElement
-
+  scrollings.forEach((scrolling: HTMLElement): void => {
     if (!scrolling) return
 
     const horizontal = scrolling.querySelector(
@@ -36,7 +32,7 @@ const setHorizontalScrolling = (): void => {
     ) as HTMLElement
     const images = scrolling.querySelectorAll(
       '*[data-scrolling-image]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLImageElement>
     const offsetTop: number = scrolledPage().top
     const moving: number =
       (horizontal.scrollLeft /
@@ -45,9 +41,7 @@ const setHorizontalScrolling = (): void => {
 
     horizontal.scrollLeft = offsetTop - scrolling.offsetTop
 
-    images.forEach((element: Element): void => {
-      const image = element as HTMLImageElement
-
+    images.forEach((image: HTMLImageElement): void => {
       if (!image) return
 
       image.style.setProperty('--scroll-moving', `-${moving}%`)
@@ -56,7 +50,9 @@ const setHorizontalScrolling = (): void => {
 }
 
 const scrollingInViewport = (): void => {
-  switch ((document.documentElement as HTMLElement).clientWidth < media.md) {
+  const html = document.documentElement as HTMLHtmlElement
+
+  switch (html.clientWidth < media.md) {
     case true: {
       document.removeEventListener(
         'wheel',

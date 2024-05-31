@@ -1,20 +1,24 @@
 import { Coordinates } from './functions/coordinates'
 
 export default (): void => {
-  const shop = document.querySelector('*[data-shop]') as HTMLElement
+  const shop = document.querySelector('*[data-shop]') as HTMLDivElement
 
   if (!shop) return
 
   const body = document.body as HTMLBodyElement
   const close = shop.querySelector('*[data-shop-close]') as HTMLButtonElement
   const image = shop.querySelector('*[data-shop-image]') as HTMLImageElement
-  const name = shop.querySelector('*[data-shop-name]') as HTMLElement
-  const quantity = shop.querySelector('*[data-shop-quantity]') as HTMLElement
-  const oldPrice = shop.querySelector('*[data-shop-oldprice]') as HTMLElement
-  const price = shop.querySelector('*[data-shop-price]') as HTMLElement
+  const name = shop.querySelector('*[data-shop-name]') as HTMLSpanElement
+  const quantity = shop.querySelector(
+    '*[data-shop-quantity]'
+  ) as HTMLSpanElement
+  const oldPrice = shop.querySelector(
+    '*[data-shop-oldprice]'
+  ) as HTMLSpanElement
+  const price = shop.querySelector('*[data-shop-price]') as HTMLSpanElement
   const products = document.querySelectorAll(
     '*[data-product]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
   let timeOut: NodeJS.Timeout
 
   const classes: string[] = [
@@ -63,8 +67,9 @@ export default (): void => {
 
   close.addEventListener('click', shopHidden as EventListener)
 
-  products.forEach((element: Element): void => {
-    const product = element as HTMLElement
+  products.forEach((product: HTMLDivElement): void => {
+    if (!product) return
+
     const productImage = product.querySelector(
       '*[data-product-image]'
     ) as HTMLImageElement
@@ -73,10 +78,10 @@ export default (): void => {
     ) as HTMLElement
     const productOldPrice = product.querySelector(
       '*[data-product-oldprice]'
-    ) as HTMLElement
+    ) as HTMLSpanElement
     const productPrice = product.querySelector(
       '*[data-product-price]'
-    ) as HTMLElement
+    ) as HTMLSpanElement
     const productQuantity = product.querySelector(
       '*[data-product-quantity]'
     ) as HTMLInputElement

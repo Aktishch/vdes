@@ -1,5 +1,7 @@
 export default (): void => {
-  const preloader = document.querySelector('*[data-preloader]') as HTMLElement
+  const preloader = document.querySelector(
+    '*[data-preloader]'
+  ) as HTMLDivElement
 
   if (!preloader) return
 

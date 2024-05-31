@@ -3,7 +3,7 @@ export const fileHandler = ({
   error,
 }: {
   input: HTMLInputElement
-  error: HTMLElement
+  error: HTMLSpanElement
 }): boolean => {
   const files = input.files as FileList
 

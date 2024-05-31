@@ -1,11 +1,9 @@
 const setOutNumber = (section: HTMLElement): void => {
   const items = section.querySelectorAll(
     '*[data-number]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLSpanElement>
 
-  items.forEach((element: Element): void => {
-    const item = element as HTMLElement
-
+  items.forEach((item: HTMLSpanElement): void => {
     if (!item) return
 
     const number = Number(item.dataset.number)

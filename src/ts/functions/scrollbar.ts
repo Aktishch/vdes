@@ -1,8 +1,10 @@
 import { touchDevice } from './touch-device'
 
 export const scrollbarShow = (): void => {
-  const html = document.documentElement as HTMLElement
-  const smoothScroll = document.querySelector('#smooth-scroll') as HTMLElement
+  const html = document.documentElement as HTMLHtmlElement
+  const smoothScroll = document.querySelector(
+    '#smooth-scroll'
+  ) as HTMLDivElement
 
   if (!touchDevice())
     smoothScroll
@@ -13,8 +15,10 @@ export const scrollbarShow = (): void => {
 }
 
 export const scrollbarHidden = (): void => {
-  const html = document.documentElement as HTMLElement
-  const smoothScroll = document.querySelector('#smooth-scroll') as HTMLElement
+  const html = document.documentElement as HTMLHtmlElement
+  const smoothScroll = document.querySelector(
+    '#smooth-scroll'
+  ) as HTMLDivElement
   const scrollbarWidth: number = window.innerWidth - html.clientWidth
 
   if (!touchDevice())

@@ -20,11 +20,9 @@ export default (): void => {
 
   const items = document.querySelectorAll(
     '*[data-movement]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  items.forEach((element: Element): void => {
-    const item = element as HTMLElement
-
+  items.forEach((item: HTMLElement): void => {
     if (!item) return
 
     item.classList.add('movement')

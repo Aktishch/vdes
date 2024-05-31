@@ -1,5 +1,5 @@
 const setBubbles = (event: Event): void => {
-  const btn = event.target as HTMLElement
+  const btn = event.target as HTMLButtonElement | HTMLAnchorElement
 
   btn.dataset.bubles = 'show'
   btn.classList.add('pointer-events-none')
@@ -12,7 +12,11 @@ const setBubbles = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).closest('[data-bubbles]'))
+    if (
+      (event.target as HTMLButtonElement | HTMLAnchorElement).closest(
+        '[data-bubbles]'
+      )
+    )
       setBubbles(event)
   }) as EventListener)
 }

@@ -4,23 +4,19 @@ import { touchDevice } from './functions/touch-device'
 export default (): void => {
   const parallaxes = document.querySelectorAll(
     '*[data-parallax]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  parallaxes.forEach((element: Element): void => {
-    const parallax = element as HTMLElement
-
+  parallaxes.forEach((parallax: HTMLElement): void => {
     if (!parallax || touchDevice()) return
 
     const layers = parallax.querySelectorAll(
       '*[data-parallax-layer]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLElement>
     const hovereds = parallax.querySelectorAll(
       '*[data-parallax-hovered]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLElement>
 
-    layers.forEach((element: Element): void => {
-      const layer = element as HTMLElement
-
+    layers.forEach((layer: HTMLElement): void => {
       if (!layer) return
 
       const speed: number = layer.dataset.parallaxSpeed
@@ -71,9 +67,7 @@ export default (): void => {
       }) as EventListener)
     })
 
-    hovereds.forEach((element: Element): void => {
-      const hovered = element as HTMLElement
-
+    hovereds.forEach((hovered: HTMLElement): void => {
       if (!hovered) return
 
       const perspective: number = hovered.dataset.parallaxHovered
@@ -81,16 +75,14 @@ export default (): void => {
         : 600
       const items = hovered.querySelectorAll(
         '*[data-parallax-item]'
-      ) as NodeListOf<Element>
+      ) as NodeListOf<HTMLElement>
       const depth = 10
       let positionY = 0
       let positionX = 0
 
       hovered.style.perspective = `${perspective}px`
 
-      items.forEach((element: Element): void => {
-        const item = element as HTMLElement
-
+      items.forEach((item: HTMLElement): void => {
         if (!item) return
 
         const translateZ = item.dataset.parallaxItem

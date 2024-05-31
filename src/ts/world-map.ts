@@ -6,15 +6,14 @@ export default (): void => {
   const map = world.querySelector('*[data-world-map]') as SVGElement
   const countries = map.querySelectorAll(
     '*[data-world-country]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLAnchorElement>
   const flag = world.querySelector('*[data-world-flag]') as HTMLImageElement
   const title = world.querySelector('*[data-world-title]') as HTMLElement
   const offsetY: number = map.getBoundingClientRect().y
   const offsetX: number = map.getBoundingClientRect().x
   const ratio: number = 880 / map.getBoundingClientRect().width
 
-  countries.forEach((element: Element): void => {
-    const country = element as HTMLAnchorElement
+  countries.forEach((country: HTMLAnchorElement): void => {
     const path = country.querySelector('path') as SVGPathElement
     const pathHeight: number = path.getBoundingClientRect().height * ratio
     const pathWidth: number = path.getBoundingClientRect().width * ratio

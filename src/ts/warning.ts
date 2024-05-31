@@ -1,4 +1,4 @@
-import { dialogNotClosing, dialogClose } from './fancybox'
+import { dialog } from './fancybox'
 
 export default (): void => {
   if (
@@ -6,14 +6,14 @@ export default (): void => {
     sessionStorage.getItem('warning') !== 'positive'
   )
     setTimeout(
-      (): void => dialogNotClosing('./dialogs/dialog-warning.html'),
+      (): void => dialog.notClosing('./dialogs/dialog-warning.html'),
       2000
     )
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).hasAttribute('data-positive')) {
       sessionStorage.setItem('warning', 'positive')
-      dialogClose()
+      dialog.close()
     }
   }) as EventListener)
 

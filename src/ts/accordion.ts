@@ -1,11 +1,11 @@
 const setAccordion = (element: HTMLElement): void => {
-  const accordion = element as HTMLElement
-  const toggle = accordion.querySelector(
-    '*[data-accordion-toggle]'
-  ) as HTMLElement
+  const accordion = element as HTMLDivElement
+  const toggle = accordion.querySelector('*[data-accordion-toggle]') as
+    | HTMLDivElement
+    | HTMLButtonElement
   const content = accordion.querySelector(
     '*[data-accordion-content]'
-  ) as HTMLElement
+  ) as HTMLDivElement
   let timeOut: NodeJS.Timeout
 
   const setAccordionHeight = (duration = true): void => {
@@ -97,11 +97,9 @@ const setAccordion = (element: HTMLElement): void => {
 export default (): void => {
   const accordions = document.querySelectorAll(
     '*[data-accordion]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
 
-  accordions.forEach((element: Element): void => {
-    const accordion = element as HTMLElement
-
+  accordions.forEach((accordion: HTMLDivElement): void => {
     if (accordion) setAccordion(accordion)
   })
 }

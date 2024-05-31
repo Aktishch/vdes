@@ -51,11 +51,9 @@ const setWaved = (event: Event): void => {
 export default (): void => {
   const items = document.querySelectorAll(
     '*[data-waved]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  items.forEach((element: Element): void => {
-    const item = element as HTMLElement
-
+  items.forEach((item: HTMLElement): void => {
     if (!item) return
 
     const waved = document.createElement('div') as HTMLDivElement

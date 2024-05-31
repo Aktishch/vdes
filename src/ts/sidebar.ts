@@ -17,7 +17,7 @@ export default (): void => {
       const open = event.target as HTMLButtonElement
       const sidebar = document.querySelector(
         `#${open.dataset.sidebarOpen}`
-      ) as HTMLElement
+      ) as HTMLDivElement
 
       if (sidebar) openSidebar(sidebar)
     }
@@ -26,34 +26,32 @@ export default (): void => {
       const close = event.target as HTMLButtonElement
       const sidebar = document.querySelector(
         `#${close.dataset.sidebarClose}`
-      ) as HTMLElement
+      ) as HTMLDivElement
 
       if (sidebar) closeSidebar(sidebar)
     }
 
-    if ((event.target as HTMLElement).hasAttribute('data-sidebar')) {
-      const sidebar = event.target as HTMLElement
+    if ((event.target as HTMLDivElement).hasAttribute('data-sidebar')) {
+      const sidebar = event.target as HTMLDivElement
 
       if (sidebar) closeSidebar(sidebar)
     }
 
     if ((event.target as HTMLAnchorElement).hasAttribute('data-scroll')) {
       const link = event.target as HTMLAnchorElement
-      const sidebar = link.closest('[data-sidebar]') as HTMLElement
+      const sidebar = link.closest('[data-sidebar]') as HTMLDivElement
 
       if (sidebar) closeSidebar(sidebar)
     }
   }) as EventListener)
 
   window.addEventListener('resize', ((): void => {
-    const html = document.documentElement as HTMLElement
+    const html = document.documentElement as HTMLHtmlElement
     const sidebars = document.querySelectorAll(
       '*[data-sidebar]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLDivElement>
 
-    sidebars.forEach((element: Element): void => {
-      const sidebar = element as HTMLElement
-
+    sidebars.forEach((sidebar: HTMLDivElement): void => {
       if (sidebar.dataset.sidebarResize) {
         const breakpoint: number = media[sidebar.dataset.sidebarResize]
 

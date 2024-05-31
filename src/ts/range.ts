@@ -6,7 +6,7 @@ const getPosition = ({
 }: {
   number: number
   input: HTMLInputElement
-  progress: HTMLElement
+  progress: HTMLDivElement
   bubble: HTMLOutputElement
 }): void => {
   const value = Number(input.value)
@@ -38,30 +38,28 @@ const getPosition = ({
 export default (): void => {
   const ranges = document.querySelectorAll(
     '*[data-range]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
 
-  ranges.forEach((element: Element): void => {
-    const range = element as HTMLElement
-
+  ranges.forEach((range: HTMLDivElement): void => {
     if (!range) return
 
     const wrappers = range.querySelectorAll(
       '*[data-range-wrapper]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLDivElement>
     const first = 0
     const last = 1
 
     switch (wrappers.length) {
       case 1: {
-        const output = range.querySelector(
-          '*[data-range-output]'
-        ) as HTMLOutputElement
+        const output = range.querySelector('*[data-range-output]') as
+          | HTMLOutputElement
+          | HTMLInputElement
         const input = range.querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement
         const progress = range.querySelector(
           '*[data-range-progress]'
-        ) as HTMLElement
+        ) as HTMLDivElement
         const bubble = range.querySelector(
           '*[data-range-bubble]'
         ) as HTMLOutputElement
@@ -86,25 +84,27 @@ export default (): void => {
       case 2: {
         const outputs = range.querySelectorAll(
           '*[data-range-output]'
-        ) as NodeListOf<Element>
-        const firstOutput = outputs[first] as HTMLInputElement
-        const firstInput = (wrappers[first] as HTMLElement).querySelector(
+        ) as NodeListOf<HTMLOutputElement | HTMLInputElement>
+        const firstOutput = outputs[first] as
+          | HTMLOutputElement
+          | HTMLInputElement
+        const firstInput = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement
-        const firstProgress = (wrappers[first] as HTMLElement).querySelector(
+        const firstProgress = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-progress]'
-        ) as HTMLElement
-        const firstBubble = (wrappers[first] as HTMLElement).querySelector(
+        ) as HTMLDivElement
+        const firstBubble = (wrappers[first] as HTMLDivElement).querySelector(
           '*[data-range-bubble]'
         ) as HTMLOutputElement
-        const lastOutput = outputs[last] as HTMLInputElement
-        const lastInput = (wrappers[last] as HTMLElement).querySelector(
+        const lastOutput = outputs[last] as HTMLOutputElement | HTMLInputElement
+        const lastInput = (wrappers[last] as HTMLDivElement).querySelector(
           '*[data-range-input]'
         ) as HTMLInputElement
-        const lastProgress = (wrappers[last] as HTMLElement).querySelector(
+        const lastProgress = (wrappers[last] as HTMLDivElement).querySelector(
           '*[data-range-progress]'
-        ) as HTMLElement
-        const lastBubble = (wrappers[last] as HTMLElement).querySelector(
+        ) as HTMLDivElement
+        const lastBubble = (wrappers[last] as HTMLDivElement).querySelector(
           '*[data-range-bubble]'
         ) as HTMLOutputElement
 

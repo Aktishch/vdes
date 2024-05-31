@@ -3,19 +3,30 @@ import airDatepicker from './air-datepicker'
 import filtering from './filtering'
 import waved from './waved'
 
+type Dialog = {
+  open: (src: string) => void
+  notClosing: (src: string) => void
+  close: () => void
+}
+
 declare global {
   interface Window {
     Fancybox: typeof Fancybox
+    dialog: Dialog
   }
 }
 
+Fancybox.defaults.mainClass = 'fancybox-custom'
+Fancybox.defaults.trapFocus = false
+Fancybox.defaults.autoFocus = false
+Fancybox.defaults.placeFocusBack = false
 window.Fancybox = Fancybox
 
-export const dialogOpen = (requestUrl: string): void => {
+const open = (src: string): void => {
   window.Fancybox.show(
     [
       {
-        src: requestUrl,
+        src: src,
         type: 'ajax',
       },
     ],
@@ -28,11 +39,11 @@ export const dialogOpen = (requestUrl: string): void => {
   )
 }
 
-export const dialogNotClosing = (requestUrl: string): void => {
+const notClosing = (src: string): void => {
   window.Fancybox.show(
     [
       {
-        src: requestUrl,
+        src: src,
         type: 'ajax',
       },
     ],
@@ -47,14 +58,17 @@ export const dialogNotClosing = (requestUrl: string): void => {
   )
 }
 
-export const dialogClose = (): void => window.Fancybox.close()
+const close = (): void => window.Fancybox.close()
+
+export const dialog: Dialog = {
+  open: open,
+  notClosing: notClosing,
+  close: close,
+}
+
+window.dialog = dialog
 
 export default (): void => {
-  window.Fancybox.defaults.mainClass = 'fancybox-custom'
-  window.Fancybox.defaults.trapFocus = false
-  window.Fancybox.defaults.autoFocus = false
-  window.Fancybox.defaults.placeFocusBack = false
-
   window.Fancybox.bind('[data-fancybox]')
 
   window.Fancybox.bind('[data-fancybox-dialog]', {

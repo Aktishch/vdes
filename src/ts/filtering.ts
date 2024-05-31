@@ -1,68 +1,87 @@
+const cardsShowing = ({
+  condition,
+  item,
+}: {
+  condition: boolean
+  item: HTMLDivElement
+}): void => {
+  switch (condition) {
+    case true: {
+      item.classList.add('hidden')
+      break
+    }
+
+    case false: {
+      item.classList.remove('hidden')
+      item.classList.add('filtering-active')
+      setTimeout((): void => item.classList.remove('filtering-active'), 300)
+      break
+    }
+  }
+}
+
 const filterHandler = ({
   name,
   cards,
+  plug,
 }: {
   name: string
-  cards: NodeListOf<Element>
+  cards: NodeListOf<HTMLDivElement>
+  plug: HTMLDivElement
 }): void => {
-  cards.forEach((element: Element): void => {
-    const card = element as HTMLElement
+  let hidden = 0
+  cards.forEach((card: HTMLDivElement): void => {
     const absence: boolean =
       String(card.dataset.filteringValue).split(' ').includes(name) === false
     const showAll: boolean = name.toLowerCase() === 'all'
 
-    switch (absence && !showAll) {
-      case true: {
-        card.classList.add('hidden')
-        break
-      }
+    cardsShowing({ condition: absence && !showAll, item: card })
 
-      case false: {
-        card.classList.remove('hidden')
-        card.classList.add('filtering-active')
-        setTimeout((): void => card.classList.remove('filtering-active'), 300)
-        break
-      }
-    }
+    if (absence && !showAll) ++hidden
   })
+
+  if (plug) cardsShowing({ condition: hidden !== cards.length, item: plug })
 }
 
 export default (): void => {
   const filters = document.querySelectorAll(
     '*[data-filtering]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
 
-  filters.forEach((element: Element): void => {
-    const filter = element as HTMLElement
-
+  filters.forEach((filter: HTMLDivElement): void => {
     if (!filter) return
 
     const value = String(filter.dataset.filtering)
     const hash: string = window.location.hash.substr(1)
     const categories = document.querySelectorAll(
       `*[data-filtering-category="${value}"]`
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLButtonElement | HTMLDivElement>
     const cards = document.querySelectorAll(
       `*[data-filtering-card="${value}"]`
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLDivElement>
+    const plug = document.querySelector(
+      `*[data-filtering-plug="${value}"]`
+    ) as HTMLDivElement
     const line = document.querySelector(
       `*[data-filtering-line="${value}"]`
-    ) as HTMLElement
+    ) as HTMLSpanElement
 
-    const currentCategory = (): HTMLElement => {
-      let active = categories[0] as HTMLElement
+    const currentCategory = (): HTMLButtonElement | HTMLDivElement => {
+      let active = categories[0] as HTMLButtonElement | HTMLDivElement
 
-      categories.forEach((element: Element): void => {
-        const category = element as HTMLElement
-
-        if (category.classList.contains('filtering-active')) active = category
-      })
+      categories.forEach(
+        (category: HTMLButtonElement | HTMLDivElement): void => {
+          if (category.classList.contains('filtering-active')) active = category
+        }
+      )
 
       return active
     }
 
-    const currentCard = (category: HTMLElement): void => {
-      const active = currentCategory()
+    const currentCard = (
+      category: HTMLButtonElement | HTMLDivElement
+    ): void => {
+      const active = currentCategory() as HTMLButtonElement | HTMLDivElement
       const name = String(category.dataset.filteringValue)
 
       active.classList.remove('filtering-active')
@@ -73,14 +92,12 @@ export default (): void => {
         line.style.left = `${category.offsetLeft}px`
       }
 
-      filterHandler({ name: name, cards: cards })
+      filterHandler({ name: name, cards: cards, plug: plug })
     }
 
     currentCard(currentCategory())
 
-    categories.forEach((element: Element): void => {
-      const category = element as HTMLElement
-
+    categories.forEach((category: HTMLButtonElement | HTMLDivElement): void => {
       if (!category) return
 
       category.addEventListener('click', ((): void => {
@@ -91,7 +108,9 @@ export default (): void => {
     if (hash && hash !== '') {
       for (const [index, card] of cards.entries()) {
         if (card.querySelector(`#${hash}`)) {
-          const category = categories[index] as HTMLElement
+          const category = categories[index] as
+            | HTMLButtonElement
+            | HTMLDivElement
 
           currentCard(category)
         }

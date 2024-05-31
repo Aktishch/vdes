@@ -1,5 +1,5 @@
 export default (): void => {
-  const year = document.querySelector('#year') as HTMLElement
+  const year = document.querySelector('#year') as HTMLSpanElement
 
   if (!year) return
 

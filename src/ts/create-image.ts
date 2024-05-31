@@ -1,11 +1,9 @@
 export default (): void => {
   const images = document.querySelectorAll(
     '*[data-image]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
 
-  images.forEach((element: Element): void => {
-    const image = element as HTMLElement
-
+  images.forEach((image: HTMLDivElement): void => {
     if (!image) return
 
     const canvas = image.querySelector(

@@ -1,5 +1,7 @@
+import { dialog } from './fancybox'
+
 export default (): void => {
-  const game = document.querySelector('*[data-game]') as HTMLElement
+  const game = document.querySelector('*[data-game]') as HTMLDivElement
 
   if (!game) return
 
@@ -79,9 +81,7 @@ export default (): void => {
         checkCell(cell)
 
         if (checkWin(player)) {
-          window.Fancybox.show([
-            { src: 'https://youtu.be/YAXoB3OseLM?si=_Pq1_CttmNpaOhtX' },
-          ])
+          dialog.open('https://youtu.be/YAXoB3OseLM?si=_Pq1_CttmNpaOhtX')
           over = true
         } else if (checkDraw()) {
           alert('Ничья!')

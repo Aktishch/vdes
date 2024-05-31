@@ -1,12 +1,12 @@
 export default (): void => {
-  const social = document.querySelector('*[data-social]') as HTMLElement
+  const social = document.querySelector('*[data-social]') as HTMLDivElement
 
   if (!social) return
 
-  const round = social.querySelector('*[data-social-round]') as HTMLElement
+  const round = social.querySelector('*[data-social-round]') as HTMLDivElement
   const links = social.querySelectorAll(
     '*[data-social-link]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLAnchorElement>
   const btn = social.querySelector('*[data-social-button]') as HTMLButtonElement
   let lastTap: number
 

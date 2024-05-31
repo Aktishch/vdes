@@ -1,4 +1,4 @@
-import { dialogOpen, dialogNotClosing, dialogClose } from './fancybox'
+import { dialog } from './fancybox'
 import { validation } from './functions/validation'
 
 const submitHandler = ({
@@ -44,7 +44,7 @@ const submitHandler = ({
         case 'submit': {
           requestUrl = './ajax/submit-handler.php'
           submitBtn.setAttribute('disabled', 'disabled')
-          dialogNotClosing('./dialogs/dialog-preloader.html')
+          dialog.notClosing('./dialogs/dialog-preloader.html')
 
           fetch(requestUrl, {
             method: 'POST',
@@ -54,16 +54,16 @@ const submitHandler = ({
               return response.json()
             })
             .then((response): void => {
-              dialogClose()
+              dialog.close()
 
               switch (response.status) {
                 case true: {
-                  dialogOpen('./dialogs/dialog-success.html')
+                  dialog.open('./dialogs/dialog-success.html')
                   break
                 }
 
                 case false: {
-                  dialogOpen('./dialogs/dialog-error.html')
+                  dialog.open('./dialogs/dialog-error.html')
                   break
                 }
               }
@@ -74,10 +74,10 @@ const submitHandler = ({
               if (form.hasAttribute('data-files')) {
                 const listing = form.querySelector(
                   '*[data-files-listing]'
-                ) as HTMLElement
+                ) as HTMLUListElement
                 const text = form.querySelector(
                   '*[data-files-text]'
-                ) as HTMLElement
+                ) as HTMLSpanElement
 
                 listing.innerHTML = ''
                 listing.classList.remove('mb-5')
@@ -93,8 +93,8 @@ const submitHandler = ({
 
         case 'params': {
           requestUrl = `./dialogs/dialog-authorization.html?${queryString}`
-          dialogClose()
-          dialogOpen(requestUrl)
+          dialog.close()
+          dialog.open(requestUrl)
           break
         }
       }

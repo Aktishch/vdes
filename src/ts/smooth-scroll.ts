@@ -4,15 +4,17 @@ import { scrolledPage } from './functions/scrolled-page'
 import { animation } from './animation'
 
 export default (): void => {
-  const smoothScroll = document.querySelector('#smooth-scroll') as HTMLElement
+  const smoothScroll = document.querySelector(
+    '#smooth-scroll'
+  ) as HTMLDivElement
 
   if (!smoothScroll || isSafari() || touchDevice()) return
 
-  const html = document.documentElement as HTMLElement
+  const html = document.documentElement as HTMLHtmlElement
   const body = document.body as HTMLBodyElement
   const wrappers = smoothScroll.querySelectorAll(
     '*[data-smooth-wrapper]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
   const speed: number = smoothScroll.dataset.smoothSpeed
     ? Number(smoothScroll.dataset.smoothSpeed) / 100
     : 0.02
@@ -29,7 +31,7 @@ export default (): void => {
     setBodyHeight()
     offset += (scrolledPage().top - offset) * smoothSpeed
 
-    const translateY = `translateY(-${offset}px)`
+    const translateY: string = `translateY(-${offset}px)`
 
     smoothScroll.style.transform = translateY
     sessionStorage.setItem('translateY', translateY)
@@ -60,21 +62,17 @@ export default (): void => {
   )
   window.requestAnimationFrame(createSmoothScroll)
 
-  wrappers.forEach((element: Element): void => {
-    const wrapper = element as HTMLElement
-
+  wrappers.forEach((wrapper: HTMLElement): void => {
     if (!wrapper) return
 
     const stickys = wrapper.querySelectorAll(
       '*[data-smooth-sticky]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLElement>
     const layers = wrapper.querySelectorAll(
       '*[data-smooth-layer]'
-    ) as NodeListOf<Element>
+    ) as NodeListOf<HTMLElement>
 
-    stickys.forEach((element: Element): void => {
-      const sticky = element as HTMLElement
-
+    stickys.forEach((sticky: HTMLElement): void => {
       if (!sticky) return
 
       let stickyPosition = 0
@@ -95,9 +93,7 @@ export default (): void => {
       window.requestAnimationFrame(createSmothSticky)
     })
 
-    layers.forEach((element: Element): void => {
-      const layer = element as HTMLElement
-
+    layers.forEach((layer: HTMLElement): void => {
       if (!layer) return
 
       const layerSpeed: number = layer.dataset.smoothSpeed

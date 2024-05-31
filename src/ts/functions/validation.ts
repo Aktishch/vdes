@@ -3,32 +3,30 @@ import { fileHandler } from './file-handler'
 export const validation = (form: HTMLFormElement): boolean => {
   const labels = form.querySelectorAll(
     '*[data-label="input"]'
-  ) as NodeListOf<Element>
-  const download = form.querySelector('*[data-label="download"]') as HTMLElement
+  ) as NodeListOf<HTMLLabelElement>
+  const download = form.querySelector(
+    '*[data-label="download"]'
+  ) as HTMLDivElement
   let validate = true
 
   if (download) {
     const input = download.querySelector(
       '*[data-input="file"]'
     ) as HTMLInputElement
-    const error = download.querySelector('*[data-error]') as HTMLElement
+    const error = download.querySelector('*[data-error]') as HTMLSpanElement
 
     validate = fileHandler({ input: input, error: error })
   }
 
-  labels.forEach((element: Element): void => {
-    const label = element as HTMLLabelElement
-
+  labels.forEach((label: HTMLLabelElement): void => {
     if (!label) return
 
     const inputs = label.querySelectorAll(
       '*[data-input]'
-    ) as NodeListOf<Element>
-    const error = label.querySelector('*[data-error]') as HTMLElement
+    ) as NodeListOf<HTMLInputElement>
+    const error = label.querySelector('*[data-error]') as HTMLSpanElement
 
-    inputs.forEach((element: Element): void => {
-      const input = element as HTMLInputElement
-
+    inputs.forEach((input: HTMLInputElement): void => {
       if (!input && !error) return
 
       const inputError = (): void => {

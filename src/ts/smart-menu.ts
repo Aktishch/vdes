@@ -1,13 +1,17 @@
 export default (): void => {
-  const smartMenu = document.querySelector('*[data-smart]') as HTMLElement
+  const smartMenu = document.querySelector('*[data-smart]') as HTMLDivElement
 
   if (!smartMenu) return
 
   const title = smartMenu.querySelector('*[data-smart-title]') as HTMLElement
-  const length = smartMenu.querySelector('*[data-smart-length]') as HTMLElement
-  const nav = smartMenu.querySelector('*[data-smart-nav]') as HTMLButtonElement
-  const count = smartMenu.querySelector('*[data-smart-count]') as HTMLElement
-  const list = smartMenu.querySelector('*[data-smart-list]') as HTMLElement
+  const length = smartMenu.querySelector(
+    '*[data-smart-length]'
+  ) as HTMLUListElement
+  const nav = smartMenu.querySelector('*[data-smart-nav]') as HTMLDivElement
+  const count = smartMenu.querySelector(
+    '*[data-smart-count]'
+  ) as HTMLSpanElement
+  const list = smartMenu.querySelector('*[data-smart-list]') as HTMLUListElement
   const breaks: number[] = []
 
   const updateSmartMenu = (): void => {
@@ -19,7 +23,7 @@ export default (): void => {
     switch (smartMenuWidth > 0 && smartMenuWidth < lengthWidth) {
       case true: {
         breaks.push(lengthWidth)
-        list.prepend(length.lastElementChild as HTMLElement)
+        list.prepend(length.lastElementChild as HTMLLIElement)
         count.innerText = String(breaks.length)
         updateSmartMenu()
         break
@@ -28,7 +32,7 @@ export default (): void => {
       case false: {
         if (smartMenuWidth > breaks[breaks.length - 1]) {
           breaks.pop()
-          length.append(list.firstElementChild as HTMLElement)
+          length.append(list.firstElementChild as HTMLLIElement)
           count.innerText = String(breaks.length)
         }
 
@@ -36,7 +40,7 @@ export default (): void => {
       }
     }
 
-    ;(list.querySelectorAll('li') as NodeListOf<Element>).length === 0
+    ;(list.querySelectorAll('li') as NodeListOf<HTMLLIElement>).length === 0
       ? nav.classList.add('hidden')
       : nav.classList.remove('hidden')
 

@@ -7,21 +7,23 @@ export default (): File[] => {
     if (
       (event.target as HTMLInputElement).getAttribute('data-input') === 'file'
     ) {
-      const form = (event.target as HTMLInputElement).closest(
-        '[data-files]'
-      ) as HTMLFormElement
+      const input = event.target as HTMLInputElement
+      const form = input.closest('[data-files]') as HTMLFormElement
 
       if (!form) return
 
       const download = form.querySelector(
         '*[data-label="download"]'
-      ) as HTMLLabelElement
-      const input = event.target as HTMLInputElement
+      ) as HTMLDivElement
       const files = input.files as FileList
-      const text = download.querySelector('*[data-files-text]') as HTMLElement
-      const error = download.querySelector('*[data-error]') as HTMLElement
-      const listing = form.querySelector('*[data-files-listing]') as HTMLElement
-      const item = document.createElement('li') as HTMLElement
+      const text = download.querySelector(
+        '*[data-files-text]'
+      ) as HTMLSpanElement
+      const error = download.querySelector('*[data-error]') as HTMLSpanElement
+      const listing = form.querySelector(
+        '*[data-files-listing]'
+      ) as HTMLUListElement
+      const item = document.createElement('li') as HTMLLIElement
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
@@ -59,24 +61,24 @@ export default (): File[] => {
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLButtonElement).closest('[data-files-remove]')) {
-      const form = (event.target as HTMLInputElement).closest(
-        '[data-files'
-      ) as HTMLFormElement
+      const btn = event.target as HTMLButtonElement
+      const form = btn.closest('[data-files') as HTMLFormElement
 
       if (!form) return
 
       const download = form.querySelector(
         '*[data-label="download"]'
-      ) as HTMLLabelElement
+      ) as HTMLDivElement
       const input = download.querySelector(
         '*[data-input="file"]'
       ) as HTMLInputElement
-      const text = download.querySelector('*[data-files-text]') as HTMLElement
-      const listing = form.querySelector('*[data-files-listing]') as HTMLElement
-      const item = (event.target as HTMLButtonElement).closest(
-        '[data-files-item]'
-      ) as HTMLElement
-      const btn = event.target as HTMLButtonElement
+      const text = download.querySelector(
+        '*[data-files-text]'
+      ) as HTMLSpanElement
+      const listing = form.querySelector(
+        '*[data-files-listing]'
+      ) as HTMLUListElement
+      const item = btn.closest('[data-files-item]') as HTMLLIElement
 
       for (let i = 0; i < data.length; i++) {
         if (btn.dataset.filesRemove === String(data[i].name)) {

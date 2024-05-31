@@ -11,11 +11,11 @@ const setOffset = (element: HTMLElement): Coordinates => {
 }
 
 export const animation = (): void => {
-  const items = document.querySelectorAll('*[data-anim]') as NodeListOf<Element>
+  const items = document.querySelectorAll(
+    '*[data-anim]'
+  ) as NodeListOf<HTMLElement>
 
-  items.forEach((element: Element): void => {
-    const item = element as HTMLElement
-
+  items.forEach((item: HTMLElement): void => {
     if (!item) return
 
     const height: number = item.offsetHeight

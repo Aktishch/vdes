@@ -9,7 +9,7 @@ declare global {
 window.ymaps = ymaps
 
 export default (): void => {
-  const yandexMap = document.querySelector('#yandex-map') as HTMLElement
+  const yandexMap = document.querySelector('#yandex-map') as HTMLDivElement
 
   if (!yandexMap) return
 

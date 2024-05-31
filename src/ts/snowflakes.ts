@@ -2,7 +2,7 @@ import { Coordinates } from './functions/coordinates'
 import { touchDevice } from './functions/touch-device'
 
 export default (): void => {
-  const snow = document.querySelector('*[data-snow]') as HTMLElement
+  const snow = document.querySelector('*[data-snow]') as HTMLDivElement
 
   if (!snow || touchDevice()) return
 

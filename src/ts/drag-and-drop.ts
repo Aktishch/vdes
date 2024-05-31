@@ -8,20 +8,20 @@ export default (): void => {
       if ((event.target as HTMLElement).closest('[data-drag]')) {
         event.preventDefault()
 
-        const form = (event.target as HTMLElement).closest('[data-form]')
+        const drag = (event.target as HTMLElement).closest(
+          '[data-drag]'
+        ) as HTMLDivElement
+        const form = drag.closest('[data-form]')
 
         if (!form) return
 
         const download = form.querySelector(
           '*[data-label="download"]'
-        ) as HTMLElement
-        const drag = (event.target as HTMLElement).closest(
-          '[data-drag]'
-        ) as HTMLElement
+        ) as HTMLDivElement
         const input = download.querySelector(
           '*[data-input="file"]'
         ) as HTMLInputElement
-        const error = download.querySelector('*[data-error]') as HTMLElement
+        const error = download.querySelector('*[data-error]') as HTMLSpanElement
         const image = download.querySelector(
           '*[data-file="image"]'
         ) as HTMLImageElement

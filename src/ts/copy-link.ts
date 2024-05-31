@@ -1,7 +1,7 @@
 const copyLink = (event: Event): void => {
   const copy = (event.target as HTMLButtonElement).closest(
     '[data-copy]'
-  ) as HTMLElement
+  ) as HTMLDivElement
   const input = copy.querySelector('*[data-copy-input]') as HTMLInputElement
 
   setTimeout((): void => {

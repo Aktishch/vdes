@@ -1,11 +1,9 @@
 const visibilityPassword = (event: Event): void => {
-  const label = (event.target as HTMLElement).closest(
-    '[data-label]'
-  ) as HTMLElement
+  const password = event.target as HTMLButtonElement
+  const label = password.closest('[data-label]') as HTMLLabelElement
   const input = label.querySelector(
     '*[data-input="password"]'
   ) as HTMLInputElement
-  const password = label.querySelector('*[data-password]') as HTMLElement
   const icon = password.querySelector('use') as SVGUseElement
   const src: string = password.dataset.password || ''
 
@@ -26,7 +24,7 @@ const visibilityPassword = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).closest('[data-password]'))
+    if ((event.target as HTMLButtonElement).closest('[data-password]'))
       visibilityPassword(event)
   }) as EventListener)
 }

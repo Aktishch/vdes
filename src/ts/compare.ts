@@ -3,22 +3,20 @@ import { scrollbarShow, scrollbarHidden } from './functions/scrollbar'
 export default (): void => {
   const compares = document.querySelectorAll(
     '*[data-compare]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLDivElement>
 
-  compares.forEach((element: Element): void => {
-    const compare = element as HTMLElement
-
+  compares.forEach((compare: HTMLDivElement): void => {
     if (!compare) return
 
     const before = compare.querySelector(
       '*[data-compare-before]'
-    ) as HTMLElement
+    ) as HTMLDivElement
     const image = compare.querySelector(
       '*[data-compare-image]'
     ) as HTMLImageElement
     const change = compare.querySelector(
       '*[data-compare-change]'
-    ) as HTMLElement
+    ) as HTMLDivElement
     let active = false
     let value: number
     let position: number

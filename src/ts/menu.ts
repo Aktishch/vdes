@@ -2,7 +2,7 @@ import { touchDevice } from './functions/touch-device'
 import { openSidebar, closeSidebar } from './sidebar'
 
 export default (): void => {
-  const menu = document.getElementById('menu') as HTMLElement
+  const menu = document.getElementById('menu') as HTMLDivElement
 
   if (!menu && !touchDevice()) return
 

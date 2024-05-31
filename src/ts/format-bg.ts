@@ -1,18 +1,19 @@
 const canUseWebp = (): boolean => {
   const canvas = document.createElement('canvas') as HTMLCanvasElement
 
-  if (canvas.getContext && canvas.getContext('2d'))
+  if (canvas.getContext && canvas.getContext('2d')) {
     return canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0
-
-  return false
+  } else {
+    return false
+  }
 }
 
 const createBackground = (data: string): void => {
-  const items = document.querySelectorAll(`*[${data}]`) as NodeListOf<Element>
+  const items = document.querySelectorAll(
+    `*[${data}]`
+  ) as NodeListOf<HTMLElement>
 
-  items.forEach((element: Element): void => {
-    const item = element as HTMLElement
-
+  items.forEach((item: HTMLElement): void => {
     if (!item) return
 
     item.style.backgroundImage = `url('${item.getAttribute(`${data}`)}')`

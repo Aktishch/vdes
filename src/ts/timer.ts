@@ -1,14 +1,14 @@
 import { timeFormat } from './functions/time-format'
 
 export default (): void => {
-  const timer = document.querySelector('*[data-timer]') as HTMLElement
+  const timer = document.querySelector('*[data-timer]') as HTMLDivElement
 
   if (!timer) return
 
   const stopwatch = timer.querySelector(
     '*[data-timer-stopwatch]'
-  ) as HTMLElement
-  const units = timer.querySelector('*[data-timer-units]') as HTMLElement
+  ) as HTMLDivElement
+  const units = timer.querySelector('*[data-timer-units]') as HTMLTimeElement
   const turn = timer.querySelector('*[data-timer-turn]') as HTMLButtonElement
   const icon = turn.querySelector('use') as SVGUseElement
   const reset = timer.querySelector('*[data-timer-reset]') as HTMLButtonElement

@@ -37,7 +37,7 @@ const scrollTo = (event: Event): void => {
 
 export default (): void => {
   document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).hasAttribute('data-scroll'))
+    if ((event.target as HTMLAnchorElement).hasAttribute('data-scroll'))
       scrollTo(event)
   }) as EventListener)
 }

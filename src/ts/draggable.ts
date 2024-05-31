@@ -6,7 +6,7 @@ const setTranslate = ({
   positionX,
   positionY,
 }: {
-  element: HTMLElement
+  element: HTMLButtonElement | HTMLDivElement
   positionX: number
   positionY: number
 }): void => {
@@ -14,7 +14,7 @@ const setTranslate = ({
 }
 
 const setDraggable = (id: string): void => {
-  const draggable = document.querySelector(`#${id}`) as HTMLElement
+  const draggable = document.querySelector(`#${id}`) as HTMLButtonElement
 
   if (!draggable) return
 
@@ -29,7 +29,7 @@ const setDraggable = (id: string): void => {
   const getDragPosition = (): void => {
     draggable.closest('[data-draggable]')
       ? setTranslate({
-          element: draggable.closest('[data-draggable]') as HTMLElement,
+          element: draggable.closest('[data-draggable]') as HTMLDivElement,
           positionX: coordinates.left,
           positionY: coordinates.top,
         })

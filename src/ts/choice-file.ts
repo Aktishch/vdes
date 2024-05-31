@@ -1,13 +1,13 @@
-import { dialogNotClosing, dialogClose } from './fancybox'
+import { dialog } from './fancybox'
 import { fileHandler } from './functions/file-handler'
 
 const choiceFile = (event: Event): void => {
-  const form = (event.target as HTMLInputElement).closest(
-    '[data-form]'
-  ) as HTMLFormElement
-  const download = form.querySelector('*[data-label="download"]') as HTMLElement
   const input = event.target as HTMLInputElement
-  const error = download.querySelector('*[data-error]') as HTMLElement
+  const form = input.closest('[data-form]') as HTMLFormElement
+  const download = form.querySelector(
+    '*[data-label="download"]'
+  ) as HTMLDivElement
+  const error = download.querySelector('*[data-error]') as HTMLSpanElement
   const image = download.querySelector(
     '*[data-file="image"]'
   ) as HTMLImageElement
@@ -31,7 +31,7 @@ const choiceFile = (event: Event): void => {
         '*[data-avatar]'
       ) as HTMLImageElement
 
-      dialogNotClosing('./dialogs/dialog-preloader.html')
+      dialog.notClosing('./dialogs/dialog-preloader.html')
 
       fetch(requestUrl, {
         method: 'POST',
@@ -42,7 +42,7 @@ const choiceFile = (event: Event): void => {
         })
         .then((): void => {
           avatar.src = String(readFile.result)
-          dialogClose()
+          dialog.close()
         })
         .catch((error: string): void =>
           console.log('The form has not been sent', error)

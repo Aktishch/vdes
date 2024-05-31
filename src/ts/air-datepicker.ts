@@ -15,7 +15,7 @@ window.AirDatepicker = AirDatepicker
 export default (): void => {
   const datepickers = document.querySelectorAll(
     '*[data-datepicker]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLInputElement>
   const excludeDates: number[] = [
     +new Date(2024, 4, 5),
     +new Date(2024, 5, 7),
@@ -48,21 +48,19 @@ export default (): void => {
     locale: localeRu,
     onRenderCell: renderCellHandler,
     selectedDates: [new Date()],
-  }) as AirDatepicker<HTMLElement>
+  }) as AirDatepicker<HTMLDivElement>
 
   document.addEventListener('click', ((event: Event): void => {
     if ((event.target as HTMLElement).closest('#calendar')) {
       const calendar = (event.target as HTMLElement).closest(
         '#calendar'
-      ) as HTMLElement
+      ) as HTMLDivElement
 
       if (calendar.querySelector('.filtering-active')) filtering()
     }
   }) as EventListener)
 
-  datepickers.forEach((element: Element): void => {
-    const datepicker = element as HTMLElement
-
+  datepickers.forEach((datepicker: HTMLInputElement): void => {
     if (!datepicker) return
 
     const inputMin = datepicker.querySelector(

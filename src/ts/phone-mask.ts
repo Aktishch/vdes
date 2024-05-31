@@ -5,7 +5,7 @@ const getValue = (input: HTMLInputElement): string => {
 const formatterValue = (value: string): string => {
   if (value[0] === '9') value = '7' + value
 
-  const firstVal = value[0] === '8' ? '8' : '+7'
+  const firstVal: string = value[0] === '8' ? '8' : '+7'
   let formatted: string
 
   formatted = firstVal + ' '
@@ -65,12 +65,10 @@ const onPaste = (event: ClipboardEvent): void => {
   const value: string = getValue(input)
   const pasted: DataTransfer | null = event.clipboardData
 
-  if (pasted) {
-    if (/\D/g.test(pasted.getData('Text'))) {
-      input.value = value
+  if (pasted && /\D/g.test(pasted.getData('Text'))) {
+    input.value = value
 
-      return
-    }
+    return
   }
 }
 

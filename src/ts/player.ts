@@ -47,7 +47,7 @@ const setPlayer = ({
 
   const compositions = player.querySelectorAll(
     '*[data-player-composition]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLButtonElement>
   const poster = player.querySelector(
     '*[data-player-poster]'
   ) as HTMLImageElement
@@ -56,16 +56,20 @@ const setPlayer = ({
   const audio = player.querySelector('*[data-player-audio]') as HTMLAudioElement
   const progress = player.querySelector(
     '*[data-player-progress]'
-  ) as HTMLElement
-  const range = player.querySelector('*[data-player-range]') as HTMLElement
+  ) as HTMLDivElement
+  const range = player.querySelector('*[data-player-range]') as HTMLDivElement
   const play = player.querySelector('*[data-player-play]') as HTMLButtonElement
   const loading = play.querySelector('*[data-player-loading]') as SVGElement
   const status = play.querySelector('*[data-player-status]') as SVGElement
   const icon = status.querySelector('use') as SVGUseElement
   const prev = player.querySelector('*[data-player-prev]') as HTMLButtonElement
   const next = player.querySelector('*[data-player-next]') as HTMLButtonElement
-  const start = player.querySelector('*[data-player-start]') as HTMLElement
-  const end = player.querySelector('*[data-player-end]') as HTMLElement
+  const start = player.querySelector('*[data-player-start]') as
+    | HTMLDivElement
+    | HTMLSpanElement
+  const end = player.querySelector('*[data-player-end]') as
+    | HTMLDivElement
+    | HTMLSpanElement
   const volume = player.querySelector(
     '*[data-player-volume]'
   ) as HTMLButtonElement
@@ -85,18 +89,13 @@ const setPlayer = ({
 
   const setComposition = (index: number): void => {
     if (artist) artist.innerText = playlist[index].artist
-
     if (song) song.innerText = playlist[index].song
-
     if (audio) audio.src = playlist[index].audio
-
     if (poster) poster.src = playlist[index].poster
   }
 
   const currentComposition = (): void => {
-    compositions.forEach((element: Element): void => {
-      const composition = element as HTMLButtonElement
-
+    compositions.forEach((composition: HTMLButtonElement): void => {
       if (!composition) return
 
       const compositionIndex = Number(composition.dataset.playerComposition)
@@ -181,7 +180,7 @@ const setPlayer = ({
   }
 
   const progressStart = (event: Event): void => {
-    if ((event.target as HTMLElement).closest('[data-player-progress]')) {
+    if ((event.target as HTMLDivElement).closest('[data-player-progress]')) {
       scrollbarHidden()
       active = true
     }
@@ -198,7 +197,7 @@ const setPlayer = ({
 
     if (!active) return
 
-    if ((event.target as HTMLElement).closest('[data-player-controls]')) {
+    if ((event.target as HTMLDivElement).closest('[data-player-controls]')) {
       switch (event.type) {
         case 'mousemove': {
           const clickX: number = (event as MouseEvent).offsetX
@@ -227,9 +226,7 @@ const setPlayer = ({
   }
 
   const audioLoad = (event: Event): void => {
-    compositions.forEach((element: Element): void => {
-      const composition = element as HTMLButtonElement
-
+    compositions.forEach((composition: HTMLButtonElement): void => {
       if (!composition) return
 
       const compositionIndex = Number(composition.dataset.playerComposition)
@@ -273,7 +270,7 @@ const setPlayer = ({
     time,
   }: {
     type: string
-    time: HTMLElement
+    time: HTMLDivElement | HTMLSpanElement
   }): void => {
     switch (type) {
       case 'timeupdate': {
@@ -313,7 +310,6 @@ const setPlayer = ({
   setComposition(index)
 
   if (start) start.innerText = '00:00'
-
   if (end) end.innerText = '00:00'
 
   if (sessionStorage.getItem(`${id}`)) {
@@ -332,9 +328,7 @@ const setPlayer = ({
     }
   }
 
-  compositions.forEach((element: Element): void => {
-    const composition = element as HTMLButtonElement
-
+  compositions.forEach((composition: HTMLButtonElement): void => {
     if (!composition) return
 
     const compositionIndex = Number(composition.dataset.playerComposition)

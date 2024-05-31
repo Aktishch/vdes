@@ -1,11 +1,9 @@
 export default (): void => {
   const listings = document.querySelectorAll(
     '*[data-listing]'
-  ) as NodeListOf<Element>
+  ) as NodeListOf<HTMLElement>
 
-  listings.forEach((element: Element): void => {
-    const listing = element as HTMLElement
-
+  listings.forEach((listing: HTMLElement): void => {
     if (!listing) return
 
     const show = listing.querySelector(
@@ -15,22 +13,23 @@ export default (): void => {
     show.addEventListener('click', ((): void => {
       const items = listing.querySelectorAll(
         '*[data-listing-item]'
-      ) as NodeListOf<Element>
+      ) as NodeListOf<HTMLDivElement>
       const count: number =
         listing.dataset.listing !== '' || undefined || null
           ? Number(listing.dataset.listing)
           : items.length
 
       for (let i = 0; i < count; i++) {
-        if (items[i] && items[i].classList.contains('hidden'))
-          items[i].classList.remove('hidden')
+        const item = items[i] as HTMLDivElement
 
-        if (items[i] && items[i].hasAttribute('data-anim'))
-          (items[i] as HTMLElement).dataset.anim = 'show'
+        if (item && item.classList.contains('hidden'))
+          item.classList.remove('hidden')
 
-        if (items[i]) items[i].removeAttribute('data-listing-item')
+        if (item && item.hasAttribute('data-anim')) item.dataset.anim = 'show'
 
-        if (!items[i] || items.length === count) show.remove()
+        if (item) item.removeAttribute('data-listing-item')
+
+        if (!item || items.length === count) show.remove()
       }
     }) as EventListener)
   })
