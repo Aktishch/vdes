@@ -3,26 +3,26 @@ import localeRu from 'air-datepicker/locale/ru'
 import { touchDevice } from './functions/touch-device'
 import filtering from './filtering'
 
+const excludeDates: number[] = [
+  +new Date(2024, 4, 5),
+  +new Date(2024, 5, 7),
+  +new Date(2024, 5, 10),
+]
+
 declare global {
   interface Window {
     AirDatepicker: typeof AirDatepicker
-    excludeDates: number[]
+    excludeDates: typeof excludeDates
   }
 }
 
 window.AirDatepicker = AirDatepicker
+window.excludeDates = excludeDates
 
-export default (): void => {
-  const datepickers = document.querySelectorAll(
-    '*[data-datepicker]'
-  ) as NodeListOf<HTMLInputElement>
-  const excludeDates: number[] = [
-    +new Date(2024, 4, 5),
-    +new Date(2024, 5, 7),
-    +new Date(2024, 5, 10),
-  ]
+export const createCalendar = (): void => {
+  const calendar = document.getElementById('calendar') as HTMLDivElement
 
-  window.excludeDates = excludeDates
+  if (!calendar) return
 
   const renderCellHandler = ({
     date,
@@ -50,15 +50,21 @@ export default (): void => {
     selectedDates: [new Date()],
   }) as AirDatepicker<HTMLDivElement>
 
-  document.addEventListener('click', ((event: Event): void => {
-    if ((event.target as HTMLElement).closest('#calendar')) {
-      const calendar = (event.target as HTMLElement).closest(
-        '#calendar'
-      ) as HTMLDivElement
-
+  calendar.addEventListener('click', ((event: Event): void => {
+    if (
+      (event.target as HTMLElement).closest('.air-datepicker-cell') ||
+      (event.target as HTMLElement).closest('.air-datepicker-nav--action') ||
+      (event.target as HTMLElement).closest('.air-datepicker-nav--title')
+    ) {
       if (calendar.querySelector('.filtering-active')) filtering()
     }
   }) as EventListener)
+}
+
+export default (): void => {
+  const datepickers = document.querySelectorAll(
+    '*[data-datepicker]'
+  ) as NodeListOf<HTMLInputElement>
 
   datepickers.forEach((datepicker: HTMLInputElement): void => {
     if (!datepicker) return

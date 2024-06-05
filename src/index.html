@@ -18,7 +18,7 @@
 <!-- Первоначальный блок -->
 
 <section class="container flex flex-col items-center justify-center bg-white dark:bg-black min-h-[500px] xl:min-h-[600px]" id="header">
-  <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block mb-10 duration-10 anim anim-up', data: 'data-anim="hidden"', draggable: true}) %>
+  <%= picture({src: 'img/pictures/logo', format: 'svg', className: 'block mb-10 duration-10 anim anim-up', data: 'data-anim="hidden"'}) %>
   <h1 class="mb-5 font-bold text-center font-alt text-48 lg:text-6xl leading-2 md:mb-10 duration-5 delay-2 anim anim-up" data-anim="hidden" data-movement="blend">Main block</h1>
   <div class="w-full duration-5 delay-4 anim anim-up" data-anim="hidden">
     <a class="btn btn-primary btn-lg btn-fill btn-glow w-full max-w-[200px] mx-auto" data-waved="light" data-scroll="top" draggable="false" href="#content">Show more</a>
@@ -45,7 +45,7 @@
       <article class="h-full card dark:bg-black">
         <div class="pack pack-rect-md bg-grey dark:bg-dark" data-movement="light">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false}) %>
         </div>
         <div class="px-3 py-5 card-content md:px-5">
           <h4 class="mb-4 font-semibold font-alt text-24">Article <%= i %></h4>
@@ -63,7 +63,7 @@
         <div class="inverted-before card dark:bg-black">
           <div class="pack pack-half bg-grey dark:bg-dark">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: false, draggable: true}) %>
+            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: false}) %>
           </div>
           <div class="px-3 py-5 card-content md:px-5">
             <h4 class="font-semibold font-alt text-24">Article <%= i %></h4>
@@ -191,9 +191,9 @@
   <h2 class="mb-3 font-bold text-center font-alt text-36 lg:text-48 leading-2 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Filter</h2>
   <h3 class="mb-5 font-semibold text-16 md:text-18 leading-2 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">paralax, form and other...</h3>
   <div class="relative w-full max-w-xl mx-auto" data-filtering="filtering">
-    <%= picture({src: 'img/pictures/circle-grey', format: 'png', className: 'absolute z-1 top-20 -left-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="auto" data-parallax-speed="4" data-parallax-depth="2"', draggable: true}) %>
-    <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-1 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="opposite" data-parallax-speed="4" data-parallax-depth="2"', draggable: true}) %>
-    <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-1 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"', draggable: true}) %>
+    <%= picture({src: 'img/pictures/circle-grey', format: 'png', className: 'absolute z-1 top-20 -left-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="auto" data-parallax-speed="4" data-parallax-depth="2"'}) %>
+    <%= picture({src: 'img/pictures/circle-white', format: 'png', className: 'absolute z-1 -bottom-8 -right-8 drop-shadow-md pointer-events-none w-16', data: 'data-parallax-layer="opposite" data-parallax-speed="4" data-parallax-depth="2"'}) %>
+    <%= picture({src: 'img/pictures/circle-red', format: 'png', className: 'absolute z-1 bottom-0 -right-7 drop-shadow-md pointer-events-none w-16', data: 'data-smooth-layer="bottom" data-smooth-speed="1" data-smooth-depth="2"'}) %>
     <div class="relative flex flex-col items-center justify-between gap-0 mb-5 overflow-hidden md:flex-row md:gap-4 bg-grey md:bg-opacity-0 text-second md:text-white rounded-4 md:rounded-none md:border-b md:border-solid md:border-white md:mb-10 md:pb-4 duration-5 anim anim-up" data-anim="hidden">
       <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category filtering-active text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="text-style">Text-style</div>
       <div class="flex-grow w-full p-4 text-center cursor-pointer filtering__category text-20 md:p-0" data-filtering-category="filtering" data-filtering-value="form-validate">Form-validate</div>
@@ -394,7 +394,7 @@
               <div class="absolute inset-0 flex items-center justify-center">
                 <%= icon({id: 'user', className: 'icon text-white text-14', data: false}) %>
               </div>
-              <%= picture({src: '', format: '', className: 'image', data: 'data-avatar', draggable: true}) %>
+              <%= picture({src: '', format: '', className: 'image', data: 'data-avatar'}) %>
             </div>
             <h4 class="font-bold text-24">Name Surname</h4>
           </div>
@@ -403,7 +403,7 @@
             <div class="items-center justify-center form-label" data-label="download">
               <div class="mb-5 form-wrapper">
                 <div class="w-full pack pack-box bg-second rounded-4 duration-2" data-drag>
-                  <%= picture({src: '', format: '', className: 'image image-scale-down', data: 'data-file="image"', draggable: true}) %>
+                  <%= picture({src: '', format: '', className: 'image image-scale-down', data: 'data-file="image"'}) %>
                 </div>
                 <span class="form-error" data-error>Пожалуйста, загрузите изображение!</span>
               </div>
@@ -457,9 +457,9 @@
     <div class="w-[280px] xl:w-[370px]" data-parallax-hovered="600">
       <div class="ease-linear pack pack-sheet bg-grey dark:bg-dark duration-3" data-parallax-item="10">
         <%= loader %>
-        <%= picture({src: parallax.bg, format: 'png', className: 'image', data: false, draggable: true}) %>
+        <%= picture({src: parallax.bg, format: 'png', className: 'image', data: false}) %>
         <div class="absolute ease-linear border-8 border-solid inset-5 border-second duration-3" data-parallax-item="100"></div>
-        <%= picture({src: parallax.img, format: 'png', className: 'image ease-linear duration-3', data: 'data-parallax-item="80"', draggable: true}) %>
+        <%= picture({src: parallax.img, format: 'png', className: 'image ease-linear duration-3', data: 'data-parallax-item="80"'}) %>
         <div class="absolute bottom-0 left-0 right-0 top-auto p-10 text-white ease-linear pointer-events-none duration-3" data-parallax-item="160">
           <h2 class="mb-3 font-medium leading-3 text-20">Hover me!</h2>
           <p class="font-normal leading-5 text-16">Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>

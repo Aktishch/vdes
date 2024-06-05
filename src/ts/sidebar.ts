@@ -46,7 +46,6 @@ export default (): void => {
   }) as EventListener)
 
   window.addEventListener('resize', ((): void => {
-    const html = document.documentElement as HTMLHtmlElement
     const sidebars = document.querySelectorAll(
       '*[data-sidebar]'
     ) as NodeListOf<HTMLDivElement>
@@ -55,7 +54,10 @@ export default (): void => {
       if (sidebar.dataset.sidebarResize) {
         const breakpoint: number = media[sidebar.dataset.sidebarResize]
 
-        if (html.clientWidth > breakpoint) closeSidebar(sidebar)
+        if (
+          (document.documentElement as HTMLHtmlElement).clientWidth > breakpoint
+        )
+          closeSidebar(sidebar)
       }
     })
   }) as EventListener)

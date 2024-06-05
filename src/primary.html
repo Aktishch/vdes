@@ -31,7 +31,7 @@
         <% for (var i = 0; i < 6; i++) { %>
         <a class="shadow-md swiper-slide pack pack-rect-md bg-grey dark:bg-dark rounded-4" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
           <%= loader %>
-          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false, draggable: false}) %>
+          <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false}) %>
         </a>
         <% } %>
       </div>
@@ -117,7 +117,7 @@
           <div class="h-full p-1 cursor-pointer product card card-active dark:bg-black" data-product>
             <div class="pack pack-rect-md bg-grey dark:bg-dark rounded-4">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"', draggable: true}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
               <label class="absolute like top-2 right-2">
                 <input class="hidden product__toggle like-toggle" type="checkbox">
                 <div class="product__heart like-heart">
@@ -173,7 +173,7 @@
     <% for (var i = 0; i < 6; i++) { %>
     <a class="pack pack-half bg-grey dark:bg-dark rounded-6 shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: 'data-scrolling-image', draggable: false}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: 'data-scrolling-image'}) %>
     </a>
     <% } %>
   </div>
@@ -255,7 +255,7 @@
           <% for (var i = 0; i < 3; i++) { %>
           <div class="swiper-slide pack pack-box bg-grey dark:bg-dark rounded-3" data-movement="light">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
+            <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
           </div>
           <% } %>
         </div>
@@ -274,7 +274,7 @@
           <% for (var i = 0; i < 6; i++) { %>
           <div class="h-full swiper-slide pack pack-rect-lg bg-grey dark:bg-dark">
             <%= loader %>
-            <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: false, draggable: true}) %>
+            <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: false}) %>
           </div>
           <% } %>
         </div>
@@ -289,7 +289,7 @@
             <% for (var i = 0; i < 6; i++) { %>
             <a class="h-full swiper-slide pack pack-box" data-movement="light" data-fancybox="catalog" draggable="false" href="img/pictures/town.jpg">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false, draggable: false}) %>
+              <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false}) %>
             </a>
             <% } %>
           </div>
@@ -301,7 +301,7 @@
             <% for (var i = 0; i < 6; i++) { %>
             <div class="cursor-pointer swiper-slide pack pack-box bg-grey dark:bg-dark rounded-4">
               <%= loader %>
-              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false, draggable: true}) %>
+              <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
             </div>
             <% } %>
           </div>

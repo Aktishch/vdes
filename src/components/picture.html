@@ -10,5 +10,5 @@
   <% if (src !== '' && (format === 'jpg' || format === 'png')) { %>
   <source srcset="<%= `${src}.webp` %>" type="image/webp">
   <% } %>
-  <img class="<%= className %>" <%= data ? data : '' %> <%= draggable ? '' : 'draggable="false"' %> loading="<%= loading %>" src="<%= src !== '' ? `${src}.${format}` : '' %>" alt="">
+  <img class="<%= className %>" <%= data ? data : '' %> draggable="false" loading="<%= loading %>" src="<%= src !== '' ? `${src}.${format}` : '' %>" alt="">
 </picture>

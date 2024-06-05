@@ -1,5 +1,5 @@
 import { Fancybox } from '@fancyapps/ui'
-import airDatepicker from './air-datepicker'
+import { createCalendar } from './air-datepicker'
 import filtering from './filtering'
 import waved from './waved'
 
@@ -22,48 +22,42 @@ Fancybox.defaults.autoFocus = false
 Fancybox.defaults.placeFocusBack = false
 window.Fancybox = Fancybox
 
-const open = (src: string): void => {
-  window.Fancybox.show(
-    [
-      {
-        src: src,
-        type: 'ajax',
-      },
-    ],
-    {
-      dragToClose: false,
-      on: {
-        done: (): void => waved(),
-      },
-    }
-  )
-}
-
-const notClosing = (src: string): void => {
-  window.Fancybox.show(
-    [
-      {
-        src: src,
-        type: 'ajax',
-      },
-    ],
-    {
-      dragToClose: false,
-      closeButton: false,
-      backdropClick: false,
-      on: {
-        done: (): void => waved(),
-      },
-    }
-  )
-}
-
-const close = (): void => window.Fancybox.close()
-
 export const dialog: Dialog = {
-  open: open,
-  notClosing: notClosing,
-  close: close,
+  open: (src: string): void => {
+    window.Fancybox.show(
+      [
+        {
+          src: src,
+          type: 'ajax',
+        },
+      ],
+      {
+        dragToClose: false,
+        on: {
+          done: (): void => waved(),
+        },
+      }
+    )
+  },
+  notClosing: (src: string): void => {
+    window.Fancybox.show(
+      [
+        {
+          src: src,
+          type: 'ajax',
+        },
+      ],
+      {
+        dragToClose: false,
+        closeButton: false,
+        backdropClick: false,
+        on: {
+          done: (): void => waved(),
+        },
+      }
+    )
+  },
+  close: (): void => window.Fancybox.close(),
 }
 
 window.dialog = dialog
@@ -82,7 +76,7 @@ export default (): void => {
     dragToClose: false,
     on: {
       done: (): void => {
-        airDatepicker()
+        createCalendar()
         filtering()
         waved()
       },
