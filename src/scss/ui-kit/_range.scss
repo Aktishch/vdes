@@ -18,11 +18,11 @@
       @apply -mt-2;
     }
 
-    @apply relative rounded-1 h-2;
+    @apply relative rounded h-2;
   }
 
   &-input {
-    @apply block rounded-inherit appearance-none w-full h-full;
+    @apply block appearance-none rounded-inherit w-full h-full;
 
     &::-webkit-slider-thumb {
       @include range();
@@ -38,14 +38,17 @@
   }
 
   &-progress {
-    @apply absolute z-1 top-0 bottom-0 rounded-inherit pointer-events-none h-full;
+    z-index: 1;
+
+    @apply absolute top-0 bottom-0 rounded-inherit pointer-events-none h-full;
   }
 
   &-bubble {
     width     : var(--bubble-size);
     height    : var(--bubble-size);
     box-shadow: 0 0 0 2px theme("colors.primary.DEFAULT / 40%");
+    z-index   : 2;
 
-    @apply flex items-center justify-center absolute z-2 top-0 bottom-0 text-12 rounded-max border-2 border-solid border-grey pointer-events-none my-auto;
+    @apply flex items-center justify-center absolute top-0 bottom-0 text-12 rounded-full border-2 border-solid border-grey pointer-events-none my-auto;
   }
 }

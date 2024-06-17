@@ -36,7 +36,7 @@
       animation-delay: 0.8s;
     }
 
-    @apply bg-current rounded-max w-8 h-8;
+    @apply bg-current rounded-full w-8 h-8;
   }
 
   &-line {
@@ -80,7 +80,6 @@
       animation-delay: 0.5s;
     }
 
-
     @apply bg-current opacity-40 w-7 h-7;
   }
 
@@ -105,7 +104,7 @@
       @apply border-y-transparent;
     }
 
-    @apply relative bg-transparent rounded-max w-24 h-24;
+    @apply relative bg-transparent rounded-full w-24 h-24;
   }
 
   &--bullets {
@@ -126,7 +125,7 @@
     &::after {
       animation: preloader-pulse 1s ease-out infinite;
 
-      @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-max w-full h-full;
+      @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-full w-full h-full;
     }
 
     &::after {
@@ -170,15 +169,13 @@
 
   0%,
   100% {
+    opacity  : 0.2;
     transform: scale(0.4);
-
-    @apply opacity-20;
   }
 
   50% {
+    opacity  : 1;
     transform: scale(1);
-
-    @apply opacity-100;
   }
 }
 
@@ -211,27 +208,25 @@
 
   0%,
   100% {
-    @apply opacity-100;
+    opacity: 1;
   }
 
   25%,
   50%,
   75% {
-    @apply opacity-40;
+    opacity: 0.4;
   }
 }
 
 @keyframes preloader-pulse {
 
   0% {
+    opacity  : 1;
     transform: scale(0);
-
-    @apply opacity-100;
   }
 
   100% {
+    opacity  : 0;
     transform: scale(1);
-
-    @apply opacity-0;
   }
 }

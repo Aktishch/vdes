@@ -6,13 +6,12 @@
     transform-style   : preserve-3d;
     perspective-origin: center center;
 
-    @apply relative bg-grey w-40 h-40 ease-linear duration-4;
+    @apply relative bg-grey w-40 h-40 ease-linear duration-300;
 
     @media(hover) {
       &:hover {
         transform: translateZ(100px) rotateX(20deg);
-
-        @apply z-1;
+        z-index  : 1;
 
         .postcards-particle {
           filter: grayscale(0);
@@ -42,7 +41,7 @@
           &:nth-child(7),
           &:nth-child(8),
           &:nth-child(9) {
-            @apply delay-2;
+            @apply delay-200;
           }
         }
       }
@@ -62,25 +61,25 @@
     &:nth-child(2) {
       transform: rotateY(180deg);
 
-      @apply top-0 left-full bg-right origin-left delay-1;
+      @apply top-0 left-full bg-right origin-left delay-100;
     }
 
     &:nth-child(3) {
       transform: rotateX(-180deg);
 
-      @apply top-full left-0 bg-bottom origin-top delay-1;
+      @apply top-full left-0 bg-bottom origin-top delay-100;
     }
 
     &:nth-child(4) {
       transform: rotateY(-180deg);
 
-      @apply top-0 -left-full bg-left origin-right delay-1;
+      @apply top-0 -left-full bg-left origin-right delay-100;
     }
 
     &:nth-child(5) {
       transform: rotateX(180deg);
 
-      @apply -top-full left-0 bg-top origin-bottom delay-1;
+      @apply -top-full left-0 bg-top origin-bottom delay-100;
     }
 
     &:nth-child(6) {

@@ -54,13 +54,13 @@ export default (): void => {
       'pointer-events-none',
       'invisible',
       'opacity-0',
-      'duration-2'
+      'duration-200'
     )
     text.classList.add(
       'pointer-events-none',
       'invisible',
       'opacity-0',
-      'duration-2',
+      'duration-200',
       'text-14'
     )
     map.appendChild(image)

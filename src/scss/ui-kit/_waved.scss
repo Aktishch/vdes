@@ -1,12 +1,14 @@
 .waved {
-  @apply absolute z-1 inset-0 rounded-inherit overflow-hidden pointer-events-none;
+  z-index: 1;
+
+  @apply absolute inset-0 rounded-inherit overflow-hidden pointer-events-none;
 
   &-circle {
     background-color: var(--waved-color);
     transform       : translate(-50%, -50%) scale(0);
     animation       : waved 1s ease forwards;
 
-    @apply block absolute rounded-max w-10 h-10;
+    @apply block absolute rounded-full w-10 h-10;
   }
 
   [data-waved="light"] & {
@@ -20,8 +22,7 @@
 
 @keyframes waved {
   to {
+    opacity  : 0;
     transform: translate(-50%, -50%) scale(25);
-
-    @apply opacity-0;
   }
 }

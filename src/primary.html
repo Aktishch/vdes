@@ -23,13 +23,13 @@
 <!-- Галерея -->
 
 <section class="container flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-black" id="content">
-  <h2 class="mb-3 font-bold text-center font-alt text-36 lg:text-48 leading-2 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
-  <h3 class="mb-5 font-semibold text-16 md:text-18 leading-2 md:mb-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
+  <h2 class="mb-3 font-bold text-center duration-500 font-alt text-36 lg:text-48 leading-2 anim anim-up" data-anim="hidden" data-movement="blend">Slider-swiper</h2>
+  <h3 class="mb-5 font-semibold duration-500 text-16 md:text-18 leading-2 md:mb-10 anim anim-up" data-anim="hidden" data-movement="blend">Class template for slider</h3>
   <div class="relative w-full gallery-slider">
     <div class="p-4 -m-4 swiper">
       <div class="swiper-wrapper">
         <% for (var i = 0; i < 6; i++) { %>
-        <a class="shadow-md swiper-slide pack pack-rect-md bg-grey dark:bg-dark rounded-4" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
+        <a class="shadow-md swiper-slide pack pack-rect-md bg-grey dark:bg-dark rounded-2xl" data-movement="light" data-fancybox="gallery" draggable="false" href="img/pictures/town.jpg">
           <%= loader %>
           <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image image-rise', data: false}) %>
         </a>
@@ -37,10 +37,10 @@
       </div>
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
-    <button class="absolute hidden w-12 h-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6 rounded-max" data-waved="light">
+    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
       <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
-    <button class="absolute hidden w-12 h-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6 rounded-max" data-waved="light">
+    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
       <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
@@ -79,7 +79,7 @@
 ] %>
 
 <section class="container flex flex-col items-center justify-center overflow-hidden container-distance bg-grey dark:bg-dark">
-  <h2 class="mb-5 font-bold text-center font-alt text-36 lg:text-48 leading-2 md:md-10 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Products</h2>
+  <h2 class="mb-5 font-bold text-center duration-500 font-alt text-36 lg:text-48 leading-2 md:md-10 anim anim-up" data-anim="hidden" data-movement="blend">Products</h2>
   <div class="w-full inverted mb-7" data-inverted="before">
     <div class="inverted-before">
       <button class="btn btn-primary btn-lg btn-fill" data-inverted-toggle="after" data-waved="light">Search</button>
@@ -115,7 +115,7 @@
         <% for (var i = 0; i < products.length; i++) { %>
         <div class="h-auto swiper-slide">
           <div class="h-full p-1 cursor-pointer product card card-active dark:bg-black" data-product>
-            <div class="pack pack-rect-md bg-grey dark:bg-dark rounded-4">
+            <div class="pack pack-rect-md bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image', data: 'data-product-image="img/pictures/town-grey.jpg"'}) %>
               <label class="absolute like top-2 right-2">
@@ -154,10 +154,10 @@
       </div>
     </div>
     <div class="mt-10 swiper-pagination md:hidden text-primary"></div>
-    <button class="absolute hidden w-12 h-12 swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6 rounded-max" data-waved="light">
+    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-prev btn btn-primary btn-fill md:flex md:-left-6" data-waved="light">
       <%= icon({id: 'arrow-left', className: 'icon', data: false}) %>
     </button>
-    <button class="absolute hidden w-12 h-12 swiper-button-next btn btn-primary btn-fill md:flex md:-right-6 rounded-max" data-waved="light">
+    <button class="absolute hidden w-12 h-12 rounded-full swiper-button-next btn btn-primary btn-fill md:flex md:-right-6" data-waved="light">
       <%= icon({id: 'arrow-right', className: 'icon', data: false}) %>
     </button>
   </div>
@@ -167,13 +167,13 @@
 
 <section class="bg-white scrolling dark:bg-black" data-scrolling data-smooth-wrapper>
   <div class="container flex flex-col items-start pb-0 mb-5 md:md-10">
-    <h2 class="font-bold font-alt text-36 lg:text-48 leading-2 duration-5 anim anim-up" data-anim="hidden" data-movement="blend">Horizontal scroll</h2>
+    <h2 class="font-bold duration-500 font-alt text-36 lg:text-48 leading-2 anim anim-up" data-anim="hidden" data-movement="blend">Horizontal scroll</h2>
   </div>
   <div class="container flex gap-5 pt-0 overflow-x-auto md:gap-10 md:sticky md:top-40 scroll-smooth md:overflow-x-hidden" data-scrolling-horizontal data-smooth-sticky>
     <% for (var i = 0; i < 6; i++) { %>
-    <a class="pack pack-half bg-grey dark:bg-dark rounded-6 shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
+    <a class="pack pack-half bg-grey dark:bg-dark rounded-3xl shadow-md w-full min-w-[320px] md:min-w-[800px]" data-movement="light" data-fancybox="horizontal" draggable="false" href="img/pictures/town.jpg">
       <%= loader %>
-      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-3', data: 'data-scrolling-image'}) %>
+      <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'scrolling__image image ease-in-out duration-300', data: 'data-scrolling-image'}) %>
     </a>
     <% } %>
   </div>
@@ -182,7 +182,7 @@
 <!-- Квиз -->
 
 <section class="container quiz container-xs container-distance bg-grey dark:bg-dark">
-  <div class="relative flex justify-between p-5 overflow-hidden bg-white shadow-md dark:bg-black rounded-4 md:p-10 duration-5 anim anim-fade" data-anim="hidden">
+  <div class="relative flex justify-between p-5 overflow-hidden duration-500 bg-white shadow-md dark:bg-black rounded-2xl md:p-10 anim anim-fade" data-anim="hidden">
     <form class="form md:max-w-[270px] lg:max-w-[450px] w-full" data-form="params">
       <div class="flex flex-col h-full quiz-slider" data-quiz="stop">
         <div class="mx-0 swiper">
@@ -231,7 +231,7 @@
             </div>
           </div>
         </div>
-        <div class="mt-auto opacity-100 quiz-slider-bottom duration-2">
+        <div class="mt-auto duration-200 opacity-100 quiz-slider-bottom">
           <div class="flex items-center mb-5">
             Оставшиеся слайды:
             <div class="w-auto ml-1 swiper-pagination"></div>
@@ -253,7 +253,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           <% for (var i = 0; i < 3; i++) { %>
-          <div class="swiper-slide pack pack-box bg-grey dark:bg-dark rounded-3" data-movement="light">
+          <div class="swiper-slide pack pack-box bg-grey dark:bg-dark rounded-xl" data-movement="light">
             <%= loader %>
             <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
           </div>
@@ -268,7 +268,7 @@
 
 <section class="container relative overflow-hidden bg-white description container-xs dark:bg-black">
   <div class="absolute inset-0 overflow-hidden">
-    <div class="relative h-full description-bg duration-10 delay-2">
+    <div class="relative h-full duration-1000 delay-200 description-bg">
       <div class="h-full swiper">
         <div class="swiper-wrapper">
           <% for (var i = 0; i < 6; i++) { %>
@@ -281,9 +281,9 @@
       </div>
     </div>
   </div>
-  <div class="relative flex flex-wrap justify-between gap-5 p-5 overflow-hidden bg-white shadow-md z-1 dark:bg-black rounded-4 md:p-10">
+  <div class="relative z-10 flex flex-wrap justify-between gap-5 p-5 overflow-hidden bg-white shadow-md dark:bg-black rounded-2xl md:p-10">
     <div class="w-full lg:max-w-[400px] xl:max-w-[450px]">
-      <div class="relative mb-5 overflow-hidden description-slider bg-grey dark:bg-dark rounded-4 md:mb-3">
+      <div class="relative mb-5 overflow-hidden description-slider bg-grey dark:bg-dark rounded-2xl md:mb-3">
         <div class="h-full swiper">
           <div class="h-full swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
@@ -299,7 +299,7 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             <% for (var i = 0; i < 6; i++) { %>
-            <div class="cursor-pointer swiper-slide pack pack-box bg-grey dark:bg-dark rounded-4">
+            <div class="cursor-pointer swiper-slide pack pack-box bg-grey dark:bg-dark rounded-2xl">
               <%= loader %>
               <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
             </div>

@@ -2,17 +2,13 @@
 
 module.exports = {
   content: ['./src/**/*.html', './src/ts/**/*.ts'],
-
   darkMode: 'class',
-
   corePlugins: {
     container: false,
   },
-
   future: {
     hoverOnlyWhenSupported: true,
   },
-
   theme: {
     screens: {
       xs: 459.98 + 'px',
@@ -22,50 +18,42 @@ module.exports = {
       xl: 1365.98 + 'px',
       xxl: 2559.98 + 'px',
     },
-
     colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      inherit: 'inherit',
       primary: {
         DEFAULT: '#af1a4c',
       },
-
       second: {
         DEFAULT: '#d7a751',
       },
-
       black: {
         DEFAULT: '#000000',
       },
-
       white: {
         DEFAULT: '#ffffff',
       },
-
       gray: {
         DEFAULT: '#b2b2b2',
       },
-
       grey: {
         DEFAULT: '#f6f7f9',
       },
-
       dark: {
         DEFAULT: '#303030',
       },
-
       red: {
         DEFAULT: '#be1b1b',
       },
-
       green: {
         DEFAULT: '#27ae60',
       },
     },
-
     fontFamily: {
       alt: 'var(--font-alt)',
       base: 'var(--font-base)',
     },
-
     lineHeight: {
       1: 1.1,
       2: 1.2,
@@ -77,78 +65,41 @@ module.exports = {
       8: 1.8,
       9: 1.9,
     },
-
-    borderRadius: {
-      1: '4px',
-      2: '8px',
-      3: '12px',
-      4: '16px',
-      5: '20px',
-      6: '24px',
-      7: '28px',
-      8: '32px',
-      9: '36px',
-      10: '40px',
-      full: '9999px',
-      none: '0px',
-      max: '50%',
-      inherit: 'inherit',
+    gridColumn: {
+      1: 'span 1',
+      2: 'span 2',
+      3: 'span 3',
+      4: 'span 4',
+      5: 'span 5',
+      6: 'span 6',
+      7: 'span 7',
+      8: 'span 8',
+      9: 'span 9',
+      10: 'span 10',
+      11: 'span 11',
+      12: 'span 12',
     },
-
-    transitionDuration: {
-      0: '0s',
-      1: '0.1s',
-      2: '0.2s',
-      3: '0.3s',
-      4: '0.4s',
-      5: '0.5s',
-      6: '0.6s',
-      7: '0.7s',
-      8: '0.8s',
-      9: '0.9s',
-      10: '1s',
+    gridRow: {
+      1: 'span 1',
+      2: 'span 2',
+      3: 'span 3',
+      4: 'span 4',
+      5: 'span 5',
+      6: 'span 6',
+      7: 'span 7',
+      8: 'span 8',
+      9: 'span 9',
+      10: 'span 10',
+      11: 'span 11',
+      12: 'span 12',
     },
-
-    transitionDelay: {
-      0: '0s',
-      1: '0.1s',
-      2: '0.2s',
-      3: '0.3s',
-      4: '0.4s',
-      5: '0.5s',
-      6: '0.6s',
-      7: '0.7s',
-      8: '0.8s',
-      9: '0.9s',
-      10: '1s',
-    },
-
-    zIndex: {
-      0: 0,
-      1: 100,
-      2: 200,
-      3: 300,
-      4: 400,
-      5: 500,
-      6: 600,
-      7: 700,
-      8: 800,
-      9: 900,
-      10: 1000,
-      auto: 'auto',
-    },
-
     extend: {
       content: {
         auto: '""',
       },
-
-      backgroundColor: {
-        current: 'currentColor',
+      borderRadius: {
         inherit: 'inherit',
-        transparent: 'transparent',
       },
-
       fontSize: {
         8: '0.5rem',
         10: '0.625rem',
@@ -173,44 +124,7 @@ module.exports = {
         48: '3rem',
         50: '3.125rem',
       },
-
-      borderColor: {
-        current: 'currentColor',
-        inherit: 'inherit',
-        transparent: 'transparent',
-      },
-
-      gridColumn: {
-        1: 'span 1',
-        2: 'span 2',
-        3: 'span 3',
-        4: 'span 4',
-        5: 'span 5',
-        6: 'span 6',
-        7: 'span 7',
-        8: 'span 8',
-        9: 'span 9',
-        10: 'span 10',
-        11: 'span 11',
-        12: 'span 12',
-      },
-
-      gridRow: {
-        1: 'span 1',
-        2: 'span 2',
-        3: 'span 3',
-        4: 'span 4',
-        5: 'span 5',
-        6: 'span 6',
-        7: 'span 7',
-        8: 'span 8',
-        9: 'span 9',
-        10: 'span 10',
-        11: 'span 11',
-        12: 'span 12',
-      },
     },
-
     constants: {
       xs: '28px',
       sm: '36px',
@@ -220,7 +134,6 @@ module.exports = {
       xxl: '64px',
     },
   },
-
   plugins: [
     require('./plugins/container'),
     require('./plugins/dialog'),

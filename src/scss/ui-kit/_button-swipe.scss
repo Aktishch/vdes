@@ -1,11 +1,14 @@
 .btn-swipe {
+  z-index: 1;
+
   &::before {
     background-color: var(--btn-color);
+    z-index         : -1;
 
-    @apply content-auto absolute -z-1 top-0 left-auto right-0 bottom-0 w-0 ease-in-out duration-3;
+    @apply content-auto absolute top-0 left-auto right-0 bottom-0 w-0 ease-in-out duration-300;
   }
 
-  @apply z-1 overflow-hidden;
+  @apply overflow-hidden;
 
   @media(hover) {
     &:hover {
