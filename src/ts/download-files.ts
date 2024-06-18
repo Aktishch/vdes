@@ -33,7 +33,7 @@ export default (): File[] => {
           item.setAttribute('data-files-item', '')
           item.innerHTML = `
             <span class="truncate">${files[i].name}</span>
-            <button class="btn btn-gray text-14 p-1" data-files-remove="${files[i].name}" type="button">
+            <button class="btn btn-gray text-sm p-1" data-files-remove="${files[i].name}" type="button">
               <svg class="icon">
                 <use xlink:href="img/icons.svg#close"></use>
               </svg>

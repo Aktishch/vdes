@@ -15,17 +15,17 @@
 
 <section class="container player container-xs bg-grey dark:bg-dark" data-player="random" id="player">
   <dialog class="p-5 dialog dialog-xs dark:bg-black dark:text-white rounded-xl md:p-10" id="playlist">
-    <h4 class="mb-6 font-bold text-center font-alt text-30">Playlist</h4>
+    <h4 class="mb-6 text-3xl font-bold text-center font-alt">Playlist</h4>
     <div class="flex flex-col gap-4">
       <% for (var i = 0; i < compositions.length; i++) { %>
       <div class="flex items-center gap-2">
-        <button class="w-10 h-10 rounded-full btn btn-primary btn-fade text-36" data-player-composition="<%= i %>" data-waved="dark">
+        <button class="w-10 h-10 text-4xl rounded-full btn btn-primary btn-fade" data-player-composition="<%= i %>" data-waved="dark">
           <%= icon({id: 'loading', className: 'icon hidden player__loading', data: 'data-player-loading'}) %>
           <%= icon({id: 'play', className: 'icon', data: 'data-player-status'}) %>
         </button>
         <div class="flex flex-col">
-          <span class="font-semibold text-20"><%= compositions[i].artist %></span>
-          <span class="text-16 opacity-70"><%= compositions[i].song %></span>
+          <span class="text-xl font-semibold"><%= compositions[i].artist %></span>
+          <span class="text-base opacity-70"><%= compositions[i].song %></span>
         </div>
       </div>
       <% } %>
@@ -36,29 +36,29 @@
       <%= loader %>
       <%= picture({src: '', format: '', className: 'image', data: 'data-player-poster'}) %>
     </div>
-    <h3 class="font-bold leading-4 text-center font-alt text-24 md:text-30" data-player-artist></h3>
-    <h4 class="mb-6 font-medium text-center text-16 md:text-24" data-player-song></h4>
+    <h3 class="text-2xl font-bold leading-4 text-center font-alt md:text-3xl" data-player-artist></h3>
+    <h4 class="mb-6 text-base font-medium text-center md:text-2xl" data-player-song></h4>
     <audio class="hidden" data-player-audio src=""></audio>
     <div class="w-full px-3 py-5 bg-grey dark:bg-dark rounded-2xl md:px-5">
       <div class="relative w-full h-1 mb-3 pointer-events-auto bg-gray rounded-3xl" data-player-progress>
-        <div class="absolute top-0 bottom-0 left-0 h-full player__range bg-primary text-primary rounded-3xl" data-player-range></div>
+        <div class="absolute top-0 bottom-0 left-0 h-full bg-primary text-primary rounded-3xl after:content-auto after:absolute after:top-0 after:bottom-0 after:-right-1 after:bg-current after:rounded-full after:w-3 after:h-3 after:my-auto" data-player-range></div>
       </div>
       <div class="flex items-center justify-between gap-4">
         <button class="p-1 rounded btn btn-primary btn-fade" data-waved="dark" data-fancybox-dialog data-src="#playlist">
-          <%= icon({id: 'burger', className: 'icon text-24', data: false}) %>
+          <%= icon({id: 'burger', className: 'icon text-2xl', data: false}) %>
         </button>
-        <span class="hidden w-12 md:block text-18" data-player-start></span>
+        <span class="hidden w-12 text-lg md:block" data-player-start></span>
         <button class="w-10 h-10 rounded-full btn btn-primary btn-fade" data-player-prev data-waved="dark">
-          <%= icon({id: 'arrow-prev', className: 'icon text-20', data: false}) %>
+          <%= icon({id: 'arrow-prev', className: 'icon text-xl', data: false}) %>
         </button>
-        <button class="w-10 h-10 rounded-full btn btn-primary btn-fade text-36" data-player-play data-waved="dark">
+        <button class="w-10 h-10 text-4xl rounded-full btn btn-primary btn-fade" data-player-play data-waved="dark">
           <%= icon({id: 'loading', className: 'icon hidden player__loading', data: 'data-player-loading'}) %>
           <%= icon({id: 'play', className: 'icon', data: 'data-player-status'}) %>
         </button>
         <button class="w-10 h-10 rounded-full btn btn-primary btn-fade" data-player-next data-waved="dark">
-          <%= icon({id: 'arrow-next', className: 'icon text-20', data: false}) %>
+          <%= icon({id: 'arrow-next', className: 'icon text-xl', data: false}) %>
         </button>
-        <span class="hidden w-12 md:block text-18" data-player-end></span>
+        <span class="hidden w-12 text-lg md:block" data-player-end></span>
         <button class="p-2 rounded-full btn btn-primary btn-fade" data-player-volume="on" data-waved="dark">
           <%= icon({id: 'volume-on', className: 'icon', data: false}) %>
         </button>

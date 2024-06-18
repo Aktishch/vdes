@@ -43,7 +43,7 @@ module.exports = plugin(({ addComponents, theme }) => {
       },
 
       '&-error': {
-        fontSize: theme('fontSize.12'),
+        fontSize: theme('fontSize.xs'),
         color: theme('colors.white.DEFAULT'),
         backgroundColor: theme('colors.red.DEFAULT'),
         display: 'flex',

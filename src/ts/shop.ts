@@ -22,7 +22,7 @@ export default (): void => {
   let timeOut: NodeJS.Timeout
 
   const classes: string[] = [
-    'shop-add',
+    'in-shop',
     'flex',
     'items-center',
     'justify-center',
@@ -47,22 +47,22 @@ export default (): void => {
     shop.classList.add('invisible', 'opacity-0')
   }
 
-  const createAnimShopAdd = (event: MouseEvent): void => {
-    const shopAdd = document.createElement('div') as HTMLDivElement
+  const createAnimInShop = (event: MouseEvent): void => {
+    const inShop = document.createElement('div') as HTMLDivElement
     const coordinates: Coordinates = {
       top: event.clientY,
       left: event.clientX,
     }
 
-    shopAdd.classList.add(...classes)
-    shopAdd.style.top = `${coordinates.top}px`
-    shopAdd.style.left = `${coordinates.left}px`
-    shopAdd.innerHTML = `
-      <svg class="icon text-second text-16">
+    inShop.classList.add(...classes)
+    inShop.style.top = `${coordinates.top}px`
+    inShop.style.left = `${coordinates.left}px`
+    inShop.innerHTML = `
+      <svg class="icon text-second text-base">
         <use xlink:href="img/icons.svg#basket"></use>
       </svg>`
-    body.appendChild(shopAdd)
-    setTimeout((): void => shopAdd.remove(), 2000)
+    body.appendChild(inShop)
+    setTimeout((): void => inShop.remove(), 2000)
   }
 
   close.addEventListener('click', shopHidden as EventListener)
@@ -119,7 +119,7 @@ export default (): void => {
     }
 
     productBtn.addEventListener('click', ((event: MouseEvent): void => {
-      createAnimShopAdd(event)
+      createAnimInShop(event)
       fillingShop()
     }) as EventListener)
   })

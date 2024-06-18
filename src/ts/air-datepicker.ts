@@ -34,7 +34,7 @@ export const createCalendar = (): void => {
     if (cellType === 'day') {
       return {
         classes: window.excludeDates.includes(+date)
-          ? 'filtering-active btn btn-primary btn-fill text-14'
+          ? 'filtering-active btn btn-primary btn-fill text-sm'
           : 'pointer-events-none',
         attrs: {
           'data-filtering-category': 'calendar',

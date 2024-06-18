@@ -6,7 +6,7 @@
     transform-style   : preserve-3d;
     perspective-origin: center center;
 
-    @apply relative bg-grey w-40 h-40 ease-linear duration-300;
+    @apply relative bg-grey size-40 ease-linear duration-300;
 
     @media(hover) {
       &:hover {

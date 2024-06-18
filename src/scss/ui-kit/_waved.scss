@@ -8,7 +8,7 @@
     transform       : translate(-50%, -50%) scale(0);
     animation       : waved 1s ease forwards;
 
-    @apply block absolute rounded-full w-10 h-10;
+    @apply block absolute rounded-full size-10;
   }
 
   [data-waved="light"] & {

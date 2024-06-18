@@ -11,7 +11,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '--btn-color': theme('colors.black.DEFAULT'),
       '--btn-accent': theme('colors.white.DEFAULT'),
       color: 'var(--btn-color)',
-      fontSize: theme('fontSize.16'),
+      fontSize: theme('fontSize.base'),
       fontWeight: 600,
       textAlign: 'center',
       display: 'flex',

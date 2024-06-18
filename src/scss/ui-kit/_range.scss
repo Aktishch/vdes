@@ -49,6 +49,6 @@
     box-shadow: 0 0 0 2px theme("colors.primary.DEFAULT / 40%");
     z-index   : 2;
 
-    @apply flex items-center justify-center absolute top-0 bottom-0 text-12 rounded-full border-2 border-solid border-grey pointer-events-none my-auto;
+    @apply flex items-center justify-center absolute top-0 bottom-0 text-xs rounded-full border-2 border-solid border-grey pointer-events-none my-auto;
   }
 }

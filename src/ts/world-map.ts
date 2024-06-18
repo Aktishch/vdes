@@ -61,7 +61,7 @@ export default (): void => {
       'invisible',
       'opacity-0',
       'duration-200',
-      'text-14'
+      'text-sm'
     )
     map.appendChild(image)
     map.appendChild(rect)

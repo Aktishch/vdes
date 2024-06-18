@@ -4,7 +4,7 @@
   <form class="form" data-form="action" action="primary.html">
     <input type="hidden" value="Авторизация" name="theme">
     <label class="mb-5 form-label" data-label="input">
-      <span class="mb-3 text-20">Telephone</span>
+      <span class="mb-3 text-xl">Telephone</span>
       <div class="form-wrapper">
         <div class="input-cover">
           <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (" name="tel">
@@ -13,18 +13,18 @@
       </div>
     </label>
     <label class="mb-5 form-label" data-label="input">
-      <span class="mb-3 text-20">Password</span>
+      <span class="mb-3 text-xl">Password</span>
       <div class="form-wrapper">
         <div class="input-cover">
           <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
         </div>
         <span class="form-error" data-error>Пожалуйста, введите пароль!</span>
         <button class="form-icon form-icon-pointer form-icon-right" data-password="/" type="button">
-          <%= icon({id: 'eye-visible', className: 'icon text-black text-20', data: false}) %>
+          <%= icon({id: 'eye-visible', className: 'icon text-black text-xl', data: false}) %>
         </button>
       </div>
     </label>
     <button class="mb-5 btn btn-second btn-lg btn-fill" data-waved="dark" type="submit">Enter</button>
-    <div class="mx-auto cursor-pointer hover:underline underline-offset-4 text-second text-18 w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
+    <div class="mx-auto text-lg cursor-pointer hover:underline underline-offset-4 text-second w-max" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Privacy policy</div>
   </form>
 </dialog>

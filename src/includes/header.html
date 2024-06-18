@@ -63,24 +63,24 @@
       </a>
       <nav class="hidden lg:flex items-center justify-between gap-4 w-full max-w-[800px] ml-auto">
         <% _.forEach((nav.pages), (page) => { %>
-        <a class="p-1 font-normal uppercase btn btn-second hover:underline underline-offset-4 text-14" data-waved="light" draggable="false" href="<%= page.link %>"><%= page.text %></a>
+        <a class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-waved="light" draggable="false" href="<%= page.link %>"><%= page.text %></a>
         <% }) %>
-        <div class="relative group" data-accordion="hidden" data-accordion-close="scroll">
-          <button class="p-1 font-normal uppercase btn btn-second hover:underline underline-offset-4 text-14" data-accordion-toggle data-waved="light">
+        <div class="relative group/accordion" data-accordion="hidden" data-accordion-close="scroll">
+          <button class="p-1 text-sm font-normal uppercase btn btn-second hover:underline underline-offset-4" data-accordion-toggle data-waved="light">
             Navigation
-            <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-12 duration-300 group-[[data-accordion=active]]:rotate-90', data: false}) %>
+            <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-xs duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
           </button>
-          <div class="absolute right-0 w-full bg-white rounded-lg shadow-md top-16 group-[[data-accordion=active]]:top-10" data-accordion-content>
+          <div class="absolute right-0 w-full bg-white rounded-lg shadow-md top-16 group-[[data-accordion=active]]/accordion:top-10" data-accordion-content>
             <div class="flex flex-col gap-4 p-4">
               <% _.forEach((nav.blocks), (block) => { %>
-              <a class="btn btn-gray hover:underline underline-offset-4 text-14" data-waved="dark" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
+              <a class="text-sm btn btn-gray hover:underline underline-offset-4" data-waved="dark" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
               <% }) %>
             </div>
           </div>
         </div>
       </nav>
       <button class="btn btn-second lg:hidden" data-sidebar-open="menu" data-waved="light">
-        <%= icon({id: 'burger', className: 'icon text-48', data: false}) %>
+        <%= icon({id: 'burger', className: 'icon text-4xl', data: false}) %>
       </button>
     </header>
 
@@ -88,40 +88,40 @@
 
     <% var social = ['ok', 'yt', 'inst', 'tw', 'fb', 'vk'] %>
 
-    <div class="fixed inset-0 z-40 invisible duration-100 opacity-0 menu" data-sidebar="close" data-sidebar-resize="lg" id="menu">
-      <div class="menu__content flex flex-col bg-black bg-opacity-90 invisible opacity-0 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300">
-        <div class="flex items-center justify-between gap-2 p-4 duration-500 delay-300 bg-black menu__head">
+    <div class="fixed inset-0 z-40 duration-100 menu group/menu [&[data-sidebar=close]]:invisible [&[data-sidebar=close]]:opacity-0" data-sidebar="close" data-sidebar-resize="lg" id="menu">
+      <div class="menu__content flex flex-col bg-black bg-opacity-90 overflow-auto backdrop-blur-sm w-full max-w-[375px] h-full duration-300 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
+        <div class="flex items-center justify-between gap-2 p-4 duration-500 delay-300 bg-black group-[[data-sidebar=close]]/menu:-translate-y-full">
           <a class="btn btn-white w-36" data-waved="light" draggable="false" href="/">
             <%= picture({src: 'img/pictures/logo', format: 'png', className: 'w-full', data: false}) %>
           </a>
           <input class="switch switch-toggle" data-theme="toggle" type="checkbox">
           <button class="p-1 btn btn-second" data-sidebar-close="menu" data-waved="light">
-            <%= icon({id: 'close', className: 'icon text-white text-24', data: false}) %>
+            <%= icon({id: 'close', className: 'icon text-white text-2xl', data: false}) %>
           </button>
         </div>
-        <div class="flex flex-col items-start invisible gap-4 px-4 pt-4 pb-10 text-white duration-700 delay-500 opacity-0 menu__nav">
+        <div class="flex flex-col items-start gap-4 px-4 pt-4 pb-10 text-white duration-700 delay-500 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:-translate-x-full">
           <% _.forEach((nav.pages), (page) => { %>
-          <a class="hover:underline underline-offset-4 text-20" draggable="false" href="<%= page.link %>"><%= page.text %></a>
+          <a class="text-xl hover:underline underline-offset-4" draggable="false" href="<%= page.link %>"><%= page.text %></a>
           <% }) %>
-          <div class="menu__accordion" data-accordion="hidden" data-accordion-close="click">
-            <button class="flex items-center hover:underline underline-offset-4 text-20" data-accordion-toggle>
+          <div class="group/accordion" data-accordion="hidden" data-accordion-close="click">
+            <button class="flex items-center text-xl hover:underline underline-offset-4" data-accordion-toggle>
               Navigation
-              <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear menu__arrow text-14 opacity-60 duration-300', data: false}) %>
+              <%= icon({id: 'arrow-right', className: 'icon ml-2 ease-linear text-sm opacity-60 duration-300 group-[[data-accordion=active]]/accordion:rotate-90', data: false}) %>
             </button>
             <div data-accordion-content>
               <div class="flex flex-col items-start gap-2 pl-5 mt-2">
                 <% _.forEach((nav.blocks), (block) => { %>
-                <a class="hover:underline underline-offset-4 text-18" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
+                <a class="text-lg hover:underline underline-offset-4" data-scroll="top" draggable="false" href="<%= block.id %>"><%= block.text %></a>
                 <% }) %>
               </div>
             </div>
           </div>
         </div>
-        <div class="invisible px-4 pt-4 pb-10 mt-auto duration-500 delay-1000 opacity-0 menu__footer">
+        <div class="px-4 pt-4 pb-10 mt-auto duration-500 delay-1000 group-[[data-sidebar=close]]/menu:invisible group-[[data-sidebar=close]]/menu:opacity-0 group-[[data-sidebar=close]]/menu:translate-y-1/4">
           <div class="flex items-center justify-center gap-4">
             <% for (var i = 0; i < social.length; i++) { %>
             <a class="rounded-full btn btn-second" data-waved="dark" draggable="false" href="javascript: ;">
-              <%= icon({id: social[i], className: 'icon text-30', data: false}) %>
+              <%= icon({id: social[i], className: 'icon text-3xl', data: false}) %>
             </a>
             <% } %>
           </div>
@@ -132,20 +132,20 @@
     <!-- Перетаскиваемое социальное меню -->
 
     <nav class="fixed bottom-0 z-20 flex flex-col items-center justify-center w-48 h-48 rounded-full pointer-events-none select-none social touch-none" data-social data-draggable>
-      <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full opacity-0 pointer-events-auto social__round bg-primary bg-opacity-30" data-social-round="hidden">
+      <div class="absolute inset-0 overflow-hidden duration-300 ease-in-out rounded-full opacity-0 pointer-events-auto bg-primary bg-opacity-30 [&[data-social-round=hidden]]:scale-0 [&[data-social-round=hidden]]:-rotate-180" data-social-round="hidden">
         <% for (var i = 0; i < social.length; i++) { %>
         <a class="absolute rounded-full btn btn-second" data-social-link data-waved="dark" draggable="false" href="javascript: ;">
-          <%= icon({id: social[i], className: 'icon text-30', data: false}) %>
+          <%= icon({id: social[i], className: 'icon text-3xl', data: false}) %>
         </a>
         <% } %>
       </div>
-      <button class="w-10 h-10 p-1 overflow-hidden rounded-full shadow-md pointer-events-auto social__btn btn btn-primary btn-contur" data-social-button data-waved="light" id="draggable"></button>
+      <button class="w-10 h-10 p-1 overflow-hidden rounded-full shadow-md pointer-events-auto btn btn-primary btn-contur before:content-auto before:block before:bg-current before:rounded-inherit before:w-full before:h-full" data-social-button data-waved="light" id="draggable"></button>
     </nav>
 
     <!-- Переключатель темы -->
 
     <div class="fixed z-20 items-center justify-center hidden p-4 bg-white border border-solid shadow-md theme lg:flex bottom-2 dark:bg-black rounded-2xl border-gray dark:border-white w-max">
-      <span class="mr-2 text-14">Темная тема</span>
+      <span class="mr-2 text-sm">Темная тема</span>
       <input class="switch switch-toggle" data-theme="toggle" type="checkbox">
     </div>
 
@@ -159,13 +159,13 @@
       <button class="btn btn-primary btn-lg btn-fill" data-running-button data-waved="light">Поймай меня</button>
     </div>
 
-    <!-- Покупка -->
+    <!-- В покупки -->
 
-    <div class="shop fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-[320px] mx-auto p-5 duration-300" data-shop="hidden">
+    <div class="fixed z-20 top-2/4 left-0 md:left-auto right-0 md:right-10 bg-white dark:bg-black dark:text-white rounded-2xl -translate-y-1/2 shadow-md invisible opacity-0 w-full max-w-[320px] mx-auto p-5 duration-300 [&[data-shop=hidden]]:-translate-y-1/3" data-shop="hidden">
       <div class="flex items-center justify-between mb-4">
-        <h4 class="mr-3 font-semibold font-alt text-24">Product in shop</h4>
+        <h4 class="mr-3 text-2xl font-semibold font-alt">Product in shop</h4>
         <button class="p-1 rounded btn btn-primary" data-shop-close data-waved="light">
-          <%= icon({id: 'close', className: 'icon text-18', data: false}) %>
+          <%= icon({id: 'close', className: 'icon text-lg', data: false}) %>
         </button>
       </div>
       <div class="flex items-center mb-4">
@@ -174,14 +174,14 @@
           <%= picture({src: 'img/pictures/town', format: 'jpg', className: 'image', data: 'data-shop-image'}) %>
         </div>
         <div class="flex flex-col">
-          <span class="mb-3 font-bold text-18 md:text-20" data-shop-name>Name 4</span>
-          <span class="text-20 md:text-24" data-shop-quantity>4 шт</span>
+          <span class="mb-3 text-lg font-bold md:text-xl" data-shop-name>Name 4</span>
+          <span class="text-xl md:text-2xl" data-shop-quantity>4 шт</span>
         </div>
       </div>
       <div class="flex items-end justify-between gap-2">
         <div class="flex flex-col">
-          <span class="line-through text-12 md:text-16 opacity-60" data-shop-oldprice>8 000$</span>
-          <span class="font-semibold text-20 md:text-24" data-shop-price>7 000$</span>
+          <span class="text-xs line-through md:text-base opacity-60" data-shop-oldprice>8 000$</span>
+          <span class="text-xl font-semibold md:text-2xl" data-shop-price>7 000$</span>
         </div>
         <button class="px-10 btn btn-second btn-lg btn-fade" data-waved="dark">shop</button>
       </div>
@@ -195,7 +195,7 @@
 
       <nav class="container <%= data.status ? '' : 'hidden' %> relative z-10 py-4 duration-500 anim anim-down" data-anim="hidden">
         <div class="flex items-center justify-between w-full max-w-full" data-smart>
-          <h2 class="font-bold font-alt text-18" data-smart-title>Smart-menu items</h2>
+          <h2 class="text-lg font-bold font-alt" data-smart-title>Smart-menu items</h2>
           <ul class="flex justify-between gap-3" data-smart-length>
             <% for (var i = 1; i < 9; i++) { %>
             <li>
