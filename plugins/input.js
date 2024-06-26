@@ -6,74 +6,65 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
     '.input-cover': {
       display: 'flex',
       width: '100%',
-      '--input-radius': '8px',
-
+      '--tw-input-radius': theme('borderRadius.lg'),
       '& .input': {
         flexGrow: 1,
       },
-
       '& .input:first-child': {
-        borderTopLeftRadius: 'var(--input-radius)',
-        borderBottomLeftRadius: 'var(--input-radius)',
+        borderTopLeftRadius: 'var(--tw-input-radius)',
+        borderBottomLeftRadius: 'var(--tw-input-radius)',
       },
-
       '& .input:last-child': {
-        borderTopRightRadius: 'var(--input-radius)',
-        borderBottomRightRadius: 'var(--input-radius)',
+        borderTopRightRadius: 'var(--tw-input-radius)',
+        borderBottomRightRadius: 'var(--tw-input-radius)',
       },
     },
-
     '.input': {
-      '--input-text': theme('colors.black.DEFAULT'),
+      '--tw-input-text': theme('colors.black.DEFAULT'),
       display: 'block',
       width: '100%',
-      height: 'var(--input-size)',
-      color: 'var(--input-text)',
+      height: 'var(--tw-input-size)',
+      color: 'var(--tw-input-text)',
+      fontSize: theme('fontSize.base'),
+      fontWeight: theme('fontWeight.normal'),
       backgroundColor: theme('colors.white.DEFAULT'),
-      padding: 'calc(var(--input-size) / 4) calc(var(--input-size) / 3)',
-      border: '1px solid var(--input-color)',
-      transition: '0.2s ease',
+      padding: 'calc(var(--tw-input-size) / 4) calc(var(--tw-input-size) / 3)',
+      border: '1px solid var(--tw-input-color)',
+      transition: '200ms ease',
       userSelect: 'initial',
-
       '&:not(&-error):focus': {
-        borderColor: 'var(--input-focus)',
+        borderColor: 'var(--tw-input-focus)',
       },
-
       '&:disabled': {
         pointerEvents: 'none',
         opacity: 0.5,
       },
-
       '&-fade': {
-        '--input-text': theme('colors.white.DEFAULT'),
-        backgroundColor: 'transparent',
+        '--tw-input-text': theme('colors.white.DEFAULT'),
+        backgroundColor: theme('colors.transparent'),
       },
-
       '&-error': {
         borderColor: theme('colors.red.DEFAULT'),
       },
-
       '&:-webkit-autofill': {
-        color: 'var(--input-text) !important',
-        borderColor: 'var(--input-color)',
+        color: 'var(--tw-input-text) !important',
+        borderColor: 'var(--tw-input-color)',
         background: 'none !important',
         appearance: 'none',
-        transition: 'background-color 10000s ease-in-out 0s',
-        '-webkit-text-fill-color': 'var(--input-text) !important',
-        '-webkit-text-stroke-color': 'var(--input-text) !important',
+        transition: 'background-color 1000000ms ease-in-out 0ms',
+        '-webkit-text-fill-color': 'var(--tw-input-text) !important',
+        '-webkit-text-stroke-color': 'var(--tw-input-text) !important',
       },
     },
   })
-
   matchComponents(
     {
       'input-cover': (radius) => {
         return {
-          '--input-radius': radius,
+          '--tw-input-radius': radius,
         }
       },
     },
-
     {
       values: theme('borderRadius'),
     }
@@ -89,30 +80,27 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         if (!parsed.color) return null
 
         return {
-          '--input-color': formatColor({
+          '--tw-input-color': formatColor({
             mode: 'rgba',
             color: parsed.color,
             alpha: 0.3,
           }),
-          '--input-focus': color.DEFAULT,
+          '--tw-input-focus': color.DEFAULT,
         }
       },
     },
-
     {
       values: theme('colors'),
     }
   )
-
   matchComponents(
     {
-      input: (size) => {
+      input: (constant) => {
         return {
-          '--input-size': size,
+          '--tw-input-size': `${constant / 16}rem`,
         }
       },
     },
-
     {
       values: theme('constants'),
     }

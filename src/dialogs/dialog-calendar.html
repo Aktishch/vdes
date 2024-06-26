@@ -10,7 +10,7 @@
     <div class="w-full md:w-auto" id="calendar"></div>
     <div class="w-full md:w-1/2">
       <% for (var i = 0; i < calendar.length; i++) { %>
-      <div class="w-full filtering__card pack pack-rect-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= calendar[i] %>">
+      <div class="w-full filtering__card pack pack-md bg-gray rounded-2xl" data-filtering-card="calendar" data-filtering-value="<%= calendar[i] %>">
         <%= loader %>
         <%= picture({src: 'img/pictures/town-grey', format: 'jpg', className: 'image image-rise', data: false}) %>
       </div>

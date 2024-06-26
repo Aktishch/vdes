@@ -36,7 +36,7 @@ export default (): void => {
 
   const checkCell = (cell: HTMLButtonElement): void => {
     cell.textContent = player
-    cell.setAttribute('disabled', 'disabled')
+    cell.disabled = true
   }
 
   const makeBotMove = (): void => {
@@ -67,7 +67,7 @@ export default (): void => {
 
     cell.classList.add(
       'pack',
-      'pack-box',
+      'pack-xl',
       'btn',
       'btn-black',
       'btn-contur',

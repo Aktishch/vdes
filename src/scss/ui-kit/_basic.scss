@@ -1,21 +1,26 @@
 :root {
-  --font-alt : "Circe", Arial, sans-serif;
-  --font-base: "SF Pro Display", Helvetica, sans-serif;
-  --xs       : calc(theme(screens.xs) - 32.98px);
-  --sm       : calc(theme(screens.sm) - 35.98px);
-  --md       : calc(theme(screens.md) - 47.98px);
-  --lg       : calc(theme(screens.lg) - 51.98px);
-  --xl       : calc(theme(screens.xl) - 245.98px);
+  --tw-font-alt  : "Circe", Arial, sans-serif;
+  --tw-font-base : "SF Pro Display", Helvetica, sans-serif;
+  --tw-content-xs: calc(theme(screens.xs) - 32.98px);
+  --tw-content-sm: calc(theme(screens.sm) - 35.98px);
+  --tw-content-md: calc(theme(screens.md) - 47.98px);
+  --tw-content-lg: calc(theme(screens.lg) - 51.98px);
+  --tw-content-xl: calc(theme(screens.xl) - 245.98px);
 }
 
 * {
   -webkit-tap-highlight-color: transparent;
 
   @apply m-0 p-0;
+
+  scrollbar: {
+    width: thin;
+    color: theme("colors.primary.DEFAULT") theme("colors.black.DEFAULT");
+  }
 }
 
 html {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 body {

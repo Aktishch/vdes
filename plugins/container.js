@@ -3,41 +3,37 @@ const plugin = require('tailwindcss/plugin')
 module.exports = plugin(({ addComponents, theme }) => {
   addComponents({
     '.container': {
-      '--padding-block': '40px',
-      '--padding-inline': '100vw - 32px',
-      padding: 'var(--padding-block) calc(50% - ((var(--padding-inline)) / 2))',
-
+      '--tw-container-padding': '40px',
+      '--tw-container-content': '100vw - 32px',
+      padding:
+        'var(--tw-container-padding) calc(50% - ((var(--tw-container-content)) / 2))',
       [`@media (min-width: ${theme('screens.xs')})`]: {
         '&-xs': {
-          '--padding-inline': 'var(--xs)',
+          '--tw-container-content': 'var(--tw-content-xs)',
         },
       },
-
       [`@media (min-width: ${theme('screens.sm')})`]: {
-        '--padding-block': '50px',
-        '--padding-inline': 'var(--sm)',
+        '--tw-container-padding': '50px',
+        '--tw-container-content': 'var(--tw-content-sm)',
       },
-
       [`@media (min-width: ${theme('screens.md')})`]: {
-        '--padding-block': '60px',
-        '--padding-inline': 'var(--md)',
+        '--tw-container-padding': '60px',
+        '--tw-container-content': 'var(--tw-content-md)',
       },
-
       [`@media (min-width: ${theme('screens.lg')})`]: {
-        '--padding-block': '70px',
-        '--padding-inline': 'var(--lg)',
+        '--tw-container-padding': '70px',
+        '--tw-container-content': 'var(--tw-content-lg)',
       },
-
       [`@media (min-width: ${theme('screens.xl')})`]: {
-        '--padding-block': '80px',
-        '--padding-inline': 'var(--xl)',
-
+        '--tw-container-padding': '80px',
+        '--tw-container-content': 'var(--tw-content-xl)',
         '&-distance': {
-          '--width': 'var(--xl)',
-          '--distance': '20px',
-          '--padding-inline': 'calc(var(--width) + (var(--distance) * 2))',
-          margin: 'var(--distance)',
-          borderRadius: 'var(--distance)',
+          '--tw-container-width': 'var(--tw-content-xl)',
+          '--tw-container-distance': '1.25rem',
+          '--tw-container-content':
+            'calc(var(--tw-container-width) + (var(--tw-container-distance) * 2))',
+          margin: 'var(--tw-container-distance)',
+          borderRadius: 'var(--tw-container-distance)',
         },
       },
     },

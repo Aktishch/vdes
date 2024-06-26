@@ -43,7 +43,7 @@ const submitHandler = ({
       switch (form.dataset.form) {
         case 'submit': {
           requestUrl = './ajax/submit-handler.php'
-          submitBtn.setAttribute('disabled', 'disabled')
+          submitBtn.disabled = true
           dialog.notClosing('./dialogs/dialog-preloader.html')
 
           fetch(requestUrl, {
@@ -69,7 +69,7 @@ const submitHandler = ({
               }
 
               form.reset()
-              submitBtn.removeAttribute('disabled')
+              submitBtn.disabled = false
 
               if (form.hasAttribute('data-files')) {
                 const listing = form.querySelector(

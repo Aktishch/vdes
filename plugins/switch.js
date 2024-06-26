@@ -11,15 +11,13 @@ module.exports = plugin(({ addComponents, theme }) => {
       userSelect: 'none',
       color: theme('colors.primary.DEFAULT'),
       border: `1px solid ${theme('colors.gray.DEFAULT')}`,
-      transition: '0.2s linear',
+      transition: '200ms linear',
       appearance: 'none',
       cursor: 'pointer',
-
       '&:disabled': {
         pointerEvents: 'none',
         opacity: 0.5,
       },
-
       '@media (hover)': {
         '&:hover': {
           boxShadow: `0 0 0 4px ${formatColor({
@@ -29,53 +27,46 @@ module.exports = plugin(({ addComponents, theme }) => {
           })}`,
         },
       },
-
       '&-checkbox': {
-        minWidth: '24px',
-        width: '24px',
-        height: '24px',
-        borderRadius: '2px',
-
+        minWidth: '1.5rem',
+        width: '1.5rem',
+        height: '1.5rem',
+        borderRadius: theme('borderRadius.sm'),
         '&::after': {
-          content: '""',
+          content: theme('content.auto'),
           display: 'block',
           width: '100%',
           height: '100%',
           backgroundColor: theme('colors.white.DEFAULT'),
-          borderRadius: 'inherit',
+          borderRadius: theme('borderRadius.inherit'),
           opacity: 0,
-          transition: 'opacity 0.1s linear',
-          mask: 'url("../img/pictures/checkbox.svg") no-repeat center / 16px',
+          transition: 'opacity 100ms linear',
+          mask: 'url("../img/pictures/checkbox.svg") no-repeat center / 1rem',
         },
-
         '&:checked': {
-          borderColor: 'currentColor',
-          backgroundColor: 'currentColor',
-
+          borderColor: theme('colors.current'),
+          backgroundColor: theme('colors.current'),
           '&::after': {
             opacity: 1,
           },
         },
       },
-
       '&-radio': {
-        minWidth: '20px',
-        width: '20px',
-        height: '20px',
-        borderRadius: '50%',
-
+        minWidth: '1.25rem',
+        width: '1.25rem',
+        height: '1.25rem',
+        borderRadius: theme('borderRadius.full'),
         '&::after': {
-          content: '""',
+          content: theme('content.auto'),
           display: 'block',
-          width: '12px',
-          height: '12px',
-          backgroundColor: 'currentColor',
-          borderRadius: 'inherit',
+          width: '0.75rem',
+          height: '0.75rem',
+          backgroundColor: theme('colors.current'),
+          borderRadius: theme('borderRadius.inherit'),
           transform: 'scale(0)',
-          transition: 'opacity 0.1s linear, transform 0.1s linear',
+          transition: 'opacity 100ms linear, transform 100ms linear',
           opacity: 0,
         },
-
         '&:checked': {
           '&::after': {
             opacity: 1,
@@ -83,10 +74,9 @@ module.exports = plugin(({ addComponents, theme }) => {
           },
         },
       },
-
       '&-checkbox, &-radio': {
         '&::before': {
-          content: '""',
+          content: theme('content.auto'),
           position: 'absolute',
           left: '50%',
           top: '50%',
@@ -94,12 +84,11 @@ module.exports = plugin(({ addComponents, theme }) => {
           height: '100%',
           visibility: 'hidden',
           transform: 'translate(-50%, -50%) scale(0)',
-          borderRadius: 'inherit',
-          backgroundColor: 'currentColor',
-          transition: 'opacity 0.3s linear, transform 0.4s linear',
+          borderRadius: theme('borderRadius.inherit'),
+          backgroundColor: theme('colors.current'),
+          transition: 'opacity 300ms linear, transform 400ms linear',
           pointerEvents: 'none',
         },
-
         '&:checked': {
           '&::before': {
             visibility: 'visible',
@@ -108,36 +97,32 @@ module.exports = plugin(({ addComponents, theme }) => {
           },
         },
       },
-
       '&-toggle': {
-        minWidth: '80px',
-        width: '80px',
-        height: '36px',
-        borderRadius: '20px',
-
+        minWidth: '5rem',
+        width: '5rem',
+        height: '2.188rem',
+        borderRadius: theme('borderRadius.full'),
         '&::after': {
           content: '""',
           position: 'absolute',
           top: 0,
           bottom: 0,
           marginBlock: 'auto',
-          height: '24px',
-          borderRadius: '20px',
+          height: '1.5rem',
+          borderRadius: theme('borderRadius.full'),
         },
-
         '&:not(:checked)::after': {
-          left: '4px',
-          right: '50px',
+          left: '0.25rem',
+          right: '3.125rem',
           backgroundColor: theme('colors.gray.DEFAULT'),
-          transition: 'left 0.5s ease, right 0.4s ease 0.2s',
+          transition: 'left 500ms ease, right 400ms ease 200ms',
         },
-
         '&:checked::after': {
-          left: '50px',
-          right: '4px',
-          backgroundColor: 'currentColor',
+          left: '3.125rem',
+          right: '0.25rem',
+          backgroundColor: theme('colors.current'),
           transition:
-            'left 0.4s ease 0.2s, right 0.5s ease, background-color 0.35s ease -0.1s',
+            'left 400ms ease 200ms, right 500ms ease, background-color 350ms ease -100s',
         },
       },
     },

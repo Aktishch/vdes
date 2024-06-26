@@ -14,7 +14,7 @@
   }
 
   &::after {
-    background-color: var(--btn-color);
+    background-color: var(--tw-btn-color);
     z-index         : -1;
 
     @apply content-auto absolute inset-0 rounded-inherit ease-in-out duration-300;

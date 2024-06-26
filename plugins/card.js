@@ -11,22 +11,19 @@ module.exports = plugin(({ addComponents, theme }) => {
       position: 'relative',
       backgroundColor: theme('colors.white.DEFAULT'),
       boxShadow: `8px 8px 4px ${formatColor({ mode: 'rgba', color: shadow, alpha: 0.2 })}`,
-      borderRadius: '16px',
-      transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+      borderRadius: theme('borderRadius.2xl'),
+      transition: 'box-shadow 200ms ease, transform 200ms ease',
       overflow: 'hidden',
-
       '&-active': {
         '&:active': {
-          transform: 'translateY(4px)',
+          transform: 'translateY(0.25rem)',
         },
-
         '@media (hover)': {
           '&:hover': {
             boxShadow: `8px 8px 4px ${formatColor({ mode: 'rgba', color: shadow, alpha: 0.4 })}`,
           },
         },
       },
-
       '&-content': {
         display: 'flex',
         flexDirection: 'column',
