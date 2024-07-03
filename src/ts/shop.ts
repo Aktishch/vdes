@@ -33,8 +33,7 @@ export default (): void => {
     'pointer-events-none',
     '-translate-y-1/2',
     '-translate-x-1/2',
-    'w-10',
-    'h-10',
+    'size-10',
   ]
 
   const shopShow = (): void => {

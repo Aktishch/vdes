@@ -105,7 +105,7 @@ module.exports = {
     require('./plugins/card'),
     require('./plugins/pack'),
     require('./plugins/picture'),
-    require('./plugins/form'),
+    // require('./plugins/form'),
     require('./plugins/input'),
     require('./plugins/button'),
     require('./plugins/switch'),

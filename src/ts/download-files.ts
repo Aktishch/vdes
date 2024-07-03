@@ -19,7 +19,9 @@ export default (): File[] => {
       const text = download.querySelector(
         '*[data-files-text]'
       ) as HTMLSpanElement
-      const error = download.querySelector('*[data-error]') as HTMLSpanElement
+      const warning = download.querySelector(
+        '*[data-warning]'
+      ) as HTMLSpanElement
       const listing = form.querySelector(
         '*[data-files-listing]'
       ) as HTMLUListElement
@@ -27,7 +29,7 @@ export default (): File[] => {
 
       item.classList.add('flex', 'items-center', 'justify-between', 'gap-5')
 
-      if (fileHandler({ input: input, error: error })) {
+      if (fileHandler({ input: input, warning: warning })) {
         for (let i = 0; i < files.length; i++) {
           data.push(files[i])
           item.setAttribute('data-files-item', '')

@@ -18,7 +18,7 @@
   &-circle {
     animation: preloader-circle 1.2s linear infinite;
 
-    @apply bg-current rounded-inherit w-10 h-10;
+    @apply bg-current rounded-inherit size-10;
   }
 
   &-bullet {
@@ -36,7 +36,7 @@
       animation-delay: 0.8s;
     }
 
-    @apply bg-current rounded-full w-8 h-8;
+    @apply bg-current rounded-full size-8;
   }
 
   &-line {
@@ -80,7 +80,7 @@
       animation-delay: 0.5s;
     }
 
-    @apply bg-current opacity-40 w-7 h-7;
+    @apply bg-current opacity-40 size-7;
   }
 
   &--circles {
@@ -104,7 +104,7 @@
       @apply border-y-transparent;
     }
 
-    @apply relative bg-transparent rounded-full w-24 h-24;
+    @apply relative bg-transparent rounded-full size-24;
   }
 
   &--bullets {
@@ -125,14 +125,14 @@
     &::after {
       animation: preloader-pulse 1s ease-out infinite;
 
-      @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-full w-full h-full;
+      @apply content-auto absolute inset-0 border-4 border-solid border-current rounded-full size-full;
     }
 
     &::after {
       animation-delay: -0.5s;
     }
 
-    @apply relative w-20 h-20;
+    @apply relative size-20;
   }
 }
 

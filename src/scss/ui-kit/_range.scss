@@ -8,10 +8,6 @@
 .range {
   --bubble-size: 28px;
 
-  &-cover {
-    @apply w-16;
-  }
-
   &-wrapper {
 
     &:nth-child(2) {
@@ -22,7 +18,7 @@
   }
 
   &-input {
-    @apply block appearance-none rounded-inherit w-full h-full;
+    @apply block appearance-none rounded-inherit size-full;
 
     &::-webkit-slider-thumb {
       @include range();

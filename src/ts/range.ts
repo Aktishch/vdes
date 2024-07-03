@@ -128,7 +128,7 @@ export default (): void => {
         changeRanges()
 
         firstOutput.addEventListener('input', ((): void => {
-          if (+firstOutput.value > Number(lastOutput.value)) {
+          if (Number(firstOutput.value) > Number(lastOutput.value)) {
             firstInput.value = firstOutput.value
             lastOutput.value = firstOutput.value
             lastInput.value = lastOutput.value
@@ -139,7 +139,7 @@ export default (): void => {
         }) as EventListener)
 
         lastOutput.addEventListener('input', ((): void => {
-          if (+lastOutput.value < Number(firstOutput.value)) {
+          if (Number(lastOutput.value) < Number(firstOutput.value)) {
             lastInput.value = lastOutput.value
             firstOutput.value = lastOutput.value
             firstInput.value = firstOutput.value
@@ -150,7 +150,7 @@ export default (): void => {
         }) as EventListener)
 
         firstInput.addEventListener('input', ((): void => {
-          if (+firstInput.value > Number(lastInput.value)) {
+          if (Number(firstInput.value) > Number(lastInput.value)) {
             lastInput.value = firstInput.value
             lastOutput.value = lastInput.value
           }
@@ -160,7 +160,7 @@ export default (): void => {
         }) as EventListener)
 
         lastInput.addEventListener('input', ((): void => {
-          if (+lastInput.value < Number(firstInput.value)) {
+          if (Number(lastInput.value) < Number(firstInput.value)) {
             firstInput.value = lastInput.value
             firstOutput.value = firstInput.value
           }

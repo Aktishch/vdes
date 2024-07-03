@@ -3,7 +3,7 @@
 
     &::before,
     &::after {
-      @apply border-2 border-solid border-transparent w-5 h-5;
+      @apply border-2 border-solid border-transparent size-5;
     }
 
     &::before {

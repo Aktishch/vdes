@@ -1,26 +1,22 @@
 <% var icon = _.template(require('../components/icon.html').default) %>
 
 <dialog class="px-5 py-10 dialog dialog-xs dark:bg-black dark:text-white rounded-xl">
-  <form class="form" data-form="action" action="primary.html">
+  <form class="flex flex-col" data-form="action" action="primary.html">
     <input type="hidden" value="Авторизация" name="theme">
-    <label class="mb-5 form-label" data-label="input">
+    <label class="mb-5 input-label" data-label="input">
       <span class="mb-3 text-xl">Telephone</span>
-      <div class="form-wrapper">
-        <div class="input-cover">
-          <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (" name="tel">
-        </div>
-        <span class="form-error" data-error>Пожалуйста, введите ваш номер!</span>
+      <div class="input-wrapper">
+        <input class="input input-gray input-md" data-input="tel" type="tel" placeholder="+7 (" name="tel">
+        <span class="input-warning" data-warning>Пожалуйста, введите ваш номер!</span>
       </div>
     </label>
-    <label class="mb-5 form-label" data-label="input">
+    <label class="mb-5 input-label" data-label="input">
       <span class="mb-3 text-xl">Password</span>
-      <div class="form-wrapper">
-        <div class="input-cover">
-          <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
-        </div>
-        <span class="form-error" data-error>Пожалуйста, введите пароль!</span>
-        <button class="form-icon form-icon-pointer form-icon-right" data-password="/" type="button">
-          <%= icon({id: 'eye-visible', className: 'icon text-black text-xl', data: false}) %>
+      <div class="input-wrapper">
+        <input class="pr-10 input input-gray input-md" data-input="password" type="password" placeholder="Your password here" autocomplete="new-password" name="password">
+        <span class="input-warning" data-warning>Пожалуйста, введите пароль!</span>
+        <button class="input-icon input-icon-pointer input-icon-right" data-password="/" type="button">
+          <%= icon({id: 'eye-visible', className: 'icon text-black text-xl pointer-events-none', data: false}) %>
         </button>
       </div>
     </label>

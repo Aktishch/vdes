@@ -64,9 +64,9 @@ export const createCalendar = (): void => {
 export default (): void => {
   const datepickers = document.querySelectorAll(
     '*[data-datepicker]'
-  ) as NodeListOf<HTMLInputElement>
+  ) as NodeListOf<HTMLFormElement>
 
-  datepickers.forEach((datepicker: HTMLInputElement): void => {
+  datepickers.forEach((datepicker: HTMLFormElement): void => {
     if (!datepicker) return
 
     const inputMin = datepicker.querySelector(

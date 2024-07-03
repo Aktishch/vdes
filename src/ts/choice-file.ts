@@ -7,7 +7,7 @@ const choiceFile = (event: Event): void => {
   const download = form.querySelector(
     '*[data-label="download"]'
   ) as HTMLDivElement
-  const error = download.querySelector('*[data-error]') as HTMLSpanElement
+  const warning = download.querySelector('*[data-warning]') as HTMLSpanElement
   const image = download.querySelector(
     '*[data-file="image"]'
   ) as HTMLImageElement
@@ -20,7 +20,7 @@ const choiceFile = (event: Event): void => {
   file ? readFile.readAsDataURL(file) : (image.src = '')
 
   readFile.addEventListener('loadend', ((): void => {
-    if (!fileHandler({ input: input, error: error })) return
+    if (!fileHandler({ input: input, warning: warning })) return
 
     image.src = String(readFile.result)
 

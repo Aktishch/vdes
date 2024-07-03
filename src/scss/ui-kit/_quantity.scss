@@ -5,11 +5,7 @@
     @apply rounded-full size-8;
   }
 
-  &-cover {
-    @apply w-10;
-  }
-
   &-input {
-    @apply bg-transparent text-center border-none h-auto p-0;
+    @apply bg-transparent text-center border-none w-10 h-auto p-0;
   }
 }

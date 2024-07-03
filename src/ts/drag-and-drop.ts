@@ -21,7 +21,9 @@ export default (): void => {
         const input = download.querySelector(
           '*[data-input="file"]'
         ) as HTMLInputElement
-        const error = download.querySelector('*[data-error]') as HTMLSpanElement
+        const warning = download.querySelector(
+          '*[data-warning]'
+        ) as HTMLSpanElement
         const image = download.querySelector(
           '*[data-file="image"]'
         ) as HTMLImageElement
@@ -49,7 +51,7 @@ export default (): void => {
             file ? readFile.readAsDataURL(file) : (image.src = '')
 
             readFile.addEventListener('loadend', ((): void => {
-              image.src = fileHandler({ input: input, error: error })
+              image.src = fileHandler({ input: input, warning: warning })
                 ? String(readFile.result)
                 : ''
             }) as EventListener)

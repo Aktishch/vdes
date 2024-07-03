@@ -55,19 +55,9 @@ const submitHandler = ({
             })
             .then((response): void => {
               dialog.close()
-
-              switch (response.status) {
-                case true: {
-                  dialog.open('./dialogs/dialog-success.html')
-                  break
-                }
-
-                case false: {
-                  dialog.open('./dialogs/dialog-error.html')
-                  break
-                }
-              }
-
+              response.status
+                ? dialog.open('./dialogs/dialog-success.html')
+                : dialog.open('./dialogs/dialog-error.html')
               form.reset()
               submitBtn.disabled = false
 

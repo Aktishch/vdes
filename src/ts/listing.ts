@@ -24,11 +24,8 @@ export default (): void => {
 
         if (item && item.classList.contains('hidden'))
           item.classList.remove('hidden')
-
         if (item && item.hasAttribute('data-anim')) item.dataset.anim = 'show'
-
         if (item) item.removeAttribute('data-listing-item')
-
         if (!item || items.length === count) show.remove()
       }
     }) as EventListener)
