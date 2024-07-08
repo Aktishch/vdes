@@ -1,0 +1,29 @@
+<section class="container relative flex flex-col -mt-16 lg:-mt-24 py-0 text-white overflow-hidden <%= small ? 'min-h-[470px] xl:min-h-[400px]' : 'min-h-[470px] xl:min-h-[1020px]' %>">
+  <div class="absolute inset-0">
+    <div class="h-full duration-700 pack bg-grey anim anim-decrease" data-anim="hidden">
+      <%= loader %>
+      <%= picture({src: src, format: 'jpg', className: 'image', data: false}) %>
+    </div>
+  </div>
+  <div class="relative flex-grow pt-48 pb-10 sm:pt-56">
+    <% if (data.title !== 'Virtual Driving e-Sport') { %>
+    <div class="absolute left-0 flex flex-wrap items-center gap-2 sm:gap-4 text-mini sm:text-xs top-24 opacity-60">
+      <a class="underline-offset-4 hover:underline" draggable="false" href="">Главная</a>
+      >
+      <span class="pointer-events-none"><%= data.title %></span>
+    </div>
+    <% } %>
+    <div class="relative flex flex-col items-center text-center">
+      <h1 class="text-4xl italic font-black leading-[1.5_!important] sm:text-5xl lg:text-6xl font-alt text-gradient anim anim-right duration-500" data-anim="hidden"><%= data.title %></h1>
+      <% if (subtitle) { %>
+      <p class="mt-5 text-base font-normal leading-tight duration-500 delay-200 anim anim-right" data-anim="hidden"><%= subtitle %></p>
+      <% } %>
+      <% if (images) { %>
+      <div class="flex items-center gap-8 mt-12 duration-500 delay-300 sm:gap-12 sm:mt-16 lg:mt-20 anim anim-right" data-anim="hidden">
+        <%= picture({src: 'img/pictures/corsa', format: 'png', className: 'block w-full max-w-28 sm:max-w-40', data: false}) %>
+        <%= picture({src: 'img/pictures/racing', format: 'png', className: 'block w-full max-w-28 sm:max-w-40', data: false}) %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>

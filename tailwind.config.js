@@ -21,8 +21,8 @@ module.exports = {
     constants: {
       xs: 28,
       sm: 36,
-      md: 40,
-      lg: 45,
+      md: 44,
+      lg: 50,
       xl: 56,
       xxl: 64,
     },
@@ -31,25 +31,25 @@ module.exports = {
       current: 'currentColor',
       inherit: 'inherit',
       primary: {
-        DEFAULT: '#af1a4c',
+        DEFAULT: '#EC0000',
       },
       second: {
-        DEFAULT: '#d7a751',
+        DEFAULT: '#EB4747',
       },
       black: {
-        DEFAULT: '#000000',
+        DEFAULT: '#2B2B2B',
       },
       white: {
-        DEFAULT: '#ffffff',
+        DEFAULT: '#FFFFFF',
       },
       gray: {
         DEFAULT: '#b2b2b2',
       },
       grey: {
-        DEFAULT: '#f6f7f9',
+        DEFAULT: '#B7B7B7',
       },
       dark: {
-        DEFAULT: '#303030',
+        DEFAULT: '#000000',
       },
       red: {
         DEFAULT: '#be1b1b',
@@ -94,6 +94,9 @@ module.exports = {
       content: {
         auto: '""',
       },
+      fontSize: {
+        mini: '0.625rem',
+      },
       borderRadius: {
         inherit: 'inherit',
       },
@@ -105,7 +108,6 @@ module.exports = {
     require('./plugins/card'),
     require('./plugins/pack'),
     require('./plugins/picture'),
-    // require('./plugins/form'),
     require('./plugins/input'),
     require('./plugins/button'),
     require('./plugins/switch'),

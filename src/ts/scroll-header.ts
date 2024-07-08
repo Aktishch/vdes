@@ -5,32 +5,20 @@ export default (): void => {
 
   if (!header) return
 
+  const nav = document.querySelector('*[data-nav]') as HTMLElement
+
   let prevOffsetTop: number = scrolledPage().top
 
   const scrollHeader = (): void => {
     const currentOffsetTop: number = scrolledPage().top
 
-    if (header.offsetHeight < currentOffsetTop) {
-      prevOffsetTop > currentOffsetTop
-        ? header.classList.remove('sm:-translate-y-full')
-        : header.classList.add('sm:-translate-y-full')
-    }
+    nav.offsetHeight < currentOffsetTop
+      ? header.classList.remove('bg-opacity-0')
+      : header.classList.add('bg-opacity-0')
 
     prevOffsetTop = currentOffsetTop
   }
 
+  scrollHeader()
   document.addEventListener('scroll', scrollHeader as EventListener)
-
-  const smoothScroll = document.querySelector(
-    '#smooth-scroll'
-  ) as HTMLDivElement
-
-  if (smoothScroll) {
-    const wrapperResize = (): void => {
-      smoothScroll.style.paddingTop = `${header.offsetHeight}px`
-    }
-
-    wrapperResize()
-    window.addEventListener('resize', wrapperResize as EventListener)
-  }
 }

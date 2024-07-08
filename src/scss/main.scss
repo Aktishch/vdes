@@ -5,158 +5,51 @@
 
 // Базовые стили
 @layer base {
-  @import "@fancyapps/ui/dist/fancybox/fancybox.css";
-  @import "swiper/css/bundle";
-  @import "air-datepicker/air-datepicker.css";
+  // @import "@fancyapps/ui/dist/fancybox/fancybox.css";
+  // @import "swiper/css/bundle";
+  // @import "air-datepicker/air-datepicker.css";
   @import "./ui-kit/fonts";
   @import "./ui-kit/basic";
   @import "./ui-kit/custom";
   @import "./ui-kit/waved";
-  @import "./ui-kit/movement";
+  // @import "./ui-kit/movement";
 }
 
 // Компоненты
 @layer components {
-  @import "./ui-kit/inverted";
-  @import "./ui-kit/postcards";
-  @import "./ui-kit/like";
+  // @import "./ui-kit/inverted";
+  // @import "./ui-kit/postcards";
+  // @import "./ui-kit/like";
   @import "./ui-kit/load";
-  @import "./ui-kit/button-glow";
-  @import "./ui-kit/button-bubles";
-  @import "./ui-kit/button-border";
-  @import "./ui-kit/quantity";
-  @import "./ui-kit/rating";
-  @import "./ui-kit/range";
+  // @import "./ui-kit/button-glow";
+  // @import "./ui-kit/button-bubles";
+  // @import "./ui-kit/button-border";
+  // @import "./ui-kit/quantity";
+  // @import "./ui-kit/rating";
+  // @import "./ui-kit/range";
 }
 
-// Меню
-.menu {
-  &__content {
-    box-shadow: 0 0 0 100vw theme("colors.black.DEFAULT / 50%");
+// Обводка текста
+.text-gradient {
+
+  &,
+  .dark &-dark {
+    background             : radial-gradient(50% 50% at 50% 50%, theme("colors.white.DEFAULT") 0%, transparent 77.5%), theme("colors.grey.DEFAULT");
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke    : 1px theme("colors.white.DEFAULT / 40%");
+
+    @apply bg-clip-text;
   }
 }
 
-// Перетаскиваемое социальное меню
-.social {
-  left: calc(100vw - 150px);
+// Тен
+.shadow-screen {
+  box-shadow: 0 0 0 100vw theme("colors.dark.DEFAULT / 50%");
 }
 
-// Переключатель темы
-.theme {
-  left: calc(100vw - 240px);
-}
-
-// Снежинка
-.snowflake {
-  background-image: url("../img/pictures/snow.png");
-  animation       : snowflake 3s linear both 1;
-
-  @apply absolute bg-no-repeat bg-center bg-contain;
-}
-
-@keyframes snowflake {
-  0% {
-    opacity  : 1;
-    transform: translate(-50%, 0);
-    filter   : hue-rotate(0deg);
-  }
-
-  100% {
-    opacity  : 0;
-    transform: translate(-50%, 1000%);
-    filter   : hue-rotate(500deg);
-  }
-}
-
-// Бегующая кнопка
-.running {
-  @media(pointer: coarse) {
-    @apply hidden;
-  }
-}
-
-// В покупки
-.in-shop {
-  animation: in-shop 2s ease both;
-}
-
-@keyframes in-shop {
-  100% {
-    top : -100px;
-    left: 100%;
-  }
-}
-
-// Фильтр
-.filtering {
-  &__category.filtering-active {
-    @apply text-white bg-second pointer-events-none;
-
-    @screen md {
-      @apply font-bold text-primary bg-opacity-0;
-    }
-  }
-
-  &__card.filtering-active {
-    animation: filtering-active 0.3s ease both 1;
-  }
-}
-
-@keyframes filtering-active {
-  0% {
-    opacity  : 0;
-    transform: translateY(50px);
-  }
-
-  100% {
-    opacity  : 1;
-    transform: translateY(0);
-  }
-}
-
-// Плеер
-.player {
-  &__loading {
-    animation: loading-player 1s steps(8) infinite;
-  }
-}
-
-@keyframes loading-player {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-// Продукция
-.product {
-  @media(hover) {
-    &:hover &__heart {
-      @apply visible opacity-100;
-    }
-
-    @screen md {
-      &__heart {
-        @apply invisible opacity-0;
-      }
-
-      &__toggle:checked+&__heart {
-        @apply visible opacity-100;
-      }
-    }
-  }
-}
-
-// Горизорнтальный скролл
-.scrolling {
-  @screen md {
-    height: var(--scroll-height);
-  }
-
-  &__image {
-    @screen md {
-      width    : 130%;
-      height   : 130%;
-      transform: translate3d(var(--scroll-moving), 0, 0);
-    }
+// Опытные тренеры
+.coaches {
+  &__card {
+    background-image: linear-gradient(114.33deg, theme("colors.white.DEFAULT / 6%") 0.04%, theme("colors.white.DEFAULT / 20%") 100.04%);
   }
 }

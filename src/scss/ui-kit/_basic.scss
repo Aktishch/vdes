@@ -1,11 +1,11 @@
 :root {
-  --tw-font-alt  : "Circe", Arial, sans-serif;
-  --tw-font-base : "SF Pro Display", Helvetica, sans-serif;
+  --tw-font-alt  : "RF Dewi Expanded", Arial, sans-serif;
+  --tw-font-base : "Evolventa", Helvetica, sans-serif;
   --tw-content-xs: calc(theme(screens.xs) - 32.98px);
   --tw-content-sm: calc(theme(screens.sm) - 35.98px);
   --tw-content-md: calc(theme(screens.md) - 47.98px);
   --tw-content-lg: calc(theme(screens.lg) - 51.98px);
-  --tw-content-xl: calc(theme(screens.xl) - 245.98px);
+  --tw-content-xl: calc(theme(screens.xl) - 135.98px);
 }
 
 * {
@@ -15,7 +15,7 @@
 
   scrollbar: {
     width: thin;
-    color: theme("colors.primary.DEFAULT") theme("colors.black.DEFAULT");
+    color: theme("colors.primary.DEFAULT") theme("colors.dark.DEFAULT");
   }
 }
 

@@ -1,0 +1,7 @@
+<div class="flex items-center <%= small ? 'gap-3 sm:gap-4' : 'gap-4' %>">
+  <% _.forEach((items), (id) => { %>
+  <a class="rounded-lg btn btn-primary btn-light size-7 sm:size-8 shrink-0 <%= small ? 'size-7 sm:size-8' : 'size-8' %>" data-waved="dark" draggable="false" href="">
+    <%= icon({id: id, className: `icon ${small ? 'text-xl xm:text-2xl' : 'text-2xl'}`, data: false}) %>
+  </a>
+  <% }) %>
+</div>

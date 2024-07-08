@@ -27,14 +27,6 @@ module.exports = plugin(({ addComponents, theme }) => {
       [`@media (min-width: ${theme('screens.xl')})`]: {
         '--tw-container-padding': '80px',
         '--tw-container-content': 'var(--tw-content-xl)',
-        '&-distance': {
-          '--tw-container-width': 'var(--tw-content-xl)',
-          '--tw-container-distance': '1.25rem',
-          '--tw-container-content':
-            'calc(var(--tw-container-width) + (var(--tw-container-distance) * 2))',
-          margin: 'var(--tw-container-distance)',
-          borderRadius: 'var(--tw-container-distance)',
-        },
       },
     },
   })

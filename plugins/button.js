@@ -56,7 +56,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       '--tw-btn-accent': theme('colors.white.DEFAULT'),
       color: 'var(--tw-btn-color)',
       fontSize: theme('fontSize.base'),
-      fontWeight: theme('fontWeight.semibold'),
+      fontWeight: theme('fontWeight.bold'),
       textAlign: 'center',
       display: 'flex',
       alignItems: 'center',
@@ -199,7 +199,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       btn: (constant) => {
         return {
           '--tw-btn-size': `${constant / 16}rem`,
-          borderRadius: theme('borderRadius.md'),
+          borderRadius: theme('borderRadius.lg'),
           height: 'var(--tw-btn-size)',
           paddingInline: `calc(var(--tw-btn-size) / 2)`,
         }
