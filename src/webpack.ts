@@ -1,5 +1,5 @@
-// import fancybox from './ts/fancybox'
-// import sliderSwiper from './ts/slider-swiper'
+import fancybox from './ts/fancybox'
+import sliderSwiper from './ts/slider-swiper'
 // import yandexMap from './ts/yandex-map'
 // import airDatepicker from './ts/air-datepicker'
 // import smoothScroll from './ts/smooth-scroll'
@@ -55,8 +55,8 @@ import preloader from './ts/preloader'
 import './scss/main.scss'
 
 const initialization = (): void => {
-  // fancybox()
-  // sliderSwiper()
+  fancybox()
+  sliderSwiper()
   // yandexMap()
   // airDatepicker()
   currentTab()

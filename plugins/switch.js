@@ -10,7 +10,7 @@ module.exports = plugin(({ addComponents, theme }) => {
       position: 'relative',
       userSelect: 'none',
       color: theme('colors.primary.DEFAULT'),
-      border: `1px solid ${theme('colors.gray.DEFAULT')}`,
+      border: `1px solid ${theme('colors.grey.DEFAULT')}`,
       transition: '200ms linear',
       appearance: 'none',
       cursor: 'pointer',
@@ -22,7 +22,7 @@ module.exports = plugin(({ addComponents, theme }) => {
         '&:hover': {
           boxShadow: `0 0 0 4px ${formatColor({
             mode: 'rgba',
-            color: parseColor(theme('colors.gray.DEFAULT')).color,
+            color: parseColor(theme('colors.grey.DEFAULT')).color,
             alpha: 0.4,
           })}`,
         },
@@ -114,7 +114,7 @@ module.exports = plugin(({ addComponents, theme }) => {
         '&:not(:checked)::after': {
           left: '0.25rem',
           right: '3.125rem',
-          backgroundColor: theme('colors.gray.DEFAULT'),
+          backgroundColor: theme('colors.grey.DEFAULT'),
           transition: 'left 500ms ease, right 400ms ease 200ms',
         },
         '&:checked::after': {

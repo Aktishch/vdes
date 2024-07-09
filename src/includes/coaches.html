@@ -1,0 +1,55 @@
+<% var coaches = [
+  {
+    anim: 'anim-right',
+    bg: 'img/pictures/coaches-bg-1',
+    coach: 'img/pictures/coach-1',
+    name: 'Егор Огородников',
+    listing: [
+      {
+        color: 'text-primary',
+        text: 'Обладатель PRO лицензии в iRacing'
+      },
+      {
+        color: 'text-yellow',
+        text: 'Участник мировых LAN-финалов по Forza Motosport 7, RaceROOM'
+      },
+      {
+        color: 'text-green',
+        text: 'Многократный призёр российских чемпионатов'
+      }
+    ]
+  },
+  {
+    anim: 'anim-left',
+    bg: 'img/pictures/coaches-bg-2',
+    coach: 'img/pictures/coach-2',
+    name: 'Максим Петров',
+    listing: [
+      {
+        color: 'text-primary',
+        text: 'Финалист SMP Challenge'
+      },
+      {
+        color: 'text-yellow',
+        text: 'Многократный призёр любительских турниров'
+      },
+      {
+        color: 'text-green',
+        text: 'Победитель чемпионата Sonchyk ASUS Championship'
+      }
+    ]
+  }
+] %>
+
+<section class="container overflow-hidden <%= top ? '' : '' %>">
+  <% if (!top) { %>
+  <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Опытные тренеры'}) %>
+  <% } %>
+  <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 sm:gap-7">
+    <% _.forEach((coaches), (item) => { %>
+    <div class="duration-500 anim <%= item.anim %>" data-anim="hidden">
+      <%= cardCoach({picture, icon, dots, item: item}) %>
+    </div>
+    <% }) %>
+  </div>
+</section>

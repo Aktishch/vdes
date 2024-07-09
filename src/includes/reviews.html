@@ -1,0 +1,36 @@
+<section class="container xl:px-8 overflow-hidden reviews xxl:w-[1920px] xxl:mx-auto">
+  <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Отзывы наших клиентов'}) %>
+  <div class="relative text-white reviews-slider">
+    <div class="overflow-visible swiper">
+      <div class="reviews-wrapper swiper-wrapper">
+        <% for (var i = 0; i < 9; i++) { %>
+        <div class="h-auto swiper-slide xl:w-[450px]">
+          <div class="h-full border border-solid sm:p-4 card bg-dark gradient-card border-white/20">
+            <div class="h-full px-4 py-6 rounded-lg sm:px-6 sm:py-8 reviews__content card-content">
+              <div class="flex items-center mb-5 sm:mb-7">
+                <div class="flex items-center justify-center mr-2 rounded-full sm:mr-4 size-10 bg-primary gradient-primary shrink-0">
+                  <%= icon({id: 'helmet', className: 'icon text-2xl', data: false}) %>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="font-alt font-bold italic leading-[1.5_!important] gradient-text text-lg">Sergey Bystrov</h3>
+                  <div class="flex items-center gap-1 mt-1">
+                    <% for (var j = 0; j < 5; j++) { %>
+                    <%= icon({id: 'star', className: 'icon text-yellow text-base', data: false}) %>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-5 text-sm font-normal leading-normal">
+                Провел занятие с @Egor Ogorodnikov. Эффект сказался сразу – появилась внутренняя уверенность, спокойствие в гонках. Егор объяснил базу, по делу указал на главные недостатки в управлении. Стало понятнее за чем следить, как развиваться дальше. Темп стал более стабильный, смог улучшить время на всех трассах сразу. Не ожидал такого эффекта за один час. Настоятельно рекомендую, особенно начинающим, сэкономите кучу времени и получите импульс в развитии
+              </p>
+              <div class="flex mt-auto">
+                <a class="text-sm btn btn-primary" data-waved="light" draggable="false" href="">Читать полностью</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>

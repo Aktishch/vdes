@@ -1,6 +1,4 @@
 import { Fancybox } from '@fancyapps/ui'
-import { createCalendar } from './air-datepicker'
-import filtering from './filtering'
 import waved from './waved'
 
 type Dialog = {
@@ -69,17 +67,6 @@ export default (): void => {
     dragToClose: false,
     on: {
       done: (): void => waved(),
-    },
-  })
-
-  window.Fancybox.bind('[data-fancybox-calendar]', {
-    dragToClose: false,
-    on: {
-      done: (): void => {
-        createCalendar()
-        filtering()
-        waved()
-      },
     },
   })
 }

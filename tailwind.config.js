@@ -32,6 +32,7 @@ module.exports = {
       inherit: 'inherit',
       primary: {
         DEFAULT: '#EC0000',
+        dark: '#C80000',
       },
       second: {
         DEFAULT: '#EB4747',
@@ -42,20 +43,20 @@ module.exports = {
       white: {
         DEFAULT: '#FFFFFF',
       },
-      gray: {
-        DEFAULT: '#b2b2b2',
-      },
       grey: {
         DEFAULT: '#B7B7B7',
       },
       dark: {
         DEFAULT: '#000000',
       },
-      red: {
-        DEFAULT: '#be1b1b',
+      blue: {
+        DEFAULT: '#298CFA',
+      },
+      yellow: {
+        DEFAULT: '#FFCC00',
       },
       green: {
-        DEFAULT: '#27ae60',
+        DEFAULT: '#00C838',
       },
     },
     fontFamily: {

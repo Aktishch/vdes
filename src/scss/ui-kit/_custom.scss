@@ -19,13 +19,13 @@
 
 .swiper {
   &-pagination {
-    @apply flex items-center justify-center static gap-2;
+    @apply flex items-center justify-center static gap-5;
 
     & &-bullet {
-      @apply bg-current rounded-full size-3 cursor-pointer duration-200;
+      @apply bg-primary rounded-full size-2 cursor-pointer duration-200;
 
       &:not(.swiper-pagination-bullet-active) {
-        @apply opacity-50;
+        @apply bg-white/20;
       }
     }
   }

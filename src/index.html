@@ -12,8 +12,16 @@
   var social =  _.template(require('./components/social.html').default)
   var cardNav =  _.template(require('./components/card-nav.html').default)({loader, picture})
   var title = _.template(require('./components/title.html').default)
+  var dots = _.template(require('./components/dots.html').default)
+  var cardCoach = _.template(require('./components/card-coach.html').default)
+  var cardBlog = _.template(require('./components/card-blog.html').default)
+  var swiperPagination = require('./components/swiper-pagination.html').default
+  var swiperButtonPrev = _.template(require('./components/swiper-button-prev.html').default)({icon})
+  var swiperButtonNext = _.template(require('./components/swiper-button-next.html').default)({icon})
   var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture, themeToggle, social})
   var primal = _.template(require('./includes/primal.html').default)
+  var coaches = _.template(require('./includes/coaches.html').default)
+  var reviews = _.template(require('./includes/reviews.html').default)({icon, title})
   var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
 %>
 
@@ -25,7 +33,7 @@
 
 <!-- Навигация -->
 
-<section class="container xl:px-8 pt-0 pb-4 xl:pb-0 xl:-mt-[440px] bg-dark xl:bg-opacity-0">
+<section class="container xl:px-8 pt-0 pb-4 xl:pb-0 xl:-mt-[440px] bg-dark xl:bg-opacity-0 xxl:w-[1920px] xxl:mx-auto">
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <% for (var i = 0; i < 4; i++) { %>
     <div class="duration-500 anim anim-up" data-anim="hidden">
@@ -35,7 +43,7 @@
   </div>
 </section>
 
-<!-- Ты станешь чемпионом -->
+<!-- Чемпион -->
 
 <% var champ = [
   {
@@ -61,12 +69,12 @@
 ] %>
 
 <section class="container">
-  <%= title({className: 'text-gradient-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Ты станешь чемпионом'}) %>
+  <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Ты станешь чемпионом'}) %>
   <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:flex xl:justify-between xl:gap-10">
     <% _.forEach((champ), (item) => { %>
     <div class="flex duration-500 sm:flex-col gap-7 sm:gap-10 anim anim-up" data-anim="hidden">
       <div class="relative">
-        <%= icon({id: 'dots', className: 'icon text-primary text-8xl absolute top-0 sm:-top-11 left sm:-left-11 hidden dark:block', data: false}) %>
+        <%= dots({icon, className: 'absolute top-0 hidden sm:-top-11 left sm:-left-11 dark:block'}) %>
         <%= icon({id: item.id, className: 'icon text-second text-6xl relative', data: false}) %>
       </div>
       <div class="flex flex-col">
@@ -78,22 +86,130 @@
   </div>
 </section>
 
-<!-- Опытные тренеры -->
+<!-- Тренеры -->
 
-<section class="container coaches">
-  <%= title({className: 'text-gradient-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Опытные тренеры'}) %>
-  <div class="grid grid-cols-2 gap-7">
-    <div class="">
-      <div class="h-full card flex-row justify-between gap-6 coaches__card min-h-[400px] bg-black dark:bg-opacity-0 p-2">
-        <div class="relative w-full max-w-64">
-          <div class="h-full pack bg-grey rounded-xl">
-            <%= loader %>
-            <%= picture({src: 'img/pictures/test', format: 'jpg', className: 'image', data: false}) %>
-          </div>
-        </div>
-        <div class="w-full py-6 max-w-72"></div>
+<%= coaches({picture, icon, title, dots, cardCoach, top: false}) %>
+
+<!-- О нас -->
+
+<section class="container relative overflow-hidden text-white">
+  <div class="absolute inset-0">
+    <div class="h-full pack bg-grey">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/about-bg', format: 'jpg', className: 'image', data: false}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({className: 'gradient-text mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'VDES - всё для симрейсеров'}) %>
+    <div class="w-full md:max-w-[525px] relative">
+      <%= dots({icon, className: 'absolute -bottom-10 -left-10 sm:scale-150'}) %>
+      <%= dots({icon, className: 'absolute -top-10 -right-10 sm:scale-150'}) %>
+      <div class="relative px-4 py-6 overflow-hidden sm:px-8 rounded-xl gradient-about backdrop-blur-xl sm:py-11">
+        <p class="mb-5 text-sm font-normal leading-normal sm:text-base">
+          Virtual Driving e-Sport — это ведущий портал для любителей симрейсинга, где можно получить полный спектр услуг и возможностей.
+        </p>
+        <p class="mb-5 text-sm font-normal leading-normal sm:text-base">
+          Мы специализируемся на организации турниров, где пилоты сражаются за звание лучшего.
+        </p>
+        <p class="mb-5 text-sm font-normal leading-normal sm:text-base">
+          Virtual Driving e-Sport — это место, где все любители симрейсинга найдут все необходимое для полного погружения в этот увлекательный мир гонок: участие в турнирах, покупку оборудования, профессиональное обучение, качественные сетапы, удобное приложение и возможность быть частью нашей спортивной команды.
+        </p>
+        <p class="text-sm font-bold leading-normal sm:text-base">
+          Присоединяйтесь к нам сегодня и получите истинное удовольствие от симрейсинга!
+        </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Наши достижения -->
+
+<% var achievements = [
+  {
+    order: 'order-1',
+    src: 'img/pictures/achievements-bg-1',
+    title: '4 года',
+    text: 'успешной работы <br> в сфере симрейсинга'
+  },
+  {
+    order: 'order-2',
+    src: 'img/pictures/achievements-img-1',
+  },
+  {
+    order: 'order-3 lg:order-4',
+    src: 'img/pictures/achievements-bg-2',
+    title: '1000+',
+    text: 'довольных учеников'
+  },
+  {
+    order: 'order-4 lg:order-3',
+    src: 'img/pictures/achievements-img-2',
+  },
+  {
+    order: 'order-5',
+    src: 'img/pictures/achievements-bg-3',
+    title: '2000+',
+    text: 'часов проведенных <br> занятий'
+  },
+  {
+    order: 'order-6',
+    src: 'img/pictures/achievements-img-3',
+  }
+] %>
+
+<section class="container relative overflow-hidden">
+  <div class="absolute inset-0 hidden dark:block">
+    <div class="size-[770px] absolute top-56 -left-80 rounded-full bg-primary/10 blur-3xl hidden md:block"></div>
+    <div class="size-[770px] absolute top-56 right-40 rounded-full bg-primary/10 blur-3xl hidden md:block"></div>
+  </div>
+  <div class="relative">
+    <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Наши достижения'}) %>
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <% _.forEach((achievements), (item) => { %>
+      <div class="even:-mt-20 lg:even:mt-0 odd:z-10 lg:odd:z-0 duration-500 anim odd:anim-right even:anim-left <%= item.order %>" data-anim="hidden">
+        <div class="h-full overflow-hidden -skew-x-12 border border-solid bg-grey rounded-xl border-white/30">
+          <div class="relative flex flex-col items-center justify-center skew-x-12 h-36 sm:h-48 xl:h-64">
+            <div class="absolute inset-0 scale-110">
+              <div class="h-full pack">
+                <%= loader %>
+                <%= picture({src: item.src, format: 'jpg', className: 'image', data: false}) %>
+              </div>
+            </div>
+            <% if (item.title && item.text) { %>
+            <div class="relative text-white">
+              <h3 class="font-alt font-bold italic leading-[1.5_!important] gradient-text text-3xl sm:text-4xl lg:text-5xl mb-2"><%= item.title %></h3>
+              <p class="text-sm italic font-bold leading-tight sm:text-base font-alt"><%= item.text %></p>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Отзывы -->
+
+<%= reviews %>
+
+<!-- Блог -->
+
+<section class="container overflow-hidden text-white blog bg-dark">
+  <%= title({className: 'gradient-text mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Блог VDES'}) %>
+  <div class="relative blog-slider">
+    <div class="px-4 -mx-4 swiper sm:mx-4 sm:px-0">
+      <div class="swiper-wrapper">
+        <% for (var i = 0; i < 6; i++) { %>
+        <div class="h-auto swiper-slide">
+          <%= cardBlog({loader, picture, swipe: true}) %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <%= swiperPagination %>
+    <%= swiperButtonPrev %>
+    <%= swiperButtonNext %>
   </div>
 </section>
 

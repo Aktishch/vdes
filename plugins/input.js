@@ -29,7 +29,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
         backgroundColor: theme('colors.transparent'),
       },
       '&-warning': {
-        borderColor: theme('colors.red.DEFAULT'),
+        borderColor: theme('colors.primary.DEFAULT'),
       },
       '&:-webkit-autofill': {
         color: 'var(--tw-input-text) !important',
@@ -63,7 +63,7 @@ module.exports = plugin(({ addComponents, matchComponents, theme }) => {
       },
       '&-error': {
         fontSize: theme('fontSize.xs'),
-        color: theme('colors.red.DEFAULT'),
+        color: theme('colors.primary.DEFAULT'),
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
