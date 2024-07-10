@@ -75,3 +75,52 @@
     background-image: linear-gradient(180deg, transparent 28.91%, theme("colors.dark.DEFAULT") 76.79%);
   }
 }
+
+// Сетапы
+.setups {
+  @media(hover) {
+    &__content {
+      @apply invisible opacity-0;
+    }
+
+    &-slide.swiper-slide-active {
+
+      &::before,
+      &::after {
+        @apply opacity-100 visible;
+      }
+
+      @apply z-10;
+    }
+
+    &-slide.swiper-slide-active &__card {
+      @apply scale-110 z-10;
+    }
+
+    &-slide.swiper-slide-active &__image {
+      width: 110%;
+
+      @apply top-16;
+    }
+
+    &-slide.swiper-slide-active &__content {
+      @apply visible opacity-100;
+    }
+  }
+
+  &-slide {
+    --slide-bg: theme("colors.white.DEFAULT");
+
+    &::before {
+      background-image: linear-gradient(270deg, var(--slide-bg) 0%, transparent 100%);
+    }
+
+    &::after {
+      background-image: linear-gradient(270deg, transparent 0%, var(--slide-bg) 100%);
+    }
+
+    .dark & {
+      --slide-bg: theme("colors.dark.DEFAULT");
+    }
+  }
+}

@@ -23,6 +23,7 @@ window.Swiper = Swiper
 export default (): void => {
   new window.Swiper('.reviews-slider .swiper', {
     slidesPerView: 1.1,
+    slidesPerGroup: 1,
     spaceBetween: 20,
     speed: 8000,
     loop: true,
@@ -56,6 +57,7 @@ export default (): void => {
       nextEl: '.blog-slider .swiper-button-next',
     },
     slidesPerView: 1.1,
+    slidesPerGroup: 1,
     spaceBetween: 16,
     loop: true,
     grabCursor: true,
@@ -76,6 +78,38 @@ export default (): void => {
       delay: 3000,
       stopOnLastSlide: false,
       disableOnInteraction: false,
+    },
+  }) as Swiper
+
+  new window.Swiper('.setups-slider .swiper', {
+    pagination: {
+      el: '.setups-slider .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      prevEl: '.setups-slider .swiper-button-prev',
+      nextEl: '.setups-slider .swiper-button-next',
+    },
+    slidesPerView: 1.1,
+    slidesPerGroup: 1,
+    spaceBetween: 16,
+    centeredSlides: false,
+    grabCursor: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      [media.sm]: {
+        slidesPerView: 1.5,
+        spaceBetween: 24,
+        centeredSlides: true,
+      },
+      [media.md]: {
+        slidesPerView: 2,
+        centeredSlides: true,
+      },
+      [media.xl]: {
+        slidesPerView: 2.7,
+        centeredSlides: true,
+      },
     },
   }) as Swiper
   // new window.Swiper('.gallery-slider .swiper', {

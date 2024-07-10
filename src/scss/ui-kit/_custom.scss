@@ -25,7 +25,7 @@
       @apply bg-primary rounded-full size-2 cursor-pointer duration-200;
 
       &:not(.swiper-pagination-bullet-active) {
-        @apply bg-white/20;
+        @apply bg-current;
       }
     }
   }
