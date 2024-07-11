@@ -1,0 +1,148 @@
+<%
+  var data = {
+    title: 'Подписка',
+    status: true
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader =  _.template(require('./components/preloader.html').default)({picture})
+  var themeToggle =  _.template(require('./components/theme-toggle.html').default)
+  var social =  _.template(require('./components/social.html').default)
+  var cardNav =  _.template(require('./components/card-nav.html').default)({loader, picture})
+  var title = _.template(require('./components/title.html').default)
+  var bgBlur = require('./components/bg-blur.html').default
+  var square = _.template(require('./components/square.html').default)
+  var cardListing = _.template(require('./components/card-listing.html').default)
+  var swiperPagination = _.template(require('./components/swiper-pagination.html').default)
+  var swiperButtonPrev = _.template(require('./components/swiper-button-prev.html').default)
+  var swiperButtonNext = _.template(require('./components/swiper-button-next.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture, themeToggle, social})
+  var primal = _.template(require('./includes/primal.html').default)
+  var setups = _.template(require('./includes/setups.html').default)({icon, loader, picture, title, swiperPagination, swiperButtonPrev, swiperButtonNext, button: false})
+  var questions = _.template(require('./includes/questions.html').default)({title, icon})
+  var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
+%>
+
+<%= header %>
+
+<!-- Первоначальный блок -->
+
+<%= primal({data, loader, picture, small: false, src: 'img/pictures/subscription-bg', subtitle: 'Сетапы, реплеи, телеметрия, гайды и многое другое', images: false}) %>
+
+<!-- <%= data.title %> -->
+
+<!-- Навигация -->
+
+<section class="container xl:px-8 pt-0 pb-8 xl:-mt-[440px] bg-dark xl:bg-opacity-0 xxl:w-[1920px] xxl:mx-auto">
+  <div class="grid grid-cols-1 gap-4 xl:flex xl:items-center xl:justify-center sm:grid-cols-2">
+    <% for (var i = 0; i < 3; i++) { %>
+    <div class="duration-500 xl:w-full xl:max-w-md anim anim-up" data-anim="hidden">
+      <%= cardNav %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- Все что нужно -->
+
+<% var need = [
+  'Сетапы + реплеи + телеметрия',
+  'Видео-гайды трасс',
+  'Групповые занятия с разбором треков',
+  'Включена поддержка LFM'
+] %>
+
+<section class="container relative text-white">
+  <div class="absolute inset-0">
+    <div class="h-full pack bg-grey">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/need-bg', format: 'jpg', className: 'image', data: false}) %>
+    </div>
+  </div>
+  <div class="relative">
+    <%= title({className: 'gradient-text mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Теперь все что  нужно по подписке'}) %>
+    <div class="w-full md:max-w-[470px] rounded-xl gradient-blur backdrop-blur-xl py-6 sm:py-11 lg:py-16 px-4 sm:px-8 lg:px-14">
+      <h3 class="mb-5 text-xl italic font-black leading-tight sm:mb-8 sm:text-2xl font-alt">Забудьте о дорогих паках сетапов</h3>
+      <p class="text-sm font-normal leading-normal mb-7 sm:mb-12 sm:text-base">
+        Получайте все необходимое под отдельные серии и чемпионаты каждую неделю:
+      </p>
+      <ul class="flex flex-col gap-5">
+        <% _.forEach((need), (item) => { %>
+        <li class="flex items-center">
+          <%= icon({id: 'checkbox', className: 'icon text-2xl text-white fill-primary/40 stroke-primary mr-3', data: false}) %>
+          <p class="text-sm font-normal leading-normal sm:text-base"><%= item %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Уровни подписок -->
+
+<% var levels = [
+  {
+    title: 'STANDART',
+    subtitle: 'Подписка VDES Standard',
+    price: '700 ₽ | мес',
+    listing: [
+      'От 16 сетапов в месяц',
+      'Роль в дискорде VDES'
+    ],
+    button: true
+  },
+  {
+    title: 'PRO',
+    subtitle: 'Подписка VDES PRO',
+    price: '1500 ₽ | мес',
+    listing: [
+      'От 16 сетапов в месяц',
+      'Роль в дискорде VDES',
+      'Скидка 10% на персональные занятия',
+      'Видео-гайды трасс от Егора Огородникова',
+      'Чат с инструкторами'
+    ],
+    button: true
+  },
+  {
+    title: 'PRO +',
+    subtitle: 'Подписка VDES PRO+',
+    price: '3000 ₽ | мес',
+    listing: [
+      'От 16 сетапов в месяц',
+      'Роль в дискорде VDES',
+      'Скидка 10% на персональные занятия',
+      'Видео-гайды трасс от Егора Огородникова',
+      'Чат с инструкторами',
+      'Скидка на обучение в академии',
+      'Групповые тренировки'
+    ],
+    button: true
+  }
+] %>
+
+<section class="container relative overflow-hidden">
+  <%= bgBlur %>
+  <div class="relative">
+    <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Теперь все что  нужно по подписке'}) %>
+    <div class="grid grid-cols-1 gap-4 text-white md:grid-cols-2 sm:gap-6 xl:grid-cols-3">
+      <% for (var i = 0; i < levels.length; i++) { %>
+      <div class="duration-500 anim anim-up" data-anim="hidden">
+        <%= cardListing({picture, square, item: levels[i], index: i + 1}) %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- Сетапы -->
+
+<%= setups %>
+
+<!-- Популярные вопросы -->
+
+<%= questions %>
+
+<%= footer %>

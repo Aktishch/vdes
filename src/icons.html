@@ -1,0 +1,39 @@
+<%
+  var data = {
+    title: 'Иконки',
+    status: true
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader =  _.template(require('./components/preloader.html').default)({picture})
+  var themeToggle =  _.template(require('./components/theme-toggle.html').default)
+  var social =  _.template(require('./components/social.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture, themeToggle, social})
+  var primal = _.template(require('./includes/primal.html').default)
+  var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
+%>
+
+<%= header %>
+
+<!-- Первоначальный блок -->
+
+<%= primal({data, loader, picture, small: true, src: 'img/pictures/shop-bg', subtitle: false, images: false}) %>
+
+<!-- <%= data.title %> -->
+
+<% var icons = ['loader', 'sun', 'moon', 'wheel', 'basket', 'burger', 'close', 'lightning', 'vk', 'discord', 'email', 'points', 'diamonds', 'squares', 'listing', 'dots', 'check', 'checkbox', 'helmet', 'star', 'arrow-left', 'arrow-right'] %>
+
+<section class="container">
+  <ul class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    <% _.forEach((icons), (id) => { %>
+    <li class="flex items-center">
+      <%= icon({id: id, className: 'icon text-base mr-2', data: false}) %>
+      <span class="text-base font-normal leading-none">id: <%= id %></span>
+    </li>
+    <% }) %>
+  </ul>
+</section>
+
+<%= footer %>

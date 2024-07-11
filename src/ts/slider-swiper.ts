@@ -112,6 +112,38 @@ export default (): void => {
       },
     },
   }) as Swiper
+
+  new window.Swiper('.work-slider .swiper', {
+    pagination: {
+      el: '.work-slider .swiper-pagination',
+      clickable: true,
+    },
+    slidesPerView: 1.1,
+    slidesPerGroup: 1,
+    spaceBetween: 16,
+    loop: true,
+    grabCursor: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      [media.sm]: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+      },
+      [media.md]: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+      [media.lg]: {
+        slidesPerView: 3,
+        spaceBetween: 28,
+      },
+      [media.xl]: {
+        slidesPerView: 4,
+        spaceBetween: 32,
+        allowTouchMove: false,
+      },
+    },
+  }) as Swiper
   // new window.Swiper('.gallery-slider .swiper', {
   //   pagination: {
   //     el: '.gallery-slider .swiper-pagination',

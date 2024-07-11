@@ -1,22 +1,8 @@
-import { fileHandler } from './file-handler'
-
 export const validation = (form: HTMLFormElement): boolean => {
   const labels = form.querySelectorAll('*[data-label="input"]') as NodeListOf<
     HTMLLabelElement | HTMLDivElement
   >
-  const download = form.querySelector(
-    '*[data-label="download"]'
-  ) as HTMLDivElement
   let validate: boolean = true
-
-  if (download) {
-    const input = download.querySelector(
-      '*[data-input="file"]'
-    ) as HTMLInputElement
-    const error = download.querySelector('*[data-error]') as HTMLSpanElement
-
-    validate = fileHandler({ input: input, error: error })
-  }
 
   labels.forEach((label: HTMLLabelElement | HTMLDivElement): void => {
     if (!label) return
@@ -31,13 +17,6 @@ export const validation = (form: HTMLFormElement): boolean => {
       input.classList.add('input-warning')
       error.classList.add('visible', 'opacity-100')
       validate = false
-    }
-
-    const maxLengthInputTel = (value: number): void => {
-      if (input.value.length > 0 && input.value.length < value) {
-        error.innerText = 'Введите корректный номер!'
-        inputError()
-      }
     }
 
     const emailFormat = (value: string): boolean => {
@@ -69,13 +48,12 @@ export const validation = (form: HTMLFormElement): boolean => {
 
       case 'tel': {
         switch (input.value[0]) {
-          case '8': {
-            maxLengthInputTel(17)
-            break
-          }
-
           case '+': {
-            maxLengthInputTel(18)
+            if (input.value.length > 0 && input.value.length < 18) {
+              error.innerText = 'Некорректный номер телефона!'
+              inputError()
+            }
+
             break
           }
 

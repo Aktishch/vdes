@@ -1,0 +1,33 @@
+<%
+  var icon = _.template(require('../components/icon.html').default)
+  var picture = _.template(require('../components/picture.html').default)
+  var loader = _.template(require('../components/loader.html').default)({icon})
+%>
+
+<dialog class="p-0 dialog dialog-lg dark:bg-dark dark:text-white rounded-xl">
+  <div class="overflow-hidden md:grid md:grid-cols-2 rounded-xl">
+    <div class="hidden md:block">
+      <div class="h-full pack bg-grey">
+        <%= loader %>
+        <%= picture({src: 'img/pictures/feedback-bg', format: 'jpg', className: 'image', data: false}) %>
+      </div>
+    </div>
+    <div class="flex flex-col px-4 py-10 sm:px-8 lg:px-12 lg:py-14">
+      <h3 class="font-alt font-bold leading-[1.5_!important] gradient-text-dark italic text-2xl sm:text-3xl mb-3 sm:mb-5">Отправить заявку</h3>
+      <p class="mb-5 text-sm font-normal leading-normal sm:text-base sm:mb-7 opacity-60">Напишите номер телефона, и мы перезвоним – это бесплатно!</p>
+      <form class="mb-7" data-form="submit">
+        <label class="flex flex-col mb-6" data-label="input">
+          <b class="mb-2 text-xs font-bold leading-none">Телефон для связи</b>
+          <div class="relative">
+            <input class="input input-black input-lg" data-input="tel" type="tel" placeholder="+7 ( _ _ _ ) _ _ _ - _ _ - _ _" name="tel">
+            <span class="input-error" data-error>Пожалуйста, введите ваш номер!</span>
+          </div>
+        </label>
+        <button class="w-full btn btn-primary btn-lg btn-fill xs:w-auto" data-waved="light" type="submit">Подробнее о тренере</button>
+      </form>
+      <div class="flex mt-auto">
+        <button class="text-xs font-normal leading-tight duration-200 xs:text-left opacity-40 underline-offset-4 hover:underline hover:opacity-100" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-politics.html">Отправляя форму, Вы даете согласие на обработку Ваших персональных данных</button>
+      </div>
+    </div>
+  </div>
+</dialog>

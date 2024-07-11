@@ -36,6 +36,7 @@ module.exports = {
       },
       second: {
         DEFAULT: '#EB4747',
+        light: '#E97070',
       },
       black: {
         DEFAULT: '#2B2B2B',

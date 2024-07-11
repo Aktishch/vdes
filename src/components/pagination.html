@@ -1,0 +1,40 @@
+<% var pagination = [
+  {
+    style: 'btn-primary btn-fill pointer-events-none',
+    children: icon({id: 'arrow-left', className: 'icon text-base sm:text-xl', data: false})
+  },
+  {
+    style: 'btn-primary btn-fill pointer-events-none',
+    children: '1'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 border border-solid border-grey dark:border-white/30',
+    children: '2'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 border border-solid border-grey dark:border-white/30',
+    children: '3'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 border border-solid border-grey dark:border-white/30',
+    children: '4'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 border border-solid border-grey dark:border-white/30',
+    children: '5'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 items-end',
+    children: '...'
+  },
+  {
+    style: 'btn-grey text-black/60 dark:text-white/60 border border-solid border-grey dark:border-white/30',
+    children: icon({id: 'arrow-right', className: 'icon text-base sm:text-xl', data: false})
+  },
+] %>
+
+<div class="flex items-center justify-center gap-2 mt-8 sm:gap-4 lg:justify-stretch">
+  <% _.forEach((pagination), (item) => { %>
+  <a class="rounded-md btn size-7 sm:size-10 shrink-0 text-xs sm:text-base font-normal <%= item.style %>" data-waved="dark" draggable="false" href=""><%= item.children %></a>
+  <% }) %>
+</div>

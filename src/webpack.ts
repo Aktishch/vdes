@@ -22,21 +22,21 @@ import waved from './ts/waved'
 // import bubbles from './ts/bubbles'
 // import inverted from './ts/inverted'
 // import listing from './ts/listing'
-// import accordion from './ts/accordion'
+import accordion from './ts/accordion'
 // import formatBg from './ts/format-bg'
 // import parallax from './ts/parallax'
 // import filtering from './ts/filtering'
 // import outNumber from './ts/out-number'
 // import writeText from './ts/write-text'
 // import downloadFiles from './ts/download-files'
-// import submitHandler from './ts/submit-handler'
+import submitHandler from './ts/submit-handler'
 // import dataSave from './ts/data-save'
 // import dragAndDrop from './ts/drag-and-drop'
 // import choiceFile from './ts/choice-file'
 // import copy from './ts/copy'
 // import createImage from './ts/create-image'
 // import inputs from './ts/inputs'
-// import phoneMask from './ts/phone-mask'
+import phoneMask from './ts/phone-mask'
 // import password from './ts/password'
 // import quantity from './ts/quantity'
 // import range from './ts/range'
@@ -79,20 +79,20 @@ const initialization = (): void => {
   // bubbles()
   // inverted()
   // listing()
-  // accordion()
+  accordion()
   // formatBg()
   // parallax()
   // filtering()
   // outNumber()
   // writeText()
-  // submitHandler(downloadFiles())
+  submitHandler()
   // dataSave()
   // dragAndDrop()
   // choiceFile()
   // copy()
   // createImage()
   // inputs()
-  // phoneMask()
+  phoneMask()
   // password()
   // quantity()
   // range()

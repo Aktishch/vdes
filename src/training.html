@@ -1,0 +1,94 @@
+<%
+  var data = {
+    title: 'Тренировки',
+    status: true
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader =  _.template(require('./components/preloader.html').default)({picture})
+  var themeToggle =  _.template(require('./components/theme-toggle.html').default)
+  var social =  _.template(require('./components/social.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var dots = _.template(require('./components/dots.html').default)
+  var cardCoach = _.template(require('./components/card-coach.html').default)
+  var bgBlur = require('./components/bg-blur.html').default
+  var square = _.template(require('./components/square.html').default)
+  var swiperPagination = _.template(require('./components/swiper-pagination.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture, themeToggle, social})
+  var primal = _.template(require('./includes/primal.html').default)
+  var coaches = _.template(require('./includes/coaches.html').default)
+  var reviews = _.template(require('./includes/reviews.html').default)({icon, title})
+  var questions = _.template(require('./includes/questions.html').default)({title, icon})
+  var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
+%>
+
+<%= header %>
+
+<!-- Первоначальный блок -->
+
+<%= primal({data, loader, picture, small: false, src: 'img/pictures/training-bg', subtitle: 'Персональные занятия с профессиональными симрейсерами', images: true}) %>
+
+<!-- <%= data.title %> -->
+
+<%= coaches({picture, icon, title, dots, cardCoach, top: true}) %>
+
+<!-- Как это работает -->
+
+<% var work = [
+  {
+    title: 'Отправьте заявку менеджеру',
+    text: 'Оставьте заявку на индивидуальную тренировку на сайте или свяжитесь с нами через ВК / Discord'
+  },
+  {
+    title: 'Связь с менеджером и тренером',
+    text: 'Дождитесь ответа менеджера, он подберет вам тренера и предложит удобное время для занятия'
+  },
+  {
+    title: 'Оплатите заказ удобным способом',
+    text: 'Выберите удобный для вас способ оплаты заказа - через Discord или Boosty'
+  },
+  {
+    title: 'Подключайтесь к тренировке!',
+    text: 'Готово! Теперь просто дождитесь тренировки  и оставьте нам отзыв'
+  }
+] %>
+
+<section class="container relative overflow-hidden work">
+  <%= bgBlur %>
+  <div class="relative">
+    <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Как это работает'}) %>
+    <div class="relative text-white work-slider">
+      <div class="px-4 -mx-4 swiper sm:mx-0 sm:px-0">
+        <div class="swiper-wrapper">
+          <% for (var i = 0; i < work.length; i++) { %>
+          <div class="h-auto swiper-slide">
+            <div class="h-full border border-solid card bg-dark dark:bg-opacity-0 gradient-card border-white/30">
+              <div class="h-full px-4 py-6 sm:px-6 sm:py-8 card-content">
+                <div class="relative mb-7 lg:mb-12">
+                  <%= dots({icon, className: 'absolute -top-6 sm:-top-8 -left-4 sm:-left-6 scale-150'}) %>
+                  <%= square({bg: 'bg-second', number: i + 1}) %>
+                </div>
+                <h3 class="mb-5 text-base italic font-extrabold leading-tight font-alt"><%= work[i].title %></h3>
+                <p class="text-sm font-normal leading-normal sm:text-base opacity-60"><%= work[i].text %></p>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <%= swiperPagination({className: 'text-black/20 dark:text-white/20 xl:hidden'}) %>
+    </div>
+  </div>
+</section>
+
+<!-- Отзывы -->
+
+<%= reviews %>
+
+<!-- Популярные вопросы -->
+
+<%= questions %>
+
+<%= footer %>

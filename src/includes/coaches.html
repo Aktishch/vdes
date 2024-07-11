@@ -41,14 +41,14 @@
   }
 ] %>
 
-<section class="container overflow-hidden <%= top ? '' : '' %>">
+<section class="container overflow-hidden <%= top ? 'xl:pt-0 xl:pb-8 xl:-mt-[440px]' : '' %>">
   <% if (!top) { %>
   <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Опытные тренеры'}) %>
   <% } %>
   <div class="grid grid-cols-1 gap-4 xl:grid-cols-2 sm:gap-7">
     <% _.forEach((coaches), (item) => { %>
     <div class="duration-500 anim <%= item.anim %>" data-anim="hidden">
-      <%= cardCoach({picture, icon, dots, item: item}) %>
+      <%= cardCoach({picture, icon, dots, item: item, feedback: top}) %>
     </div>
     <% }) %>
   </div>

@@ -14,6 +14,7 @@
   var title = _.template(require('./components/title.html').default)
   var dots = _.template(require('./components/dots.html').default)
   var cardCoach = _.template(require('./components/card-coach.html').default)
+  var bgBlur = require('./components/bg-blur.html').default
   var cardBlog = _.template(require('./components/card-blog.html').default)
   var swiperPagination = _.template(require('./components/swiper-pagination.html').default)
   var swiperButtonPrev = _.template(require('./components/swiper-button-prev.html').default)
@@ -22,6 +23,7 @@
   var primal = _.template(require('./includes/primal.html').default)
   var coaches = _.template(require('./includes/coaches.html').default)
   var reviews = _.template(require('./includes/reviews.html').default)({icon, title})
+  var setups = _.template(require('./includes/setups.html').default)({icon, loader, picture, title, swiperPagination, swiperButtonPrev, swiperButtonNext, button: true})
   var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
 %>
 
@@ -33,7 +35,7 @@
 
 <!-- Навигация -->
 
-<section class="container xl:px-8 pt-0 pb-4 xl:pb-0 xl:-mt-[440px] bg-dark xl:bg-opacity-0 xxl:w-[1920px] xxl:mx-auto">
+<section class="container xl:px-8 pt-0 pb-8 xl:-mt-[440px] bg-dark xl:bg-opacity-0 xxl:w-[1920px] xxl:mx-auto">
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <% for (var i = 0; i < 4; i++) { %>
     <div class="duration-500 anim anim-up" data-anim="hidden">
@@ -104,7 +106,7 @@
     <div class="w-full md:max-w-[525px] relative">
       <%= dots({icon, className: 'absolute -bottom-10 -left-10 sm:scale-150'}) %>
       <%= dots({icon, className: 'absolute -top-10 -right-10 sm:scale-150'}) %>
-      <div class="relative px-4 py-6 overflow-hidden sm:px-8 rounded-xl gradient-about backdrop-blur-xl sm:py-11">
+      <div class="relative px-4 py-6 overflow-hidden sm:px-8 rounded-xl gradient-blur backdrop-blur-xl sm:py-11">
         <p class="mb-5 text-sm font-normal leading-normal sm:text-base">
           Virtual Driving e-Sport — это ведущий портал для любителей симрейсинга, где можно получить полный спектр услуг и возможностей.
         </p>
@@ -158,10 +160,7 @@
 ] %>
 
 <section class="container relative overflow-hidden">
-  <div class="absolute inset-0 hidden dark:block">
-    <div class="size-[770px] absolute top-56 -left-80 rounded-full bg-primary/10 blur-3xl hidden md:block"></div>
-    <div class="size-[770px] absolute top-56 right-40 rounded-full bg-primary/10 blur-3xl hidden md:block"></div>
-  </div>
+  <%= bgBlur %>
   <div class="relative">
     <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Наши достижения'}) %>
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -207,7 +206,7 @@
         <% } %>
       </div>
     </div>
-    <%= swiperPagination({color: 'text-white/20'}) %>
+    <%= swiperPagination({className: 'text-white/20'}) %>
     <%= swiperButtonPrev({icon, className: '-left-8 xl:-left-20'}) %>
     <%= swiperButtonNext({icon, className: '-right-8 xl:-right-20'}) %>
   </div>
@@ -215,48 +214,6 @@
 
 <!-- Сетапы -->
 
-<section class="container overflow-hidden setups">
-  <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Наши сетапы авто'}) %>
-  <div class="relative text-white setups-slider">
-    <div class="overflow-visible swiper">
-      <div class="swiper-wrapper">
-        <% for (var i = 0; i < 6; i++) { %>
-        <div class="h-auto swiper-slide setups-slide before:content-auto before:absolute before:-left-1/2 before:top-0 before:bottom-0 before:h-full before:w-1/2 before:opacity-0 before:invisible before:duration-200 before:pointer-events-none after:content-auto after:absolute after:-right-1/2 after:top-0 after:bottom-0 after:h-full after:w-1/2 after:opacity-0 after:invisible after:duration-200 after:pointer-events-none">
-          <div class="card h-full sm:overflow-visible min-h-[400px] xs:min-h-[500px] setups__card">
-            <div class="absolute inset-0 overflow-hidden rounded-xl">
-              <%= loader %>
-              <%= picture({src: 'img/pictures/road-bg', format: 'jpg', className: 'image', data: false}) %>
-            </div>
-            <%= picture({src: 'img/pictures/car', format: 'png', className: 'setups__image block absolute right-0 top-16 xs:top-28 w-full max-w-none duration-200', data: false}) %>
-            <div class="relative h-full px-4 py-6 sm:px-6 lg:px-8 sm:py-8 card-content">
-              <div class="flex items-center gap-4">
-                <%= picture({src: 'img/pictures/mark', format: 'png', className: 'block max-w-24 max-h-10', data: false}) %>
-                <span class="w-px h-6 bg-white/40"></span>
-                <%= picture({src: 'img/pictures/logo-white', format: 'svg', className: 'w-28', data: false}) %>
-              </div>
-              <div class="mt-auto duration-200 setups__content">
-                <h3 class="mb-2 text-sm italic font-bold leading-normal ms:mb-4 font-alt">Сетапы для Assetto Corsa Competizione</h3>
-                <ul class="flex flex-col gap-1 sm:gap-2">
-                  <% for (var j = 0; j < 3; j++) { %>
-                  <li class="text-sm font-normal leading-tight">
-                    <b class="opacity-40">Автомобиль:</b> Lamborgini
-                  </li>
-                  <% } %>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-    </div>
-    <%= swiperPagination({color: 'text-black/20 dark:text-white/20'}) %>
-    <%= swiperButtonPrev({icon, className: '-left-8 lg:left-40'}) %>
-    <%= swiperButtonNext({icon, className: '-right-8 lg:right-40'}) %>
-  </div>
-  <div class="flex items-center justify-center mt-6 sm:mt-10">
-    <a class="btn btn-primary btn-lg btn-fill" data-waved="light" draggable="false" href="">Посмотреть все сетапы</a>
-  </div>
-</section>
+<%= setups %>
 
 <%= footer %>

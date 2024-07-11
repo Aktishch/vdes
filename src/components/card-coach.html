@@ -22,6 +22,10 @@
       </li>
       <% } %>
     </ul>
+    <% if (feedback) { %>
+    <button class="w-full mt-auto btn btn-primary btn-lg btn-fill sm:max-w-36" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Записаться</button>
+    <% } else { %>
     <a class="w-full mt-auto btn btn-primary btn-lg btn-fill sm:max-w-60" data-waved="light" draggable="false" href="">Подробнее о тренере</a>
+    <% } %>
   </div>
 </div>

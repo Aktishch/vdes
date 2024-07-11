@@ -1,0 +1,78 @@
+<%
+  var data = {
+    title: 'Академия',
+    status: true
+  }
+
+  var icon = _.template(require('./components/icon.html').default)
+  var picture = _.template(require('./components/picture.html').default)
+  var loader = _.template(require('./components/loader.html').default)({icon})
+  var preloader =  _.template(require('./components/preloader.html').default)({picture})
+  var themeToggle =  _.template(require('./components/theme-toggle.html').default)
+  var social =  _.template(require('./components/social.html').default)
+  var title = _.template(require('./components/title.html').default)
+  var header = _.template(require('./includes/header.html').default)({data, loader, preloader, icon, picture, themeToggle, social})
+  var primal = _.template(require('./includes/primal.html').default)
+  var footer = _.template(require('./includes/footer.html').default)({data, loader, icon, picture, social})
+%>
+
+<%= header %>
+
+<!-- Первоначальный блок -->
+
+<%= primal({data, loader, picture, small: false, src: 'img/pictures/academy-bg', subtitle: 'курс виртуального пилотирования', images: false}) %>
+
+<!-- <%= data.title %> -->
+
+<section class="container xl:pt-0 xl:pb-8 xl:-mt-[440px] bg-dark xl:bg-opacity-0 text-white">
+  <div class="p-2 border border-solid lg:gap-8 lg:p-4 lg:flex-row lg:items-center xl:gap-16 card gradient-card bg-black/0 border-white/30 backdrop-blur-lg">
+    <div class="pack pack-lg w-full sm:max-w-96 lg:max-w-[415px] rounded-lg bg-grey">
+      <%= loader %>
+      <%= picture({src: 'img/pictures/test', format: 'jpg', className: 'image', data: false}) %>
+    </div>
+    <div class="items-start card-content w-full lg:max-w-[625px] py-4 px-2 lg:py-0 lg:px-0">
+      <h3 class="mb-5 text-lg italic font-black leading-tight lg:mb-8 sm:text-xl lg:text-2xl font-alt">Лучший онлайн курс по симрейсингу</h3>
+      <p class="text-sm font-normal leading-normal mb-7 lg:mb-12 sm:text-base">
+        Программа собрана из огромного опыта наших тренеров, включая шесть проведенных сезонов VDES Academy. На данный момент набор в академию закрыт. Анонс нового сезона запланирован на июль
+      </p>
+      <button class="w-full btn btn-primary btn-lg btn-fill xs:w-auto" data-waved="light" data-fancybox-dialog data-type="ajax" data-src="dialogs/dialog-feedback.html">Записаться на курс</button>
+    </div>
+  </div>
+</section>
+
+<!-- Лучшие тренеры -->
+
+<section class="container overflow-hidden">
+  <%= title({className: 'gradient-text-dark mb-8 sm:mb-12 lg:mb-16 duration-500 anim anim-up', data: 'data-anim="hidden"', text: 'Лучшие тренеры - это чемпионы'}) %>
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <% for (var i = 0; i < 2; i++) { %>
+    <div class="relative duration-500 even:-mt-20 lg:even:mt-0 odd:z-10 lg:odd:z-0 anim odd:anim-right even:anim-left <%= i === 0 ? '' : 'hidden sm:block' %>" data-anim="hidden">
+      <% if (i === 0) { %>
+      <div class="absolute hidden w-full h-full -skew-x-12 bg-second -bottom-4 rounded-xl -right-14 lg:block"></div>
+      <% } %>
+      <div class="h-full overflow-hidden border border-solid sm:-skew-x-12 bg-grey rounded-xl border-white/30">
+        <div class="relative flex flex-col items-center justify-center sm:skew-x-12 sm:min-h-56 xl:min-h-[300px]">
+          <div class="absolute inset-0 scale-110">
+            <div class="h-full pack">
+              <%= loader %>
+              <%= picture({src: `img/pictures/best-${i === 0 ? 'bg' : 'img'}`, format: 'jpg', className: 'image', data: false}) %>
+            </div>
+          </div>
+          <% if (i === 0) { %>
+          <div class="relative w-full px-4 py-8 text-white sm:max-w-md sm:py-4">
+            <p class="mb-5 text-sm font-normal leading-normal sm:text-base">
+              Наши тренеры - это профессионалы своего дела, которые добились внушающих успехов не только на поприще «коучинга», но и как пилоты в больших международных чемпионатах!
+            </p>
+            <p class="text-sm font-bold leading-normal sm:text-base">
+              На протяжении всего курса вашими тренерами будут Егор Огородников и Максим Петров.
+            </p>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%= footer %>

@@ -5,7 +5,7 @@ const getValue = (input: HTMLInputElement): string => {
 const formatterValue = (value: string): string => {
   if (value[0] === '9') value = '7' + value
 
-  const firstVal: string = value[0] === '8' ? '8' : '+7'
+  const firstVal: string = '+7'
   let formatted: string
 
   formatted = firstVal + ' '
@@ -33,22 +33,6 @@ const onInput = (event: InputEvent): '' | undefined => {
   input.value = formatterValue(value)
 }
 
-const onKeyUp = (event: KeyboardEvent): void => {
-  const input = event.target as HTMLInputElement
-
-  switch (input.value[0]) {
-    case '8': {
-      input.maxLength = 17
-      break
-    }
-
-    default: {
-      input.maxLength = 18
-      break
-    }
-  }
-}
-
 const onKeyDown = (event: KeyboardEvent): void => {
   const input = event.target as HTMLInputElement
   const value: string = getValue(input)
@@ -68,19 +52,18 @@ const onPaste = (event: ClipboardEvent): void => {
 }
 
 export default (): void => {
-  const phoneEvents: string[] = ['input', 'keyup', 'keydown', 'paste']
+  const phoneEvents: string[] = ['input', 'keydown', 'paste']
 
   phoneEvents.forEach((phoneEvent: string): void => {
     document.addEventListener(phoneEvent, ((event: Event): void => {
-      if ((event.target as HTMLInputElement).getAttribute('type') === 'tel') {
+      if (
+        (event.target as HTMLInputElement).getAttribute('type') === 'tel' ||
+        (event.target as HTMLInputElement).getAttribute('autocomplete') ===
+          'tel'
+      ) {
         switch (event.type) {
           case 'input': {
             onInput(event as InputEvent)
-            break
-          }
-
-          case 'keyup': {
-            onKeyUp(event as KeyboardEvent)
             break
           }
 

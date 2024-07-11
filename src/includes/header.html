@@ -30,14 +30,13 @@
     <% var nav = ['О нас', 'Блог', 'Новости и события', 'Доставка'] %>
 
     <section class="container relative z-10 flex items-center justify-between gap-3 py-3 bg-white sm:gap-7 xl:gap-14 dark:bg-dark" data-nav>
-      <nav class="items-center justify-between hidden lg:flex gap-7 xl:gap-14">
+      <nav class="items-center justify-between hidden lg:flex gap-14">
         <% _.forEach((nav), (item) => { %>
         <a class="py-1 font-normal rounded btn text-black/70 btn-grey dark:btn-white dark:text-white/70" data-waved="dark" draggable="false" href=""><%= item %></a>
         <% }) %>
       </nav>
-      <%= themeToggle({icon, className: 'hidden lg:flex'}) %>
       <% for (var i = 0; i < 2; i++) { %>
-      <a class="py-1 text-sm text-black rounded btn btn-primary sm:text-base dark:text-white/70 <%= i === 0 ? '' : 'font-normal' %>" data-waved="dark" draggable="false" href="">
+      <a class="py-1 text-sm text-black rounded btn btn-primary sm:text-base dark:text-white/70 <%= i === 0 ? 'lg:ml-auto' : 'font-normal' %>" data-waved="dark" draggable="false" href="">
         <%= icon({id: i === 0 ? 'basket' : 'wheel', className: 'icon text-2xl text-primary mr-2 sm:mr-3', data: false}) %>
         <% if (i === 0) { %>
         Корзина
@@ -65,6 +64,7 @@
         <a class="p-2 rounded-lg btn btn-white" data-waved="dark" draggable="false" href=""><%= item %></a>
         <% }) %>
       </nav>
+      <%= themeToggle({icon, className: 'hidden lg:flex'}) %>
       <%= social({icon, small: true, items: ['lightning', 'vk', 'discord']}) %>
     </header>
 
